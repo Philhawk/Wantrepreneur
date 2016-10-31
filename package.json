@@ -1,5 +1,5 @@
 {
-  "name": "__BONES_NEEDS_A_NAME__",
+  "name": "Wantrepreneur",
   "version": "0.0.1",
   "description": "A happy little skeleton.",
   "main": "index.js",
@@ -12,19 +12,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/queerviolet/bones.git"
+    "url": "git+https://github.com/Philhawk/Wantrepreneur"
   },
   "keywords": [
     "react",
     "redux",
     "skeleton"
   ],
-  "author": "Ashi Krishnan <me@ashi.works>",
+  "author": "Phil Jacob",
+  "contributors": [
+    "Anthony Ardito",
+    "Emily Ho",
+    "Jiheh Ritterling"
+  ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/queerviolet/bones/issues"
+    "url": "https://github.com/Philhawk/Wantrepreneur/issues"
   },
-  "homepage": "https://github.com/queerviolet/bones#readme",
+  "homepage": "https://github.com/Philhawk/Wantrepreneur#readme",
   "dependencies": {
     "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
