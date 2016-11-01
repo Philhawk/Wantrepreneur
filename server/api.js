@@ -22,7 +22,10 @@ api.get('/products', (req, res, next) => {
       model: db.model('categories')
     }]
   })
-    .then(products => res.send(products))
+    .then(products => {
+      console.log('THIS IS WORKING')
+      res.send(products)
+    })
     .catch(next);
 });
 
