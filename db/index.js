@@ -26,8 +26,13 @@ const db = module.exports = new Sequelize(url, {
 require('./models')
 
 // sync the db, creating it if necessary
+<<<<<<< Updated upstream
 function sync(force=app.isTesting) {
   return db.sync({force})
+=======
+function sync() {
+  return db.sync({force: true})
+>>>>>>> Stashed changes
     .then(ok => console.log(`Synced models to db ${url}`))
     .catch(fail => {
       if (app.isProduction) {
