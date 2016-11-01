@@ -52,7 +52,8 @@ function setEmailAndPassword(user) {
       if (err) reject(err);
       user.set('password_digest', hash);
       resolve(user);
-    }));
+    })
+  );
 }
 
 module.exports = User;

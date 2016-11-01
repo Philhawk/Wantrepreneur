@@ -9,24 +9,24 @@ chai.should();
 describe('Product', () => {
   const goodProduct = {
     name: 'test name',
-    category: 'beauty',
+    // category: 'beauty',
     price: '100000000',
     description: 'test description',
     url: 'http://google.com',
     image: 'http://google.com/image.jpg'
   };
 
-  const invalidCategory = {
-    name: 'test name',
-    category: 'not a category',
-    price: '100000000',
-    description: 'test description',
-    url: 'http://google.com',
-    image: 'http://google.com/image.jpg'
-  };
+  // const invalidCategory = {
+  //   name: 'test name',
+  //   category: 'not a category',
+  //   price: '100000000',
+  //   description: 'test description',
+  //   url: 'http://google.com',
+  //   image: 'http://google.com/image.jpg'
+  // };
 
   const nullName = {
-    category: 'beauty',
+    // category: 'beauty',
     price: '100000000',
     description: 'test description',
     url: 'http://google.com',
@@ -35,7 +35,7 @@ describe('Product', () => {
 
   const emptyName = {
     name: '',
-    category: 'beauty',
+    // category: 'beauty',
     price: '100000000',
     description: 'test description',
     url: 'http://google.com',
@@ -44,7 +44,7 @@ describe('Product', () => {
 
   const invalidUrl = {
     name: 'test name',
-    category: 'beauty',
+    // category: 'beauty',
     price: '100000000',
     description: 'test description',
     url: 'http://google.com',
@@ -58,7 +58,7 @@ describe('Product', () => {
       return Product.create(goodProduct).should.be.fulfilled;
     });
 
-    it('fails with an invalid category', () => Product.create(invalidCategory).should.be.rejected);
+    // it('fails with an invalid category', () => Product.create(invalidCategory).should.be.rejected);
 
     it('fails if name isn\'t provided', () => Product.create(nullName).should.be.rejected);
 
