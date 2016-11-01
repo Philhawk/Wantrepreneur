@@ -23,7 +23,7 @@ describe('Product', () => {
     description: 'test description',
     url: 'http://google.com',
     image: 'http://google.com/image.jpg'
-  }
+  };
 
   const nullName = {
     category: 'beauty',
@@ -31,7 +31,7 @@ describe('Product', () => {
     description: 'test description',
     url: 'http://google.com',
     image: 'http://google.com/image.jpg'
-  }
+  };
 
   const emptyName = {
     name: '',
@@ -40,7 +40,7 @@ describe('Product', () => {
     description: 'test description',
     url: 'http://google.com',
     image: 'http://google.com/image.jpg'
-  }
+  };
 
   const invalidUrl = {
     name: 'test name',
