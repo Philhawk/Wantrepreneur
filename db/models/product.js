@@ -3,7 +3,7 @@
 const Sequelize = require('sequelize');
 const db = require('APP/db');
 
-const productCategories = ['beauty', 'entertainment', 'fashion', 'food', 'sports', 'technology'].sort();
+//const productCategories = ['beauty', 'entertainment', 'fashion', 'food', 'sports', 'technology'].sort();
 
 const Product = db.define('products', {
   name: {
