@@ -3,20 +3,13 @@
 const Sequelize = require('sequelize')
 const db = require('APP/db')
 
-const Order = db.define('orders', {
-  userId: {
-    type: Sequelize.INTEGER,
-    allowNull: false
-  }
-  purchasedBusinesses: {
-    type: Sequelize.ARRAY(DataTypes.INTEGER),
-    allowNull: false
-  },
-  orderDate: {
-    type: Sequelize.DATE,
-    defaultValue : new Date()
-  }
+const orderStatuses = ['pending', 'complete']
 
+const Order = db.define('orders', {
+  status: {
+    type: Sequelize.ENUM(...orderStatuses),
+    defaultValue: orderStatuses[0],
+  }
 })
 
 module.exports = Order
