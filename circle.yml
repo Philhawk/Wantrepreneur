@@ -1,0 +1,9 @@
+machine:
+  node:
+    version: 6
+database:
+  post:
+    - psql -c "CREATE DATABASE wantrepreneur_test";
+test:
+  pre:
+    - npm run test:
