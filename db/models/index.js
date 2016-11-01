@@ -16,8 +16,8 @@ Product.hasMany(Category)
 
 
 module.exports = {
-  User: User,
-  Product: Product,
-  Order: Order,
-  Category: Caegory
+  User,
+  Product,
+  Order,
+  Category
 }
