@@ -26,18 +26,21 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+let createdCategories;
+
 db.didSync
   .then(() => db.sync({force: true}))
   .then(seedUsers)
   .then(users => console.log(`Seeded ${users.length} users OK`))
   .then(seedCategories)
   .then(categories => {
-  	createdCategories = categories;
-  	console.log(`Seeded ${categories.length} categories OK`);
+    createdCategories = categories;
+    console.log(`Seeded ${categories.length} categories OK`);
   })
   .then(seedProducts)
   .then(products => {
-  	return db.Promise.all(products.map(product => product.addCategories([createdCategories[getRandomIntInclusive(0, createdCategories.length)]])));
+  	createdProducts = products;
+  	return db.Promise.all(products.map(product => product.addCategory(createdCategories[getRandomIntInclusive(0, createdCategories.length)])));
   })
   .then(products => console.log(`Seeded ${products.length} products OK`))
   .catch(error => console.error(error))

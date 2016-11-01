@@ -28,7 +28,6 @@ describe('/api/users', () => {
         .post('/api/users')
         .send({
           name: 'bob',
-
           email: 'eve@interloper.com',
           password: '23456',
         })

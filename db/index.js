@@ -26,8 +26,9 @@ const db = module.exports = new Sequelize(url, {
 require('./models')
 
 // sync the db, creating it if necessary
-function sync() {
-  return db.sync()
+ 
+function sync(force=app.isTesting) {
+  return db.sync({force})
     .then(ok => console.log(`Synced models to db ${url}`))
     .catch(fail => {
       if (app.isProduction) {
