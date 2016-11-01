@@ -20,8 +20,6 @@ const seedCategories = () => db.Promise.map([
 	{name: 'food', image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97350&w=350&h=350'}
 ], category => db.model('categories').create(category));
 
-let createdCategories;
-
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -41,12 +39,8 @@ db.didSync
   })
   .then(seedProducts)
   .then(products => {
-<<<<<<< Updated upstream
   	createdProducts = products;
   	return db.Promise.all(products.map(product => product.addCategory(createdCategories[getRandomIntInclusive(0, createdCategories.length)])));
-=======
-    return db.Promise.all(products.map(product => product.addCategories([createdCategories[getRandomIntInclusive(0, createdCategories.length)]])));
->>>>>>> Stashed changes
   })
   .then(products => console.log(`Seeded ${products.length} products OK`))
   .catch(error => console.error(error))
