@@ -13,13 +13,13 @@ const Product = db.define('products', {
       notEmpty: true
     }
   },
-  category: {
-    type: Sequelize.ENUM(...productCategories),
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
-  },
+  // category: {
+  //   type: Sequelize.ENUM(...productCategories),
+  //   allowNull: false,
+  //   validate: {
+  //     notEmpty: true
+  //   }
+  // },
   price: {
     type: Sequelize.INTEGER,
     allowNull: false,
