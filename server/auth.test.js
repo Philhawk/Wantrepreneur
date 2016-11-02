@@ -15,7 +15,7 @@ describe('/api/auth', () => {
       .then(() =>
         User.create(
           {
-          name: 'alive',
+          name: 'bob',
           email: alice.username,
           password: alice.password
         })
