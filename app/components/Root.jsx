@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Navigation from './navbar/Navbar';
 
 export default class BonesJokes extends Component {
   constructor() {
@@ -23,15 +24,21 @@ export default class BonesJokes extends Component {
   }
 
   render() {
-    if (!this.state) { return null }
+      if (!this.state) { return null }
 
-    const {joke, answered} = this.state
-    return (
-      <div onClick={answered ? this.nextJoke : this.answer}>
-        <h1>{joke.q}</h1>
-        {answered && <h2>{joke.a}</h2>}
-        <cite>~xoxo, bones</cite>
-      </div>
+      const {joke, answered} = this.state
+
+      return (
+        <div>
+          <div>
+            <Navigation />
+          </div>
+          <div onClick={answered ? this.nextJoke : this.answer}>
+            <h1>{joke.q}</h1>
+            {answered && <h2>{joke.a}</h2>}
+            <cite>~xoxo, bones</cite>
+          </div>
+        </div>
     )
   }
 }
