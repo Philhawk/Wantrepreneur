@@ -13,16 +13,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Philhawk/Wantrepreneur.git",
-    "test": "check-node-version --node '>= 6.7.0' && bin/setup && mocha --compilers js:babel-register app/**/*.test.js app/**/*.test.jsx db/**/*.test.js server/**/*.test.js",
-    "test-watch": "check-node-version --node '>= 6.7.0' && bin/setup && mocha --compilers js:babel-register --watch app/**/*.test.js app/**/*.test.jsx db/**/*.test.js server/**/*.test.js",
-    "build": "check-node-version --node '>= 6.7.0' && bin/setup && webpack",
-    "build-watch": "check-node-version --node '>= 6.7.0' && bin/setup && webpack -w",
-    "start": "check-node-version --node '>= 6.7.0' && bin/setup && nodemon server/start.js",
-    "seed": "node db/seed.js"
-  },
-  "repository": {
-    "type": "git",
     "url": "git+https://github.com/queerviolet/bones.git"
   },
   "keywords": [
@@ -42,6 +32,7 @@
   },
   "homepage": "https://github.com/Philhawk/Wantrepreneur#readme",
   "dependencies": {
+    "babel-preset-stage-2": "^6.18.0",
     "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
     "chalk": "^1.1.3",
@@ -58,6 +49,7 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
+    "react-shopping-cart-starter-kit": "^0.1.0",
     "redux": "^3.6.0",
     "redux-logger": "^2.7.0",
     "redux-thunk": "^2.1.0",
