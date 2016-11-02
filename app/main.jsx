@@ -4,12 +4,15 @@ import {render} from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, hashHistory, Route, IndexRoute} from 'react-router';
 
-import store from './store'
-import Root from './components/Root'
+import store from './store';
+import routes from './routes';
+
 
 render (
   <Provider store={store}>
-    <IndexRoute component={Root}/>
+    <Router history={hashHistory}>
+    {routes}
+    </Router>
   </Provider>,
   document.getElementById('main')
-)
+);
