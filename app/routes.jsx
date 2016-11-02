@@ -5,7 +5,7 @@ import {Route, IndexRoute,Redirect, browserHistory, Router, Link} from 'react-ro
 import Root from './components/RootContainer';
 import CategoriesComponent from './components/categories/Categories';
 import PriceComponent from './components/price/Price';
-import AllOptionsComponent from './components/all-options/AllOptions';
+import AllOptionsContainer from './components/all-options/AllOptionsContainer';
 
 const routes =()=> (
   <Router history={browserHistory}>
@@ -13,7 +13,7 @@ const routes =()=> (
     <IndexRoute component={Root}/>
       <Route component={ CategoriesComponent } path='/categories'/>
       <Route component={ PriceComponent } path='/price'/>
-      <Route component={ AllOptionsComponent } path='/all-options'/>
+      <Route component={ AllOptionsContainer } path='/all-options'/>
   </Route>
   </Router>
 );
