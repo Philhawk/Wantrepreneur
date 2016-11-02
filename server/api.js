@@ -11,14 +11,6 @@ api
 // Send along any errors
 api.use((err, req, res, next) => {
   res.status(500).send(err)
-})
-
-var products = epilogue.resource({
-  model: db.model('products'),
-  endpoints: ['/products'],
-  include: [{
-    model: db.model('categories')
-  }]
 });
 
 // No routes matched? 404.
