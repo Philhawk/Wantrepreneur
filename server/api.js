@@ -16,17 +16,12 @@ var users = epilogue.resource({
   endpoints: ['/users', '/users/:id']
 });
 
-api.get('/products', (req, res, next) => {
-  db.model('products').findAll({
-    include: [{
-      model: db.model('categories')
-    }]
-  })
-    .then(products => {
-      console.log('THIS IS WORKING')
-      res.send(products)
-    })
-    .catch(next);
+var categories = epilogue.resource({
+  model: db.model('products'),
+  endpoints: ['/products'],
+  include: [{
+    model: db.model('categories')
+  }]
 });
 
 const mustBeLoggedIn = (req, res, context) => {
