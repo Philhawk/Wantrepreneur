@@ -5,6 +5,6 @@ import React from'react';
 
 export default () => (
     <div>
+      "What is going on"
     </div>
-  )
-});
+);
