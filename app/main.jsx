@@ -9,7 +9,7 @@ import store from './store'
 import Root from './components/Root'
 import routes from './routes'
 
-render (
+render(
   <Provider store={store}>
     <Router history={browserHistory}>
       {routes}

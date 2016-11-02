@@ -32,6 +32,8 @@
   },
   "homepage": "https://github.com/Philhawk/Wantrepreneur#readme",
   "dependencies": {
+    "axios": "^0.15.2",
+    "babel-preset-stage-2": "^6.18.0",
     "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
     "chalk": "^1.1.3",
