@@ -5,7 +5,7 @@ import {Route, IndexRoute,Redirect} from 'react-router';
 import Root from './components/RootContainer';
 import CategoriesComponent from './components/categories/Categories';
 import PriceComponent from './components/price/Price';
-import AllOptions from './components/all-options/AllOptions';
+import AllOptionsComponent from './components/all-options/AllOptions';
 
 const routes = (
   <Route path='/'>
