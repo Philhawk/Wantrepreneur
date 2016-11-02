@@ -2,7 +2,7 @@
 
 import React from'react';
 import Navbar from '../navbar/Navbar';
-import {Grid, Col, Row, Modal} from 'react-bootstrap';
+import {Grid, Col, Row, Modal, Button, FormGroup, FormControl} from 'react-bootstrap';
 
 export default class extends React.Component {
 	constructor (props) {
@@ -25,17 +25,18 @@ export default class extends React.Component {
 	render () {
     return (
       <div>
+
         <Navbar />
         <Grid>
+
           <Row>
             <Col sm={12}>
-            <input
-                    placeholder="Search bar placeholder text"
-                    onInput={ this.onSearchInput }
-                    id="product-searchbar"
-                  />
+              <FormGroup>
+                <FormControl id="product-searchbar" type="text" placeholder="Search" onInput={ this.onSearchInput } />
+              </FormGroup>
             </Col>
           </Row>
+
           <Row>
           {
             this.props.products
@@ -48,8 +49,8 @@ export default class extends React.Component {
               )
               .map(p => {
                 return (
-                  <Col key={p.id} sm={12} md={4} onClick={() => this.open(p)}>
-                    <Row className="product-image"><img src={ p.image }/></Row>
+                  <Col className="product-grid" key={p.id} sm={12} md={4} onClick={() => this.open(p)}>
+                    <Row><img src={ p.image }/></Row>
                     <Row>{ p.name }</Row>
                   </Col>
                 )
@@ -61,14 +62,20 @@ export default class extends React.Component {
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>{this.state.currentProduct.name}</Modal.Title>
-            <Modal.Body>
-              <img src={this.state.currentProduct.image} />
-            </Modal.Body>
-            <Modal.Body>
-              {this.state.currentProduct.description}
-            </Modal.Body>
           </Modal.Header>
+
+          <Modal.Body>
+            <img src={this.state.currentProduct.image} />
+          </Modal.Body>
+          <Modal.Body>
+            {this.state.currentProduct.description}
+          </Modal.Body>
+
+          <Modal.Footer>
+            <Button>Add to Cart</Button>
+          </Modal.Footer>
         </Modal>
+
       </div>
   	)
 	}

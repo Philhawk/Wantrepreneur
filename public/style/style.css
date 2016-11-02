@@ -1,7 +1,11 @@
-.row {
+.row, .modal {
   text-align: center;
 }
 
-#product-searchbar {
-  width: 100%;
+.product-grid {
+  opacity: .6;
+}
+
+.product-grid:hover {
+  opacity: 1;
 }
