@@ -2,6 +2,7 @@
 
 import React from'react';
 import {Nav, Navbar, NavItem, NavDropdown, MenuItem} from "react-bootstrap";
+import {Link} from 'react-router';
 
 class Navigation extends React.Component {
   constructor(props){
@@ -13,7 +14,7 @@ class Navigation extends React.Component {
         <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="/">Wantrepreneur</a>
+              <Link to="/">Wantrepreneur</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
