@@ -1,10 +1,10 @@
 'use strict';
 
 import React from'react';
-// import { Link } from'react-router';
+import Navbar from '../navbar/Navbar';
 
 export default () => (
     <div>
-      "What is going on"
+      <Navbar />
     </div>
 );
