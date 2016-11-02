@@ -9,7 +9,6 @@ import Root from './components/Root'
 
 render (
   <Provider store={store}>
-
     <IndexRoute component={Root}/>
   </Provider>,
   document.getElementById('main')
