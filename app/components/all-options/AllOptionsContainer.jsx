@@ -1,10 +1,14 @@
 'use strict';
 
 import { connect } from 'react-redux';
-import AllOptions from './AllOptionsComponent';
+import AllOptions from './AllOptions';
 
-const mapStateToProps = ({}) => ({
+const mapStateToProps = (state, {params}) => ({
 
 });
 
-export default connect(mapStateToProps)(AllOptions);
+const mapDispatchToProps = (dispatch) => ({
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AllOptions);

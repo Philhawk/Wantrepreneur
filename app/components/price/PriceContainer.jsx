@@ -1,10 +1,14 @@
 'use strict';
 
 import { connect } from 'react-redux';
-import Navbar from './NavbarComponent';
+import Price from './Price';
 
-const mapStateToProps = ({}) => ({
+const mapStateToProps = (state, {params}) => ({
 
 });
 
-export default connect(mapStateToProps)(Navbar);
+const mapDispatchToProps = (dispatch) => ({
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Price);

@@ -1,10 +1,14 @@
 'use strict';
 
 import { connect } from 'react-redux';
-import CompleteOrder from './CompleteOrderComponent';
+import CompleteOrder from './CompleteOrder';
 
-const mapStateToProps = ({}) => ({
+const mapStateToProps = (state, {params}) => ({
 
 });
 
-export default connect(mapStateToProps)(CompleteOrder);
+const mapDispatchToProps = (dispatch) => ({
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CompleteOrder);

@@ -1,10 +1,14 @@
 'use strict';
 
 import { connect } from 'react-redux';
-import Categories from './CategoriesComponent';
+import Categories from './Categories';
 
-const mapStateToProps = ({}) => ({
+const mapStateToProps = (state, {params}) => ({
 
 });
 
-export default connect(mapStateToProps)(Categories);
+const mapDispatchToProps = (dispatch) => ({
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Categories);

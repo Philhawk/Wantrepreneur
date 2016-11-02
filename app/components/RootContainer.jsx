@@ -1,10 +1,14 @@
 'use strict';
 
 import { connect } from 'react-redux';
-import Root from './RootComponent';
+import Root from './Root';
 
-const mapStateToProps = ({}) => ({
+const mapStateToProps = (state, {params}) => ({
 
 });
 
-export default connect(mapStateToProps)(Root);
+const mapDispatchToProps = (dispatch) => ({
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Root);
