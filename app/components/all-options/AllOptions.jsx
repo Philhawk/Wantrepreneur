@@ -1,7 +1,7 @@
 'use strict';
 
 import React from'react';
-// import { Link } from'react-router';
+import Navbar from '../navbar/Navbar';
 
 export default class extends React.Component {
 	constructor (props) {
@@ -18,32 +18,34 @@ export default class extends React.Component {
 
 	render () {
     return (
-
-      <div className="container">
-        <input
-          placeholder="Search bar placeholder text"
-          onInput={ this.onSearchInput }
-        />
-        {
-          this.props.products
-            .filter(p => p.name.toLowerCase().includes(this.state.search)
-              || p.description.toLowerCase().includes(this.state.search)
-              || p.categories
-                  .reduce((a, b) => a + b.name, '')
-                  .toLowerCase()
-                  .includes(this.state.search)
-            )
-            .map(p => {
-              return (
-                <div className="row">
-                  { p.name }
-                  { p.categories.map(c => c.name) }
-                  { <img src={p.image} />}
-                  { p.description }
-                </div>
+      <div>
+        <Navbar />
+        <div className="container">
+          <input
+            placeholder="Search bar placeholder text"
+            onInput={ this.onSearchInput }
+          />
+          {
+            this.props.products
+              .filter(p => p.name.toLowerCase().includes(this.state.search)
+                || p.description.toLowerCase().includes(this.state.search)
+                || p.categories
+                    .reduce((a, b) => a + b.name, '')
+                    .toLowerCase()
+                    .includes(this.state.search)
               )
-          })
-        }
+              .map(p => {
+                return (
+                  <div className="row">
+                    { p.name }
+                    { p.categories.map(c => c.name) }
+                    { <img src={p.image} />}
+                    { p.description }
+                  </div>
+                )
+            })
+          }
+        </div>
       </div>
   	)
 	}

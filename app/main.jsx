@@ -1,16 +1,19 @@
+
 'use strict'
 import React from 'react'
+import {Router, Route, IndexRedirect, browserHistory} from 'react-router'
 import {render} from 'react-dom'
-import { Provider } from 'react-redux'
+import {connect, Provider} from 'react-redux'
 
 import store from './store'
 import Root from './components/Root'
-import AllOptions from './components/all-options/AllOptionsContainer';
+import routes from './routes'
 
-render (
+render(
   <Provider store={store}>
-
-    <AllOptions />
+    <Router history={browserHistory}>
+      {routes}
+    </Router>
   </Provider>,
   document.getElementById('main')
-)
+);
