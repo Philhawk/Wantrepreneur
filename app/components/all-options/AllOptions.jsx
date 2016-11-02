@@ -2,6 +2,7 @@
 
 import React from'react';
 import Navbar from '../navbar/Navbar';
+import {Grid, Col, Row} from 'react-bootstrap';
 
 export default class extends React.Component {
 	constructor (props) {
@@ -20,11 +21,17 @@ export default class extends React.Component {
     return (
       <div>
         <Navbar />
-        <div className="container">
-          <input
-            placeholder="Search bar placeholder text"
-            onInput={ this.onSearchInput }
-          />
+        <Grid>
+          <Row>
+            <Col sm={12}>
+            <input
+                    placeholder="Search bar placeholder text"
+                    onInput={ this.onSearchInput }
+                    id="product-searchbar"
+                  />
+            </Col>
+          </Row>
+          <Row>
           {
             this.props.products
               .filter(p => p.name.toLowerCase().includes(this.state.search)
@@ -36,16 +43,15 @@ export default class extends React.Component {
               )
               .map(p => {
                 return (
-                  <div className="row">
-                    { p.name }
-                    { p.categories.map(c => c.name) }
-                    { <img src={p.image} />}
-                    { p.description }
-                  </div>
+                  <Col sm={12} md={4}>
+                    <Row className="product-image">{ <img src={p.image} />}</Row>
+                    <Row>{ p.name }</Row>
+                  </Col>
                 )
             })
           }
-        </div>
+          </Row>
+        </Grid>
       </div>
   	)
 	}
