@@ -16,7 +16,7 @@ var users = epilogue.resource({
   endpoints: ['/users', '/users/:id']
 });
 
-var categories = epilogue.resource({
+var products = epilogue.resource({
   model: db.model('products'),
   endpoints: ['/products'],
   include: [{
