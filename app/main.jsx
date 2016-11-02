@@ -5,10 +5,12 @@ import { Provider } from 'react-redux'
 
 import store from './store'
 import Root from './components/Root'
+import AllOptions from './components/all-options/AllOptionsContainer';
 
 render (
   <Provider store={store}>
-    <Root/>
+
+    <AllOptions />
   </Provider>,
   document.getElementById('main')
 )

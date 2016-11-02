@@ -9,7 +9,7 @@ export const receiveAllProducts = (products) => {
   };
 };
 
-export default products = (state = initialState, action) => {
+export default (state = initialState, action) => {
   switch(action.type) {
     case RECEIVE_ALL_PRODUCTS:
       return action.payload;
