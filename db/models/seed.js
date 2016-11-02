@@ -11,7 +11,7 @@ const seedProducts = () => db.Promise.map([
     {name: 'Anthony', price: 100, description: 'I am good at double quotes'},
     {name: 'Emily', price: 100, description: 'I draw well haha'},
     {name: 'Phil', price: 100, description: 'Veggiemite!'},
-		{name: 'Jiheh', price: Infinity, description: 'Asian glow'}
+		{name: 'Jiheh', price: 999999, description: 'Asian glow'}
 	], product => db.model('products').create(product));
 
 const seedCategories = () => db.Promise.map([
