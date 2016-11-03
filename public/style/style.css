@@ -5,3 +5,20 @@
 #product-searchbar {
   width: 100%;
 }
+
+#main {
+  text-align: center;
+  background-color: #333333;
+  width:100vw;
+  height:100vh;;
+}
+
+.navbar-inverse {
+  background-color: #333333;
+  border-color: #333333;
+  color: #FCFCFC;
+}
+
+.navbar-brand {
+  color: #FCFCFC;
+}
