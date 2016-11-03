@@ -11,6 +11,7 @@ const Category = require('./category');
 
 User.hasMany(Order);
 Order.hasMany(Product);
+Product.belongsTo(Order);
 Order.belongsTo(User);
 // Category.hasMany(Product);
 Product.belongsToMany(Category, {through: 'productCategories' });
