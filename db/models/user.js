@@ -3,7 +3,6 @@
 const bcrypt = require('bcrypt');
 const Sequelize = require('sequelize');
 const db = require('APP/db');
-const jwt = require('jsonwebtoken');
 
 const roles = ['admin', 'user'];
 
