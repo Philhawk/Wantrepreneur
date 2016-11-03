@@ -23,9 +23,6 @@ const User = db.define('users', {
     type: Sequelize.ENUM(...roles),
     defaultValue: roles[1]
   },
-  token: {
-    type: Sequelize.STRING
-  },
   // We support oauth, so users may or may not have passwords.
   password_digest: Sequelize.STRING,
   password: Sequelize.VIRTUAL

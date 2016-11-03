@@ -5,7 +5,7 @@ const User = require('APP/db/models/user')
 const app = require('./start')
 
 const alice = {
-  username: 'alice@secrets.org',
+  email: 'alice@secrets.org',
   password: '12345'
 }
 
@@ -16,7 +16,7 @@ describe('/api/auth', () => {
         User.create(
           {
           name: 'bob',
-          email: alice.username,
+          email: alice.email,
           password: alice.password
         })
       )
@@ -35,7 +35,7 @@ describe('/api/auth', () => {
     it('fails with an invalid username and password', () =>
       request(app)
         .post('/api/auth/local/login')
-        .send({username: alice.username, password: 'wrong'})
+        .send({email: alice.email, password: 'wrong'})
         .expect(401)
       )
   })
@@ -52,7 +52,7 @@ describe('/api/auth', () => {
           .set('Accept', 'application/json')
           .expect(200)
           .then(res => expect(res.body).to.contain({
-            email: alice.username
+            email: alice.email
           }))
       )
     })
