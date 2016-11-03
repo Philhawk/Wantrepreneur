@@ -1,13 +1,16 @@
 'use strict';
 
 const router = require('express').Router();
-const db = ('APP/db');
+const db = require('APP/db');
 const passport = require('passport');
 
 router.post('/', (req, res, next) => {
-  db.model('users').create(req.body)
+  console.log('registering');
+  db.model('users').create(
+    Object.assign({},req.body, { role: 'user' } )
+  )
     .then(user => {
-      req.login(user, next);
+      req.login(user, console.log);
       res.status(201).send();
     })
     .catch(next);
