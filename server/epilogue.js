@@ -14,6 +14,15 @@ const mustBeLoggedIn = (req, res, context) => {
   return context.continue
 }
 
+const mustBeAdmin = (req, res, context) => {
+  if (!req.user.role === 'admin') {
+    res.status(401).send('You must be an admin');
+    return context.stop;
+  }
+
+  return context.continue;
+}
+
 const selfOnly = action => (req, res, context) => {
   if (req.params.id !== req.user.id) {
     res.status(403).send(`You can only ${action} yourself.`)

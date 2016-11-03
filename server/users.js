@@ -15,8 +15,10 @@ const users = epilogue.resource({
   endpoints: ['/users', '/users/:id']
 });
 
-const {mustBeLoggedIn, selfOnly, forbidden} = epilogue.filters;
+const {mustBeLoggedIn, mustBeAdmin, selfOnly, forbidden} = epilogue.filters;
 users.delete.auth(mustBeLoggedIn);
 users.delete.auth(selfOnly);
-users.list.auth(forbidden);
+users.list.auth(mustBeLoggedIn);
+users.list.auth(mustBeAdmin);
 users.read.auth(mustBeLoggedIn);
+users.read.auth(selfOnly);
