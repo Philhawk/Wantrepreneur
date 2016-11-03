@@ -10,10 +10,9 @@ const Order = require('./order');
 const Category = require('./category');
 
 User.hasMany(Order);
+Order.belongsTo(User);
 Order.hasMany(Product);
 Product.belongsTo(Order);
-Order.belongsTo(User);
-// Category.hasMany(Product);
 Product.belongsToMany(Category, {through: 'productCategories' });
 
 
