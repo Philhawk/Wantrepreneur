@@ -1,15 +1,10 @@
-'use strict'
+'use strict';
 
-const Sequelize = require('sequelize')
-const db = require('APP/db')
+const Sequelize = require('sequelize');
+const db = require('APP/db');
 
-const orderStatuses = ['pending', 'complete']
+const orderStatuses = ['pending', 'complete'];
 
-const Order = db.define('orders', {
-  status: {
-    type: Sequelize.ENUM(...orderStatuses),
-    defaultValue: orderStatuses[0],
-  }
-})
+const Order = db.define('orders', {});
 
-module.exports = Order
+module.exports = Order;
