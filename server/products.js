@@ -26,4 +26,9 @@ products.list.fetch.before((req, res, context) => {
   return context.continue;
 });
 
+products.read.fetch.before((req, res, context) => {
+  context.criteria['order_id'] = null;
+  return context.continue;
+})
+
 module.exports = productRoutes;
