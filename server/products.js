@@ -13,4 +13,12 @@ const products = epilogue.resource({
   }]
 });
 
+const {mustBeAdmin, mustBeLoggedIn} = epilogue.filters;
+products.delete.auth(mustBeLoggedIn);
+products.delete.auth(mustBeAdmin);
+products.update.auth(mustBeLoggedIn);
+products.update.auth(mustBeAdmin);
+products.create.auth(mustBeAdmin);
+products.create.auth(mustBeAdmin);
+
 module.exports = productRoutes;

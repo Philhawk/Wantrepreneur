@@ -10,8 +10,17 @@ const mustBeLoggedIn = (req, res, context) => {
     res.status(401).send('You must be logged in')
     return context.stop
   }
-
+  console.log(req.user);
   return context.continue
+}
+
+const mustBeAdmin = (req, res, context) => {
+  if (!req.user.role === 'admin') {
+    res.status(401).send('You must be an admin');
+    return context.stop;
+  }
+
+  return context.continue;
 }
 
 const selfOnly = action => (req, res, context) => {
@@ -27,5 +36,5 @@ const forbidden = message => (req, res, context) => {
   return context.stop
 }
 
-epilogue.filters = {mustBeLoggedIn, selfOnly, forbidden,}
+epilogue.filters = {mustBeLoggedIn, selfOnly, forbidden, mustBeAdmin}
 module.exports = epilogue
