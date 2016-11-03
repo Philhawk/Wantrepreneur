@@ -18,7 +18,6 @@ export default class Roots extends Component {
           </div>
           <div>
             <HomePageChoices />
-            <cite>~Home Page, bones</cite>
           </div>
         </div>
     );
