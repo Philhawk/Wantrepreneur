@@ -1,11 +1,25 @@
-.row, .modal {
+.row {
+  text-align: center;
+  font-weight: bold;
+}
+
+.modal {
   text-align: center;
 }
 
 .product-grid {
-  opacity: .6;
+  opacity: 1;
 }
 
 .product-grid:hover {
-  opacity: 1;
+  opacity: .7;
+}
+
+.modal-title {
+	font-weight: bold;
+}
+
+.product-price {
+	font-size: 1.1em;
+	font-weight: bold;
 }
