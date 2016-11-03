@@ -1,6 +1,6 @@
 'use strict';
 
-import React from'react';
+import React from 'react';
 import {Nav, Navbar, NavItem, NavDropdown, MenuItem} from "react-bootstrap";
 import {Link} from 'react-router';
 
@@ -14,7 +14,7 @@ class Navigation extends React.Component {
         <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">Wantrepreneur</Link>
+              <Link to="/">#</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
@@ -24,8 +24,6 @@ class Navigation extends React.Component {
             <Nav pullRight>
               <NavDropdown eventKey={3} title="Login / Signup" id="basic-nav-dropdown">
               <MenuItem eventKey={3.3}>Login</MenuItem>
-              <MenuItem divider />
-              <MenuItem eventKey={3.3}>Signup</MenuItem>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>

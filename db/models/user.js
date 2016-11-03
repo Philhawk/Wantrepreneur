@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const Sequelize = require('sequelize');
 const db = require('APP/db');
 
-const roles = ['admin', 'user']
+const roles = ['admin', 'user'];
 
 const User = db.define('users', {
   name: {
@@ -53,7 +53,7 @@ function setEmailAndPassword(user) {
       user.set('password_digest', hash);
       resolve(user);
     })
-  );
+  )
 }
 
 module.exports = User;
