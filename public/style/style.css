@@ -3,6 +3,19 @@ img {
 	height: 350px;
 }
 
+.rightDivOpeningPage {
+	padding-left: 8em;
+}
+
+.leftDivOpeningPage {
+
+}
+
+.homepage-choices {
+	padding-top: 6em;
+	padding-bottom: 8em;
+}
+
 .row {
   text-align: center;
   font-weight: bold;
@@ -29,7 +42,62 @@ img {
 	font-weight: bold;
 }
 
-#main {
+.description-headline {
+	text-align: left;
+	color: #FCFCFC;
+
+}
+.boxes {
+	margin-top: 6em;
+	background-color: #F4E04D;
+}
+
+.heading {
+	color: #333333;
+	font: helvetica;
+	font-size: 50px;
+	opacity: 0.8;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation:
+    typing 2s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
+span {
+	display:inline-block;
+	font-weight: bold;
+ 	border-bottom:3px solid #F4E04D;
+	padding-bottom: 30px;
+}
+
+html,
+body {
+  height: 100%;
+	background-color: #5EB1BF;
+  background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.about-us {
+	background-color: white;
+}
+.main {
   text-align: center;
   background-color: #333333;
   width:100vw;
@@ -37,11 +105,38 @@ img {
 }
 
 .navbar-inverse {
-  background-color: #333333;
-  border-color: #333333;
-  color: #FCFCFC;
+  background-color: transparent;
+  border-color: transparent;
 }
 
 .navbar-brand {
-  color: #FCFCFC;
+  color: transparent;
+}
+
+
+/*ICONS*/
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }
