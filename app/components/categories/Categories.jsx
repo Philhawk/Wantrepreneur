@@ -5,6 +5,6 @@ import Navbar from '../navbar/Navbar';
 
 export default () => (
     <div>
-    <Navbar />
+      <Navbar />
     </div>
 );
