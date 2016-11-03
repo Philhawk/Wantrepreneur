@@ -1,7 +1,8 @@
 import React from'react';
 import {Col, Row, Grid, Jumbotron} from "react-bootstrap";
 import {Link} from 'react-router';
-import AlarmIcon from 'react-material-icons/icons/action/alarm';
+import FontIcon from 'material-ui/FontIcon';
+import {red500, yellow500, blue500} from 'material-ui/styles/colors';
 
 
 export default class HomepageChoices extends React.Component {
@@ -12,7 +13,9 @@ export default class HomepageChoices extends React.Component {
 
   render() {
 
-
+    const iconStyles = {
+        color: 'red',
+    };
       return (
         <div className='homepage-choices'>
           <Grid>
@@ -24,7 +27,7 @@ export default class HomepageChoices extends React.Component {
               <Col md={6} mdPull={6} className='leftDivOpeningPage'>
                 <Col md={6} mdPush={6}>
                   <Jumbotron className='boxes'>
-                    <AlarmIcon className='alarm'/>
+                    <FontIcon className="material-icons" style={color='red'>home</FontIcon>
                   </Jumbotron>
                 </Col>
                 <Col md={6} mdPull={6}>
