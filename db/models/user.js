@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const Sequelize = require('sequelize');
 const db = require('APP/db');
 
-const roles = ['admin', 'user']
+const roles = ['admin', 'user'];
 
 const User = db.define('users', {
   name: {
@@ -22,6 +22,9 @@ const User = db.define('users', {
   roles: {
     type: Sequelize.ENUM(...roles),
     defaultValue: roles[1]
+  },
+  token: {
+    type: Sequelize.STRING
   },
   // We support oauth, so users may or may not have passwords.
   password_digest: Sequelize.STRING,
@@ -53,7 +56,7 @@ function setEmailAndPassword(user) {
       user.set('password_digest', hash);
       resolve(user);
     })
-  );
+  )
 }
 
 module.exports = User;
