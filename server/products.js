@@ -21,4 +21,9 @@ products.update.auth(mustBeAdmin);
 products.create.auth(mustBeAdmin);
 products.create.auth(mustBeAdmin);
 
+products.list.fetch.before((req, res, context) => {
+  context.criteria['order_id'] = null;
+  return context.continue;
+});
+
 module.exports = productRoutes;
