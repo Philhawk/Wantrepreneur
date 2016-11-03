@@ -8,7 +8,7 @@ api
   .use('/auth', require('./auth'))
   .use('/users', require('./users'))
   .use('/products', require('./products'))
-  .use('/login', require('./login'));
+  .use('/logout', require('./logout'));
 
 // Send along any errors
 api.use((err, req, res, next) => {

@@ -22,3 +22,5 @@ users.list.auth(mustBeLoggedIn);
 users.list.auth(mustBeAdmin);
 users.read.auth(mustBeLoggedIn);
 users.read.auth(selfOnly);
+users.update.auth(mustBeLoggedIn);
+users.update.auth(selfOnly);
