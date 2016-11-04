@@ -10,7 +10,7 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
-    /* window.localStorage.set('cart', this.props.cart);*/
+    this.props.getCart();
   }
 
   render () {
@@ -19,11 +19,11 @@ export default class extends React.Component {
         <NavbarContainer />
         <Grid>
           <Row>
-            {this.props.cart.map(cartItem => {
-              <Col sm={12}>
-                cartItem.name;
+            {this.props.cart.length > 0 ? this.props.cart.map(cartItem => (
+              <Col sm={12} key={ cartItem.id }>
+                {cartItem.name}
               </Col>
-            })}
+            )) : null}
           </Row>
         </Grid>
       </div>

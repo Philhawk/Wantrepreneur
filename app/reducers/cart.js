@@ -4,6 +4,7 @@ const initialState = [];
 
 const ADD_TO_CART = 'ADD_TO_CART';
 const RESET_CART = 'RESET_CART';
+const SET_CART = 'SET_CART';
 
 export const addToCart = (product) => {
   return {
@@ -19,12 +20,21 @@ export const resetCart = () => {
   };
 };
 
+export const setCart = (newCart) => {
+  return {
+    type: SET_CART,
+    payload: newCart
+  };
+};
+
 export default (state = initialState, action) => {
   switch(action.type) {
     case ADD_TO_CART:
       return [...state, action.payload];
     case RESET_CART:
       return [];
+    case SET_CART:
+      return action.payload;
     default:
       return state;
   }

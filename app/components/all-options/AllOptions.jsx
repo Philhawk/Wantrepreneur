@@ -21,6 +21,7 @@ export default class extends React.Component {
 
   componentDidMount() {
     this.props.getProducts();
+    this.props.getCart();
   }
 
   render () {
