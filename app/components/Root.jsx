@@ -3,7 +3,7 @@ import NavbarContainer from './navbar/NavbarContainer';
 import HomePageChoices from './homepage-choices/HomepageChoices';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-export default class Roots extends Component {
+export default class Root extends Component {
   constructor() {
     super();
 

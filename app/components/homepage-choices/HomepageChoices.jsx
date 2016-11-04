@@ -1,7 +1,7 @@
 import React from'react';
 import {Col, Row, Grid, Jumbotron} from "react-bootstrap";
-import {Link} from 'react-router';
 import FontIcon from 'material-ui/FontIcon';
+import {Link} from 'react-router';
 import {red500, yellow500, blue500} from 'material-ui/styles/colors';
 import {browserHistory} from 'react-router';
 
@@ -29,6 +29,8 @@ export default class HomepageChoices extends React.Component {
       color: '#333333'
     };
 
+
+
       return (
         <div className='homepage-choices'>
           <Grid>
@@ -49,11 +51,11 @@ export default class HomepageChoices extends React.Component {
                     <FontIcon className="material-icons" style={iconStyles}>help</FontIcon>
                       <p> Help me </p>
                   </Jumbotron>
+>>>>>>> master
                 </Col>
-              </Col>
-            </Row>
-          </Grid>
-        </div>
+              </Row>
+            </Grid>
+          </div>
     );
   }
 }
