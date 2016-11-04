@@ -22,13 +22,6 @@ export const resetCart = () => {
   };
 };
 
-export const setCart = (newCart) => {
-  return {
-    type: SET_CART,
-    payload: newCart
-  };
-};
-
 export default (state = initialState, action) => {
   switch(action.type) {
     case ADD_TO_CART:
@@ -36,8 +29,6 @@ export default (state = initialState, action) => {
       return _.unionBy(state, [action.payload], "id");
     case RESET_CART:
       return [];
-    case SET_CART:
-      return action.payload;
     default:
       return state;
   }
