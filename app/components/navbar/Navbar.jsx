@@ -1,10 +1,16 @@
-
+//React
 import React from 'react';
-// import {Nav, Navbar, NavItem, NavDropdown, MenuItem} from "react-bootstrap";
-import {AppBar, Tabs, Tab, Toolbar, ToolbarGroup, ToolbarTitle} from 'material-ui';
-import FontIcon from 'material-ui/FontIcon';
 import {Link} from 'react-router';
 
+// material-ui
+import {AppBar, Tabs, Tab, Toolbar, ToolbarGroup, ToolbarTitle,NotificationsIcon} from 'material-ui';
+import FontIcon from 'material-ui/FontIcon';
+import Badge from 'material-ui/Badge';
+import IconButton from 'material-ui/IconButton';
+
+
+
+//Custom images Logos
 const WPLogo = <img src="/WPNavbarLogo.png"/> ;
 
 
@@ -18,32 +24,44 @@ class Navigation extends React.Component {
   alert('onTouchTap triggered on the component');
   }
 
+//to do
+// add notification + num on cartIcon
+// add Logo
+// make pretty
 
 
   render() {
 
     let cartIcon={
       color: '#F4E04D',
-      fontSize: '45px',
+      fontSize: '30px',
 
     };
 
 
 
     return (
+      <div>
       <Toolbar>
 
        <ToolbarTitle text="Wantrepreneur"/>
+          <Badge badgeContent={this.props.cart ? this.props.cart.length : ''} secondary={true} badgeStyle={{top: 12, right: 12}}>
 
-        <FontIcon className="material-icons" style={cartIcon} hoverColor='#FCFCFC' >shopping_cart</FontIcon>
+            <IconButton tooltip="My Cart">
+              <Link to="/cart">
+              <FontIcon className="material-icons" style={cartIcon} hoverColor='#FCFCFC' >shopping_cart</FontIcon>
+              </Link>
+            </IconButton>
+          </Badge>
 
       </Toolbar>
-
+      </div>
     );
   }
 }
 
 export default Navigation;
+
 
 
 /* BootStrap NavBar
