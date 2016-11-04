@@ -1,13 +1,14 @@
 'use strict';
 
-import React from'react';
-import Navbar from '../navbar/Navbar';
+import React from 'react';
+import NavbarContainer from '../navbar/NavbarContainer';
 import {Grid, Col, Row, Modal, Button, FormGroup, FormControl} from 'react-bootstrap';
 import Snackbar from 'material-ui/Snackbar';
+import { addToCart } from '../../reducers/cart';
 
 export default class extends React.Component {
-	constructor (props) {
-		super(props);
+  constructor (props) {
+    super(props);
     this.state = {
       search: '',
       showModal: false,
@@ -23,17 +24,17 @@ export default class extends React.Component {
     this.handleTouchTap = this.handleTouchTap.bind(this);
     this.handleActionTouchTap = this.handleActionTouchTap.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
-	}
+  }
 
-	componentDidMount() {
-		this.props.getProducts();
-	}
+  componentDidMount() {
+    this.props.getProducts();
+    this.props.getCart();
+  }
 
-	render () {
+  render () {
     return (
       <div className='potato'>
-
-        <Navbar />
+        <NavbarContainer />
         <Grid>
 
           <Row>
@@ -94,10 +95,10 @@ export default class extends React.Component {
             onRequestClose={this.handleRequestClose}
           />
         </div>
-
       </div>
-		)
-	}
+    )
+  }
+
   // For product modals
   onSearchInput(evt) {
     this.setState({search: evt.target.value.toLowerCase()});
@@ -116,13 +117,14 @@ export default class extends React.Component {
     this.setState({
       open: true,
     });
+    this.props.addItemToCart(this.state.currentProduct);
   };
 
   handleActionTouchTap() {
     this.setState({
       open: false,
     });
-    alert('Business was removed from your calendar.');
+    this.props.removeItemFromCart(this.state.currentProduct);
   };
 
   handleRequestClose() {
