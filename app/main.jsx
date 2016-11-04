@@ -4,6 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Route, IndexRedirect} from 'react-router';
 import ReactDom from 'react-dom';
 import {connect, Provider} from 'react-redux';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import store from './store';
 import Routes from './routes';
@@ -14,15 +15,13 @@ import Routes from './routes';
 //https://github.com/zilverline/react-tap-event-plugin
 injectTapEventPlugin();
 
-const App = () => (
-	<MuiThemeProvider>
-		<Routes />
-	</MuiThemeProvider>
-)
+
 
 ReactDom.render (
   <Provider store={store}>
-      <App/>
+    <MuiThemeProvider>
+      <Routes/>
+    </MuiThemeProvider>
   </Provider>,
   document.getElementById('main')
 );

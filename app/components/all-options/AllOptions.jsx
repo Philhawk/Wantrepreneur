@@ -78,7 +78,7 @@ export default class extends React.Component {
         </Modal>
 
       </div>
-  	)
+		)
 	}
 
   onSearchInput(evt) {

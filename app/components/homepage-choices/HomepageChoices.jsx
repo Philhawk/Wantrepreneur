@@ -1,8 +1,9 @@
 import React from'react';
 import {Col, Row, Grid, Jumbotron} from "react-bootstrap";
-import {Link} from 'react-router';
 import FontIcon from 'material-ui/FontIcon';
+import {Link} from 'react-router';
 import {red500, yellow500, blue500} from 'material-ui/styles/colors';
+import {browserHistory} from 'react-router';
 
 
 export default class HomepageChoices extends React.Component {
@@ -11,12 +12,24 @@ export default class HomepageChoices extends React.Component {
 
   }
 
+  helpMeChoose(){
+    console.log('hitting')
+    browserHistory.push('/categories')
+  }
+
+  redirectToProducts(){
+    console.log('hitting')
+    browserHistory.push('/all-options')
+  }
+
   render() {
 
     let iconStyles = {
       fontSize: '80px',
       color: '#333333'
     };
+
+
 
       return (
         <div className='homepage-choices'>
@@ -28,21 +41,21 @@ export default class HomepageChoices extends React.Component {
               </Col>
               <Col md={6} mdPull={6} className='leftDivOpeningPage'>
                 <Col md={6} mdPush={6}>
-                  <Jumbotron className='boxes'>
-                    <FontIcon className="material-icons" style={iconStyles}>help</FontIcon>
+                  <Jumbotron onClick={this.redirectToProducts} className='boxes'>
+                    <FontIcon className="material-icons" style={iconStyles}>check_circle</FontIcon>
                       <p> I know</p>
                   </Jumbotron>
                 </Col>
                 <Col md={6} mdPull={6}>
-                  <Jumbotron className='boxes'>
-                    <FontIcon className="material-icons" style={iconStyles}>check_circle</FontIcon>
+                  <Jumbotron onClick={this.helpMeChoose} className='boxes'>
+                    <FontIcon className="material-icons" style={iconStyles}>help</FontIcon>
                       <p> Help me </p>
                   </Jumbotron>
+>>>>>>> master
                 </Col>
-              </Col>
-            </Row>
-          </Grid>
-        </div>
+              </Row>
+            </Grid>
+          </div>
     );
   }
 }
