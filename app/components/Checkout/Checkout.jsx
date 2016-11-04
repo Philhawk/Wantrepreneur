@@ -3,6 +3,7 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
+import { browserHistory } from 'react-router';
 
 export default class extends React.Component {
   constructor(props) {
@@ -11,18 +12,16 @@ export default class extends React.Component {
   }
 
   onToken(token) {
-    fetch('/api/checkout/submit', {
-      method: 'POST',
-      body: this.props.cart
+    axios.post('/api/checkout/submit', {
+      cart: this.props.cart
            //JSON.stringify(token),
     })
-      .then(response => {
-        console.log(response);
-        return response.json();
+      .then(() => {
+        this.props.clearCart();
+        browserHistory.push('/');
       })
-      .then()
       // TODO: error handling for stripe checkout
-      .catch(console.error)
+      .catch(console.error);
   }
 
   render() {
