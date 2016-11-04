@@ -3,6 +3,14 @@ img {
 	height: 350px;
 }
 
+
+/* change to be responsive?*/
+.brand img {
+  height: 80px;
+  width: 80px;
+}
+
+
 .rightDivOpeningPage {
 	padding-left: 8em;
 }
