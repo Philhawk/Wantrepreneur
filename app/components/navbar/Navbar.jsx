@@ -14,7 +14,9 @@ class Navigation extends React.Component {
         <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">#</Link>
+              <Link className='brand' to="/">
+                <img src='../../../public/WPNavbarLogo.png'/>
+                </Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
