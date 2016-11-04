@@ -3,6 +3,7 @@
 import React from'react';
 import Navbar from '../navbar/Navbar';
 import {Grid, Col, Row, Modal, Button, FormGroup, FormControl} from 'react-bootstrap';
+import Snackbar from 'material-ui/Snackbar';
 
 export default class extends React.Component {
 	constructor (props) {
@@ -10,12 +11,18 @@ export default class extends React.Component {
     this.state = {
       search: '',
       showModal: false,
-      currentProduct: {}
+      currentProduct: {},
+      autoHideDuration: 4000,
+      message: 'Business was added to your shopping cart',
+      open: false,
     };
 
     this.onSearchInput = this.onSearchInput.bind(this);
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
+    this.handleTouchTap = this.handleTouchTap.bind(this);
+    this.handleActionTouchTap = this.handleActionTouchTap.bind(this);
+    this.handleRequestClose = this.handleRequestClose.bind(this);
 	}
 
 	componentDidMount() {
@@ -73,14 +80,25 @@ export default class extends React.Component {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button>Add to Cart</Button>
+            <Button onTouchTap={this.handleTouchTap}>Add to Cart</Button>
           </Modal.Footer>
         </Modal>
+
+        <div>
+          <Snackbar
+            open={this.state.open}
+            message={this.state.message}
+            action="undo"
+            autoHideDuration={this.state.autoHideDuration}
+            onActionTouchTap={this.handleActionTouchTap}
+            onRequestClose={this.handleRequestClose}
+          />
+        </div>
 
       </div>
 		)
 	}
-
+  // For product modals
   onSearchInput(evt) {
     this.setState({search: evt.target.value.toLowerCase()});
   }
@@ -92,4 +110,24 @@ export default class extends React.Component {
   close() {
     this.setState({showModal: false, currentProduct: {}});
   }
+
+  // For shopping cart features
+  handleTouchTap() {
+    this.setState({
+      open: true,
+    });
+  };
+
+  handleActionTouchTap() {
+    this.setState({
+      open: false,
+    });
+    alert('Business was removed from your calendar.');
+  };
+
+  handleRequestClose() {
+    this.setState({
+      open: false,
+    });
+  };
 }

@@ -16,7 +16,7 @@ class Navigation extends React.Component {
             <Navbar.Brand>
               <Link className='brand' to="/">
                 <img src="/WPNavbarLogo.png"/>
-                </Link>
+              </Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>

@@ -1,6 +1,5 @@
 import React from 'react';
 import injectTapEventPlugin from "react-tap-event-plugin";
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Route, IndexRedirect} from 'react-router';
 import ReactDom from 'react-dom';
 import {connect, Provider} from 'react-redux';
