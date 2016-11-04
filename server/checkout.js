@@ -5,7 +5,7 @@ const Promise = require('sequelize').Promise;
 const { Product } = require('../db/models');
 
 router.post('/validate', (req, res, next) => {
-  const itemsInCart = (!req.body.cart || req.body.cart.length === 0);
+  const itemsInCart = (!req.body.cart || req.body.cart.length === 0)
   if (itemsInCart) {
     res.sendStatus(400);
   } else {
