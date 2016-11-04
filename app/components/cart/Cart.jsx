@@ -3,6 +3,7 @@
 import React from 'react';
 import NavbarContainer from '../navbar/NavbarContainer';
 import { Grid, Col, Row } from 'react-bootstrap';
+import CheckoutContainer from '../Checkout/CheckoutContainer';
 
 export default class extends React.Component {
   constructor (props) {
@@ -24,6 +25,11 @@ export default class extends React.Component {
                 {cartItem.name}
               </Col>
             )) : null}
+          </Row>
+          <Row>
+            <Col sm={12} key="stripe">
+              <CheckoutContainer />
+            </Col>
           </Row>
         </Grid>
       </div>
