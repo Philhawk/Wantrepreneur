@@ -1,8 +1,7 @@
-'use strict';
 
 import React from 'react';
 import {Nav, Navbar, NavItem, NavDropdown, MenuItem} from "react-bootstrap";
-import {AppBar, Tabs, Tab} from 'material-ui'
+import {AppBar, Tabs, Tab} from 'material-ui';
 import {Link} from 'react-router';
 
 class Navigation extends React.Component {
@@ -15,7 +14,9 @@ class Navigation extends React.Component {
         <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">#</Link>
+              <Link className='brand' to="/">
+                <img src="/WPNavbarLogo.png"/>
+                </Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
@@ -23,9 +24,8 @@ class Navigation extends React.Component {
             <Nav>
             </Nav>
             <Nav pullRight>
-              <NavDropdown eventKey={3} title="Login / Signup" id="basic-nav-dropdown">
-              <MenuItem eventKey={3.3}>Login</MenuItem>
-              </NavDropdown>
+              <NavItem eventKey={1} href="#">Login</NavItem>
+              <NavItem eventKey={2} href="#">Signup</NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
