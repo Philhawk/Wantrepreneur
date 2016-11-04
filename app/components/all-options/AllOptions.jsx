@@ -3,6 +3,7 @@
 import React from 'react';
 import NavbarContainer from '../navbar/NavbarContainer';
 import {Grid, Col, Row, Modal, Button, FormGroup, FormControl} from 'react-bootstrap';
+import Snackbar from 'material-ui/Snackbar';
 import { addToCart } from '../../reducers/cart';
 
 export default class extends React.Component {
@@ -11,13 +12,18 @@ export default class extends React.Component {
     this.state = {
       search: '',
       showModal: false,
-      currentProduct: {}
+      currentProduct: {},
+      autoHideDuration: 4000,
+      message: 'Business was added to your shopping cart',
+      open: false,
     };
 
     this.onSearchInput = this.onSearchInput.bind(this);
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
-    this.addToCart = this.addToCart.bind(this);
+    this.handleTouchTap = this.handleTouchTap.bind(this);
+    this.handleActionTouchTap = this.handleActionTouchTap.bind(this);
+    this.handleRequestClose = this.handleRequestClose.bind(this);
   }
 
   componentDidMount() {
@@ -75,14 +81,25 @@ export default class extends React.Component {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button onClick={ this.addToCart }>Add to Cart</Button>
+            <Button onTouchTap={this.handleTouchTap}>Add to Cart</Button>
           </Modal.Footer>
         </Modal>
 
+        <div>
+          <Snackbar
+            open={this.state.open}
+            message={this.state.message}
+            action="undo"
+            autoHideDuration={this.state.autoHideDuration}
+            onActionTouchTap={this.handleActionTouchTap}
+            onRequestClose={this.handleRequestClose}
+          />
+        </div>
       </div>
     )
   }
 
+  // For product modals
   onSearchInput(evt) {
     this.setState({search: evt.target.value.toLowerCase()});
   }
@@ -95,7 +112,24 @@ export default class extends React.Component {
     this.setState({showModal: false, currentProduct: {}});
   }
 
-  addToCart() {
+  // For shopping cart features
+  handleTouchTap() {
+    this.setState({
+      open: true,
+    });
     this.props.addItemToCart(this.state.currentProduct);
-  }
+  };
+
+  handleActionTouchTap() {
+    this.setState({
+      open: false,
+    });
+    this.props.removeItemFromCart(this.state.currentProduct);
+  };
+
+  handleRequestClose() {
+    this.setState({
+      open: false,
+    });
+  };
 }

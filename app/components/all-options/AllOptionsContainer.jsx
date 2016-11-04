@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import AllOptions from './AllOptions';
 import { receiveAllProducts } from '../../reducers/products';
 import { addToCart, setCart } from '../../reducers/cart';
-import { getCartFromLocal, addToCartThunk } from '../cart/CartHelpers';
+import { getCartFromLocal, addToCartThunk, removeFromCartThunk } from '../cart/CartHelpers';
 
 const receiveProducts = () => dispatch => {
   axios.get('/api/products')
@@ -20,6 +20,9 @@ const mapDispatchToProps = () => dispatch => ({
 	getProducts: () => dispatch(receiveProducts()),
   addItemToCart: product => {
     dispatch(addToCartThunk(product));
+  },
+  removeItemFromCart: product => {
+    dispatch(removeFromCartThunk(product));
   },
   getCart: () => {
     dispatch(getCartFromLocal());
