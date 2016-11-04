@@ -17,6 +17,7 @@ export default class extends React.Component {
     this.onSearchInput = this.onSearchInput.bind(this);
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentDidMount() {
@@ -74,7 +75,7 @@ export default class extends React.Component {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button onClick={() => this.props.addItemToCart(this.state.currentProduct)}>Add to Cart</Button>
+            <Button onClick={ this.addToCart }>Add to Cart</Button>
           </Modal.Footer>
         </Modal>
 
@@ -92,5 +93,9 @@ export default class extends React.Component {
 
   close() {
     this.setState({showModal: false, currentProduct: {}});
+  }
+
+  addToCart() {
+    this.props.addItemToCart(this.state.currentProduct);
   }
 }
