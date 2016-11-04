@@ -1,3 +1,5 @@
+'use strict';
+
 const initialState = [];
 
 const RECEIVE_ALL_PRODUCTS = 'RECEIVE_ALL_PRODUCTS';

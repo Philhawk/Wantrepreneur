@@ -3,6 +3,7 @@
 import React from'react';
 import Navbar from '../navbar/Navbar';
 import {Grid, Col, Row, Modal, Button, FormGroup, FormControl} from 'react-bootstrap';
+import { addToCart } from '../../reducers/cart';
 
 export default class extends React.Component {
 	constructor (props) {
@@ -73,7 +74,7 @@ export default class extends React.Component {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button>Add to Cart</Button>
+            <Button onClick={() => this.props.addItemToCart(this.state.currentProduct)}>Add to Cart</Button>
           </Modal.Footer>
         </Modal>
 
