@@ -22,8 +22,18 @@ router.post('/validate', (req, res, next) => {
   }
 });
 
-router.post('/stripe', (req, res, next) => {
-
+router.post('/submit', (req, res, next) => {
+  let createdOrder;
+  Order.create({})
+    .then(order => {
+      createdOrder = order;
+      return Promise.map(req.body, product => Product.findById(product.id));
+    })
+    .then(products => {
+      return createdOrder.setProducts(products);
+    })
+    .then(() => res.sendStatus(201))
+    .catch(next);
 });
 
 module.exports = router;
