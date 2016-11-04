@@ -9,6 +9,7 @@ api
   .use('/users', require('./users'))
   .use('/products', require('./products'))
   .use('/logout', require('./logout'))
+  .use('/checkout', require('./checkout'))
   .use('/register', require('./register'));
 
 // Send along any errors
