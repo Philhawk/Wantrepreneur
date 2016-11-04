@@ -1,12 +1,13 @@
 'use strict';
 
-import React from'react';
-import Navbar from '../navbar/Navbar';
+import React from 'react';
+import NavbarContainer from '../navbar/NavbarContainer';
 import {Grid, Col, Row, Modal, Button, FormGroup, FormControl} from 'react-bootstrap';
+import { addToCart } from '../../reducers/cart';
 
 export default class extends React.Component {
-	constructor (props) {
-		super(props);
+  constructor (props) {
+    super(props);
     this.state = {
       search: '',
       showModal: false,
@@ -16,17 +17,18 @@ export default class extends React.Component {
     this.onSearchInput = this.onSearchInput.bind(this);
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
-	}
+    this.addToCart = this.addToCart.bind(this);
+  }
 
-	componentDidMount() {
-		this.props.getProducts();
-	}
+  componentDidMount() {
+    this.props.getProducts();
+    this.props.getCart();
+  }
 
-	render () {
+  render () {
     return (
       <div className='potato'>
-
-        <Navbar />
+        <NavbarContainer />
         <Grid>
 
           <Row>
@@ -73,13 +75,13 @@ export default class extends React.Component {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button>Add to Cart</Button>
+            <Button onClick={ this.addToCart }>Add to Cart</Button>
           </Modal.Footer>
         </Modal>
 
       </div>
-		)
-	}
+    )
+  }
 
   onSearchInput(evt) {
     this.setState({search: evt.target.value.toLowerCase()});
@@ -91,5 +93,9 @@ export default class extends React.Component {
 
   close() {
     this.setState({showModal: false, currentProduct: {}});
+  }
+
+  addToCart() {
+    this.props.addItemToCart(this.state.currentProduct);
   }
 }

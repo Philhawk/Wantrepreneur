@@ -51,11 +51,11 @@ export default class HomepageChoices extends React.Component {
                     <FontIcon className="material-icons" style={iconStyles}>help</FontIcon>
                       <p> Help me </p>
                   </Jumbotron>
->>>>>>> master
                 </Col>
-              </Row>
-            </Grid>
-          </div>
+              </Col>
+            </Row>
+          </Grid>
+        </div>
     );
   }
 }

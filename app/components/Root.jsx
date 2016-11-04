@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Navigation from './navbar/Navbar';
+import NavbarContainer from './navbar/NavbarContainer';
 import HomePageChoices from './homepage-choices/HomepageChoices';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 export default class Root extends Component {
   constructor() {
@@ -9,12 +10,15 @@ export default class Root extends Component {
   }
 
   render() {
-
-      return (
-        <div>
-          <Navigation />
-          <HomePageChoices />
-        </div>
+    return (
+      <div>
+        <MuiThemeProvider>
+          <div>
+            <NavbarContainer />
+            <HomePageChoices />
+          </div>
+        </MuiThemeProvider>
+      </div>
     );
   }
 }
