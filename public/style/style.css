@@ -5,9 +5,13 @@ img {
 
 
 /* change to be responsive?*/
-.brand img {
+.logo img {
   height: 50px;
   width: 50px;
+}
+
+Toolbar {
+	background-color: transparent;
 }
 
 
