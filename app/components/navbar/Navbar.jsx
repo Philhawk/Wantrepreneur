@@ -20,7 +20,7 @@ class Navigation extends React.Component {
             </Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Header>
-              { this.props.cart.length }
+              { this.props.cart ? this.props.cart.length : ''}
               <Link to="/cart">Cart</Link>
             </Navbar.Header>
           </Navbar.Header>
