@@ -3,12 +3,23 @@ import {Col, Row, Grid, Jumbotron} from "react-bootstrap";
 import FontIcon from 'material-ui/FontIcon';
 import {Link} from 'react-router';
 import {red500, yellow500, blue500} from 'material-ui/styles/colors';
+import {browserHistory} from 'react-router';
 
 
 export default class HomepageChoices extends React.Component {
   constructor() {
     super();
 
+  }
+
+  helpMeChoose(){
+    console.log('hitting')
+    browserHistory.push('/categories')
+  }
+
+  redirectToProducts(){
+    console.log('hitting')
+    browserHistory.push('/all-options')
   }
 
   render() {

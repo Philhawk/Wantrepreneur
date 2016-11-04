@@ -52,7 +52,7 @@ export default class Categories extends React.Component {
                   </Col>
                 </Col>
                 <Col md={6} mdPull={6} className='leftDivCategoriesPage'>
-                  <h1 className='heading'><span>Categories</span></h1>
+                  <h1 className='categories-heading'><span>Categories</span></h1>
                   <h1 className='description-headline'>First, let's pick a category for your dream business</h1>
                 </Col>
               </Row>
