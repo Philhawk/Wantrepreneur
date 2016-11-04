@@ -12,12 +12,14 @@ const receiveProducts = () => dispatch => {
   .then(products => dispatch(receiveAllProducts(products.data)));
 };
 
-const mapStateToProps = ({products}, {params}) => ({
+const mapStateToProps = ({products}) => ({
   products
 });
 
 const mapDispatchToProps = () => dispatch => ({
-	getProducts: () => dispatch(receiveProducts()),
+	getProducts: () => {
+    dispatch(receiveProducts());
+  },
   addItemToCart: product => {
     dispatch(addToCartThunk(product));
   },

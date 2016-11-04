@@ -17,12 +17,12 @@ const seedProducts = () => db.Promise.map([
 
 const seedCategories = () => db.Promise.map([
 	{name: 'beauty', image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97350&w=350&h=350'},
-  {name: 'entertainment', image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97350&w=350&h=350'},
+  {name: 'entertainment', image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97350&w=350&h=350', icon: 'theaters'},
   {name: 'fashion', image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97350&w=350&h=350'},
-  {name: 'food', image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97350&w=350&h=350'},
+  {name: 'food', image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97350&w=350&h=350', icon: 'restaurant'},
   {name: 'service', image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97350&w=350&h=350'},
 	{name: 'sports', image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97350&w=350&h=350'},
-	{name: 'technology', image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97350&w=350&h=350'},
+	{name: 'technology', image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97350&w=350&h=350', icon: 'devices'},
 ], category => db.model('categories').create(category));
 
 function getRandomIntInclusive(min, max) {

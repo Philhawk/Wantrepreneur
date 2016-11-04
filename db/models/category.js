@@ -11,12 +11,9 @@ const Category = db.define('categories', {
       notEmpty: true
     }
   },
-  image: {
-    type: Sequelize.STRING,
-    defaultValue: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97350&w=350&h=350',
-    validate: {
-      isUrl: true
-    }
+  icon: {
+    type: Sequelize.STRING, 
+    defaultValue: 'theaters'
   }
 });
 
