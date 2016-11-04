@@ -1,11 +1,16 @@
 'use strict';
 
+import { addToCart } from '../../reducers/cart';
+
 export const getCartFromLocal = () => dispatch => {
   const local = window.localStorage.getItem('cart');
   if(local) {
     const windowCart = JSON.parse(local);
     if (Array.isArray(windowCart)) {
-      dispatch(setCart(windowCart));
+      // dispatch(setCart(windowCart));
+      windowCart.forEach(product => {
+        dispatch(addToCart(product));
+      });
     }
   }
 };

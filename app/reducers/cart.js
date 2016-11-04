@@ -1,5 +1,7 @@
 'use strict';
 
+const _ = require('lodash');
+
 const initialState = [];
 
 const ADD_TO_CART = 'ADD_TO_CART';
@@ -30,7 +32,8 @@ export const setCart = (newCart) => {
 export default (state = initialState, action) => {
   switch(action.type) {
     case ADD_TO_CART:
-      return [...state, action.payload];
+      // return [...state, action.payload];
+      return _.unionBy(state, [action.payload], "id");
     case RESET_CART:
       return [];
     case SET_CART:
