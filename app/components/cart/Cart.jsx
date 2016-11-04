@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import Navbar from '../navbar/Navbar';
+import NavbarContainer from '../navbar/NavbarContainer';
 import { Grid, Col, Row } from 'react-bootstrap';
 
 export default class extends React.Component {
@@ -16,7 +16,7 @@ export default class extends React.Component {
   render () {
     return (
       <div>
-        <Navbar />
+        <NavbarContainer />
         <Grid>
           <Row>
             {this.props.cart.map(cartItem => {

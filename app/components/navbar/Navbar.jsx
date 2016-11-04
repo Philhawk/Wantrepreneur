@@ -20,6 +20,8 @@ class Navigation extends React.Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
+              { this.props.cart.length }
+              <Link to="/cart">Cart</Link>
             </Nav>
             <Nav pullRight>
               <NavDropdown eventKey={3} title="Login / Signup" id="basic-nav-dropdown">

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, IndexRoute,Redirect, browserHistory, Router, Link} from 'react-router';
+import { Route, IndexRoute, browserHistory, Router } from 'react-router';
 
 //components
 import Root from './components/RootContainer';
