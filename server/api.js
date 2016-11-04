@@ -10,6 +10,7 @@ api
   .use('/products', require('./products'))
   .use('/categories', require('./categories'))
   .use('/logout', require('./logout'))
+  .use('/checkout', require('./checkout'))
   .use('/register', require('./register'));
 
 
