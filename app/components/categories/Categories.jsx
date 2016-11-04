@@ -38,18 +38,34 @@ export default class Categories extends React.Component {
             <Grid>
               <Row className="show-grid">
                 <Col md={6} mdPush={6} className='rightDivCategoriesPage'>
-                  <Col md={6} mdPush={6}>
-                    <Jumbotron className='boxes'>
-                      <FontIcon className="material-icons" style={iconStyles}>check_circle</FontIcon>
-                        <p> I know</p>
-                    </Jumbotron>
-                  </Col>
-                  <Col md={6} mdPull={6}>
-                    <Jumbotron className='boxes'>
-                      <FontIcon className="material-icons" style={iconStyles}>help</FontIcon>
-                        <p> Help me </p>
-                    </Jumbotron>
-                  </Col>
+                  <Row className="show-grid">
+                    <Col md={6} mdPush={6}>
+                      <Jumbotron className='boxes'>
+                        <FontIcon className="material-icons" style={iconStyles}>devices</FontIcon>
+                          <p>Technology</p>
+                      </Jumbotron>
+                    </Col>
+                    <Col md={6} mdPull={6}>
+                      <Jumbotron className='boxes'>
+                        <FontIcon className="material-icons" style={iconStyles}>airplanemode_active</FontIcon>
+                          <p>Travel</p>
+                      </Jumbotron>
+                    </Col>
+                  </Row>
+                  <Row className="show-grid">
+                    <Col md={6} mdPush={6}>
+                      <Jumbotron className='boxes'>
+                        <FontIcon className="material-icons" style={iconStyles}>theaters</FontIcon>
+                          <p>Entertainment</p>
+                      </Jumbotron>
+                    </Col>
+                    <Col md={6} mdPull={6}>
+                      <Jumbotron className='boxes'>
+                        <FontIcon className="material-icons" style={iconStyles}>restaurant</FontIcon>
+                          <p>Food</p>
+                      </Jumbotron>
+                    </Col>
+                  </Row>
                 </Col>
                 <Col md={6} mdPull={6} className='leftDivCategoriesPage'>
                   <h1 className='categories-heading'><span>Categories</span></h1>
