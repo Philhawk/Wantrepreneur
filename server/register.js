@@ -5,12 +5,11 @@ const db = require('APP/db');
 const passport = require('passport');
 
 router.post('/', (req, res, next) => {
-  console.log('registering');
   db.model('users').create(
     Object.assign({},req.body, { role: 'user' } )
   )
     .then(user => {
-      req.login(user, console.log);
+      req.login(user, next);
       res.status(201).send();
     })
     .catch(next);
