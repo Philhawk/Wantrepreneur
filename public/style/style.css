@@ -19,6 +19,11 @@ img {
 	margin-right: -7em;
 }
 
+.cart-product {
+  border: #F4E04D;
+  border-style: solid;
+}
+
 .cart-item {
 	padding-top: 2em
 }
