@@ -34,7 +34,7 @@ export default class HomepageChoices extends React.Component {
           <Row className="show-grid">
 
             <Col md={6} mdPush={6} className='rightDivOpeningPage'>
-              <h1 className='heading'><span>Wantrepreneur</span></h1>
+              <h1 className='heading'><span className='css-animation'>Wantrepreneur</span></h1>
               <h1 className='description-headline'>Let us help you choose the right business for you</h1>
             </Col>
               <Col md={6} mdPull={6} className='leftDivOpeningPage'>
