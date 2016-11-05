@@ -80,7 +80,7 @@ class Navigation extends React.Component {
             title="Login"
             actions={actions}
             modal={false}
-            open={this.state}
+            open={this.state.open}
             onRequesClose={this.handleClose}></Dialog>
 
 
