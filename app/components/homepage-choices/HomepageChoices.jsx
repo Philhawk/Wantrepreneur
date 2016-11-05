@@ -6,18 +6,26 @@ import {red500, yellow500, blue500} from 'material-ui/styles/colors';
 import {browserHistory} from 'react-router';
  
 export default class HomepageChoices extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.state = {
+      helpClass: "boxes"
+    };
+  }
+
+  componentDidMount() {
+    window.setTimeout(() => {
+      console.log('about to animate');
+      this.setState({ helpClass: "boxes animated pulse"});
+    }, 5000);
   }
 
   helpMeChoose(){
-    console.log('hitting')
-    browserHistory.push('/categories')
+    browserHistory.push('/categories');
   }
 
   redirectToProducts(){
-    console.log('hitting')
-    browserHistory.push('/all-options')
+    browserHistory.push('/all-options');
   }
 
   render() {
@@ -38,13 +46,13 @@ export default class HomepageChoices extends React.Component {
             </Col>
             <Col md={6} mdPull={6} className='leftDivOpeningPage'>
               <Col md={6} mdPush={6}>
-                <Jumbotron onClick={this.redirectToProducts} className='boxes'>
+                <Jumbotron onClick={this.redirectToProducts} className="boxes">
                   <FontIcon className="material-icons" style={iconStyles}>check_circle</FontIcon>
                     <p> I know</p>
                 </Jumbotron>
               </Col>
               <Col md={6} mdPull={6}>
-                <Jumbotron onClick={this.helpMeChoose} className='boxes'>
+                <Jumbotron onClick={this.helpMeChoose} className={this.state.helpClass}>
                   <FontIcon className="material-icons" style={iconStyles}>help</FontIcon>
                     <p> Help me </p>
                 </Jumbotron>
