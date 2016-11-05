@@ -51,8 +51,8 @@ class Navigation extends React.Component {
     // Material UI styles
     let navbarIcon={
       color: '#F4E04D',
-      width:"36px",
-      height:'36px'
+      width:"45px",
+      height:'45px'
     };
 
 
@@ -96,12 +96,12 @@ class Navigation extends React.Component {
 
 
           <Badge badgeContent={this.props.cart ? this.props.cart.length : ''} secondary={true} badgeStyle={{top: 12, right: 12}}>
+            <IconButton tooltip="My Cart">
+              <Link to="/cart">
+                <FontIcon className="material-icons" style={navbarIcon} hoverColor='#FCFCFC'>shopping_cart</FontIcon>
+              </Link>
+            </IconButton>
           </Badge>
-          <IconButton tooltip="My Cart">
-          <Link to="/cart">
-          <FontIcon className="material-icons" style={navbarIcon} hoverColor='#FCFCFC'>shopping_cart</FontIcon>
-          </Link>
-          </IconButton>
 
         </ToolbarGroup>
       </Toolbar>
