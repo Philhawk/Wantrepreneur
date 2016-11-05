@@ -10,10 +10,15 @@ import FlatButton from 'material-ui/FlatButton';
 export default class extends React.Component {
   constructor (props) {
     super(props);
+    this.removeFromCart = this.removeFromCart.bind(this);
   }
 
   componentDidMount() {
     this.props.getCart();
+  }
+
+  removeFromCart(item) {
+    this.props.removeFromCart(item);
   }
 
   render () {
@@ -30,7 +35,7 @@ export default class extends React.Component {
                     <Col lg={6}>
                        <CardHeader title={cartItem.name} subtitle={'$' + cartItem.price} actAsExpander={true} showExpandableButton={true} />
                        <CardActions>
-                         <FlatButton label="Remove from Cart" />
+                         <FlatButton label="Remove from Cart" onClick={() => this.removeFromCart(cartItem)}/>
                        </CardActions>
                      </Col>
                      <Col lg={6}>

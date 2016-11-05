@@ -1,29 +1,34 @@
 'use strict';
 
+const _ = require('lodash');
+
 import { addToCart, removeFromCart, addMultipleToCart } from '../../reducers/cart';
 
-export const getCartFromLocal = () => dispatch => {
+const setLocalCartFromArray = cartArray => {
+  window.localStorage.setItem('cart', JSON.stringify(cartArray));
+};
+
+const getLocalCartAsArray = () => {
   const local = window.localStorage.getItem('cart');
-  if(local) {
-    const windowCart = JSON.parse(local);
-    if (Array.isArray(windowCart)) {
-      dispatch(addMultipleToCart(windowCart));
-    }
+  if (local) {
+    return JSON.parse(local);
   }
+  return [];
+};
+
+export const getCartFromLocal = () => dispatch => {
+  const windowCart = getLocalCartAsArray();
+  dispatch(addMultipleToCart(windowCart));
 };
 
 export const addToCartThunk = product => dispatch => {
-  let local = window.localStorage.getItem('cart');
-  if (!local) { local = '[]'; }
-  const windowCart = JSON.parse(local);
-  window.localStorage.setItem('cart', JSON.stringify([...windowCart, product]));
+  const windowCart = getLocalCartAsArray();
+  setLocalCartFromArray(_.unionBy(windowCart, [product], 'id'));
   dispatch(addToCart(product));
 };
 
 export const removeFromCartThunk = product => dispatch => {
-  let local = window.localStorage.getItem('cart');
-  if (!local) { local = '[]'; }
-  const windowCart = JSON.parse(local);
-  window.localStorage.setItem('cart', JSON.stringify(windowCart.filter(localProduct => localProduct.id !== product.id)));
+  const windowCart = getLocalCartAsArray();
+  setLocalCartFromArray(_.differenceBy(windowCart, [product], 'id'));
   dispatch(removeFromCart(product));
 };

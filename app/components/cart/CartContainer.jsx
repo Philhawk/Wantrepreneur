@@ -2,7 +2,7 @@
 
 import Cart from './Cart';
 import { connect } from 'react-redux';
-import { getCartFromLocal } from './CartHelpers';
+import { getCartFromLocal, removeFromCartThunk } from './CartHelpers';
 
 const mapStateToProps = ({ cart }, { params }) => ({
   cart
@@ -11,6 +11,9 @@ const mapStateToProps = ({ cart }, { params }) => ({
 const mapDispatchToProps = () => dispatch => ({
   getCart: () => {
     dispatch(getCartFromLocal());
+  },
+  removeFromCart: (item) => {
+    dispatch(removeFromCartThunk(item));
   }
 });
 
