@@ -87,9 +87,21 @@ img {
 	color: #FCFCFC;
 
 }
+
 .boxes {
 	background-color: #F4E04D;
+  box-shadow: 4px 4px 2px #666;
+  -webkit-box-shadow: 4px 4px 2px #666;
+  -moz-box-shadow: 4px 4px 2px #666;
 }
+
+.boxes:active {
+  box-shadow: inset 4px 4px 2px #666;
+  -webkit-box-shadow: inset 4px 4px 2px #666;
+  -moz-box-shadow: inset 4px 4px 2px #666;
+}
+
+
 
 .heading {
 	color: #333333;
