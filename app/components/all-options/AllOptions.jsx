@@ -33,12 +33,7 @@ export default class extends React.Component {
     this.handleActionTouchTap = this.handleActionTouchTap.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
     this.soldProducts = this.soldProducts.bind(this);
-    this.sortPriceAscending = this.sortPriceAscending.bind(this);
-    this.sortPriceDescending = this.sortPriceDescending.bind(this);
-    this.sortNameAscending = this.sortNameAscending.bind(this);
-    this.sortNameDescending = this.sortNameDescending.bind(this);
-    this.sortCategoryAscending = this.sortPriceAscending.bind(this);
-    this.sortCategoryDescending = this.sortPriceDescending.bind(this);
+    this.setSortMethod = this.setSortMethod.bind(this);
   }
 
   componentDidMount() {
@@ -66,34 +61,8 @@ export default class extends React.Component {
     }
   }
 
-  sortPriceAscending() {
-    this.state.sortField = 'price';
-    this.state.sortAscending = 1;
-  }
-
-  sortPriceDescending() {
-    this.state.sortField = 'price';
-    this.state.sortAscending = -1;
-  }
-
-  sortNameAscending() {
-    this.state.sortField = 'name';
-    this.state.sortAscending = 1;
-  }
-
-  sortNameDescending() {
-    this.state.sortField = 'name';
-    this.state.sortAscending = -1;
-  }
-
-  sortCategoryAscending() {
-    this.state.sortField = 'category';
-    this.state.sortAscending = 1;
-  }
-
-  sortCategoryDescending() {
-    this.state.sortField = 'category';
-    this.state.sortAscending = -1;
+  setSortMethod(sortField, sortAscending) {
+    this.setState({sortField, sortAscending});
   }
 
   render () {
@@ -135,12 +104,12 @@ export default class extends React.Component {
           </Row>
           <Row>
             <DropdownButton title="Sort by" id="sort-dropdown">
-              <MenuItem onClick={this.sortNameAscending}>Name (Ascending)</MenuItem>
-              <MenuItem onClick={this.sortNameDescending}>Name (Descending)</MenuItem>
-              <MenuItem onClick={this.sortCategoryAscending}>Category (Ascending)</MenuItem>
-              <MenuItem onClick={this.sortCategoryDescending}>Category (Descending)</MenuItem>
-              <MenuItem onClick={this.sortPriceAscending}>Price (Ascending)</MenuItem>
-              <MenuItem onClick={this.sortPriceDescending}>Price (Descending)</MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('name', 1)}>Name (Ascending)</MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('name', -1)}>Name (Descending)</MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('category', 1)}>Category (Ascending)</MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('category', -1)}>Category (Descending)</MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('price', 1)}>Price (Ascending)</MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('price', -1)}>Price (Descending)</MenuItem>
             </DropdownButton>
           </Row>
 
