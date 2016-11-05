@@ -23,6 +23,7 @@ export default class extends React.Component {
       showModal: false,
       currentProduct: {},
       snackbarOpen: false,
+      undoAction: '', // 'add' or 'remove'
       sortField: 'name',
       sortAscending: 1 // 1 for ascending, -1 for descending
     };
@@ -30,7 +31,8 @@ export default class extends React.Component {
     this.onSearchInput = this.onSearchInput.bind(this);
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
-    this.handleTouchTap = this.handleTouchTap.bind(this);
+    this.handleTouchTapAdd = this.handleTouchTapAdd.bind(this);
+    this.handleTouchTapRemove = this.handleTouchTapRemove.bind(this);
     this.handleActionTouchTap = this.handleActionTouchTap.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
     this.soldProducts = this.soldProducts.bind(this);
@@ -170,8 +172,8 @@ export default class extends React.Component {
 
           <Modal.Footer>
             { this.props.cart.filter(product => product.id === this.state.currentProduct.id).length ?
-              null
-              : <Button onTouchTap={this.handleTouchTap}>Add to Cart</Button>
+              <Button onTouchTap={this.handleTouchTapRemove}>Remove from Cart</Button>
+              : <Button onTouchTap={this.handleTouchTapAdd}>Add to Cart</Button>
             }
           </Modal.Footer>
         </Modal>
@@ -179,7 +181,7 @@ export default class extends React.Component {
         <div>
           <Snackbar
             open={this.state.snackbarOpen}
-            message={`${this.state.currentProduct.name} was added to your shopping cart`}
+            message={`${this.state.currentProduct.name} was ${this.state.undoAction === 'add' ? 'removed from' : 'added to'} your shopping cart`}
             action="undo"
             autoHideDuration={snackbarAutoHideDuration}
             onActionTouchTap={this.handleActionTouchTap}
@@ -204,19 +206,33 @@ export default class extends React.Component {
   }
 
   // For shopping cart features
-  handleTouchTap() {
+  handleTouchTapAdd() {
     this.setState({
       snackbarOpen: true,
+      undoAction: 'remove'
     });
     this.props.addItemToCart(this.state.currentProduct);
-  };
+  }
+
+  handleTouchTapRemove() {
+    this.setState({
+      snackbarOpen: true,
+      undoAction: 'add'
+    });
+    this.props.removeItemFromCart(this.state.currentProduct);
+  }
 
   handleActionTouchTap() {
     this.setState({
       snackbarOpen: false,
+      undoAction: ''
     });
-    this.props.removeItemFromCart(this.state.currentProduct);
-  };
+    if (this.state.undoAction === 'add') {
+      this.props.addItemToCart(this.state.currentProduct);
+    } else if (this.state.undoAction === 'remove') {
+      this.props.removeItemFromCart(this.state.currentProduct);
+    }
+  }
 
   handleRequestClose() {
     this.setState({
