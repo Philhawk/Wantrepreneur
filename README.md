@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/Philhawk/Wantrepreneur.png?label=ready&title=Ready)](https://waffle.io/Philhawk/Wantrepreneur)
 # Hi, I'm bones
 
 I'm a happy little skeleton. You can clone me to use as a starter on your projects!
