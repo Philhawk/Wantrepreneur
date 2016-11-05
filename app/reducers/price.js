@@ -1,20 +1,20 @@
 'use strict';
 
-const initialState = 0;
+const initialState = [];
 
-const ADD_PRICE = 'ADD_PRICE';
+const ADD_PRICE_RANGE = 'ADD_PRICE_RANGE';
 
-export const addPrice = price => {
+export const filterWithPrice = priceRange => {
   return {
-    type: ADD_PRICE,
-    price
+    type: ADD_PRICE_RANGE,
+    priceRange
   };
 };
 
 export default (state = initialState, action) => {
   switch(action.type) {
-    case ADD_PRICE:
-      return action.price;
+    case ADD_PRICE_RANGE:
+      return action.priceRange;
     default:
       return state;
   }

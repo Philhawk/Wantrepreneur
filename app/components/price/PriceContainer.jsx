@@ -2,13 +2,12 @@
 
 import { connect } from 'react-redux';
 import Price from './Price';
+import {filterWithPrice} from '../../reducers/price';
 
-const mapStateToProps = (state, {params}) => ({
-
+const mapDispatchToProps = () => dispatch => ({
+	addPriceRange: (priceRange) => {
+		dispatch(filterWithPrice(priceRange));
+	}
 });
 
-const mapDispatchToProps = (dispatch) => ({
-
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Price);
+export default connect(null, mapDispatchToProps)(Price);
