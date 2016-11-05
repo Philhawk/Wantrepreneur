@@ -29,6 +29,7 @@ img {
 	padding-bottom: 30px;
 }
 
+
 .rightDivOpeningPage {
 	padding-left: 8em;
 }
@@ -147,15 +148,12 @@ body {
   height:100vh;;
 }
 
-.navbar-inverse {
-  background-color: transparent;
-  border-color: transparent;
+/* Navbar CSS*/
+/* change to be responsive?*/
+.logo img {
+	height: 50px;
+	width: 50px;
 }
-
-.navbar-brand {
-  color: transparent;
-}
-
 
 /*ICONS*/
 
