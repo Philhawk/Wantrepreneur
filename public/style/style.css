@@ -4,18 +4,12 @@ img {
 }
 
 
-/* change to be responsive?*/
 .logo img {
   height: 50px;
   width: 50px;
 }
 
-<<<<<<< HEAD
-Toolbar {
-	background-color: transparent;
-}
 
-=======
 .cart-image {
 	max-width: 12em;
 	max-height: 12em;
@@ -31,7 +25,7 @@ Toolbar {
 	border-bottom:3px solid #F4E04D;
 	padding-bottom: 30px;
 }
->>>>>>> master
+
 
 .rightDivOpeningPage {
 	padding-left: 8em;
@@ -151,15 +145,16 @@ body {
   height:100vh;;
 }
 
-.navbar-inverse {
-  background-color: transparent;
-  border-color: transparent;
+/* Navbar CSS*/
+/* change to be responsive?*/
+.logo img {
+	height: 50px;
+	width: 50px;
 }
 
-.navbar-brand {
-  color: transparent;
+.navbar {
+	background-color: red ;
 }
-
 
 /*ICONS*/
 

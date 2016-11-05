@@ -34,17 +34,23 @@ class Navigation extends React.Component {
 
     let cartIcon={
       color: '#F4E04D',
-      fontSize: '30px',
+      //fontSize: '30px',
 
     };
 
-
+    let navbar={
+      color: '#F4E04D'
+    };
 
     return (
       <div>
-      <Toolbar>
+      <Toolbar className='navbar' style={navbar}>
+        <ToolbarGroup>
+            <Link to='/' className='logo'>{WPLogo}</Link>
+            <Link to='/'><ToolbarTitle text="Wantrepreneur"/></Link>
 
-       <ToolbarTitle text="Wantrepreneur"/>
+        </ToolbarGroup>
+        <ToolbarGroup>
           <Badge badgeContent={this.props.cart ? this.props.cart.length : ''} secondary={true} badgeStyle={{top: 12, right: 12}}>
 
             <IconButton tooltip="My Cart">
@@ -53,7 +59,7 @@ class Navigation extends React.Component {
               </Link>
             </IconButton>
           </Badge>
-
+        </ToolbarGroup>
       </Toolbar>
       </div>
     );
