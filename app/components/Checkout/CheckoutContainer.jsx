@@ -2,7 +2,7 @@
 
 import Checkout from './Checkout';
 import { connect } from 'react-redux';
-import { resetCart } from '../../reducers/cart';
+import { resetCartThunk } from '../cart/CartHelpers';
 
 const mapStateToProps = ({ cart }, { params }) => ({
   cart
@@ -10,7 +10,7 @@ const mapStateToProps = ({ cart }, { params }) => ({
 
 const mapDispatchToProps = () => dispatch => ({
   clearCart: () => {
-    dispatch(resetCart());
+    dispatch(resetCartThunk());
   }
 })
 
