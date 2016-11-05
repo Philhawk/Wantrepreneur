@@ -1,5 +1,7 @@
 'use strict';
 
+const _ = require('lodash');
+
 import { addToCart, removeFromCart, addMultipleToCart } from '../../reducers/cart';
 
 export const getCartFromLocal = () => dispatch => {
