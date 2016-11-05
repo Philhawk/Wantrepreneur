@@ -6,6 +6,8 @@ import {Grid, Col, Row, Modal, Button, FormGroup, FormControl} from 'react-boots
 import Snackbar from 'material-ui/Snackbar';
 import { addToCart } from '../../reducers/cart';
 
+const snackbarAutoHideDuration = 4000;
+
 export default class extends React.Component {
   constructor (props) {
     super(props);
@@ -13,9 +15,7 @@ export default class extends React.Component {
       search: '',
       showModal: false,
       currentProduct: {},
-      autoHideDuration: 4000,
-      message: 'Business was added to your shopping cart',
-      open: false,
+      snackbarOpen: false,
     };
 
     this.onSearchInput = this.onSearchInput.bind(this);
@@ -87,10 +87,10 @@ export default class extends React.Component {
 
         <div>
           <Snackbar
-            open={this.state.open}
-            message={this.state.message}
+            open={this.state.snackbarOpen}
+            message={`${this.state.currentProduct.name} was added to your shopping cart`}
             action="undo"
-            autoHideDuration={this.state.autoHideDuration}
+            autoHideDuration={snackbarAutoHideDuration}
             onActionTouchTap={this.handleActionTouchTap}
             onRequestClose={this.handleRequestClose}
           />
@@ -115,21 +115,21 @@ export default class extends React.Component {
   // For shopping cart features
   handleTouchTap() {
     this.setState({
-      open: true,
+      snackbarOpen: true,
     });
     this.props.addItemToCart(this.state.currentProduct);
   };
 
   handleActionTouchTap() {
     this.setState({
-      open: false,
+      snackbarOpen: false,
     });
     this.props.removeItemFromCart(this.state.currentProduct);
   };
 
   handleRequestClose() {
     this.setState({
-      open: false,
+      snackbarOpen: false,
     });
   };
 }
