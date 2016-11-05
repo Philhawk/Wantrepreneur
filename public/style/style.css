@@ -10,10 +10,28 @@ img {
   width: 50px;
 }
 
+<<<<<<< HEAD
 Toolbar {
 	background-color: transparent;
 }
 
+=======
+.cart-image {
+	max-width: 12em;
+	max-height: 12em;
+	margin-right: -7em;
+}
+
+.cart-item {
+	padding-top: 2em
+}
+.css-animation {
+	display:inline-block;
+	font-weight: bold;
+	border-bottom:3px solid #F4E04D;
+	padding-bottom: 30px;
+}
+>>>>>>> master
 
 .rightDivOpeningPage {
 	padding-left: 8em;
@@ -114,12 +132,6 @@ Toolbar {
   50% { border-color: orange; }
 }
 
-span {
-	display:inline-block;
-	font-weight: bold;
- 	border-bottom:3px solid #F4E04D;
-	padding-bottom: 30px;
-}
 
 html,
 body {
