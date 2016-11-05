@@ -5,11 +5,11 @@ import {Link} from 'react-router';
 // For Navbar
 import {AppBar, Tabs, Tab, Toolbar, ToolbarGroup, ToolbarTitle, NotificationsIcon} from 'material-ui';
 //Cart
-import {FontIcon,Badge,IconButton} from 'material-ui';
+import {FontIcon,Badge,IconButton,ActionHome } from 'material-ui';
 //Dialog modol
 import {FlatButton, RaisedButton, Dialog, TextField} from 'material-ui';
 import {Card, CardHeader, CardActions, CardText} from 'material-ui';
-import {orange500, blue500} from 'material-ui/styles/colors';
+
 
 
 import RegistrationFrom from './RegistrationFrom.jsx';
@@ -49,17 +49,17 @@ class Navigation extends React.Component {
 //
   render() {
     // Material UI styles
-    let cartIcon={
+    let navbarIcon={
       color: '#F4E04D',
+      width:"36px",
+      height:'36px'
     };
 
-    let navbar={
-      color: '#54F2f2'
-    };
+
 
     // actions for login/sign form buttons
     const actions = [
-      <FlatButton label="Cancel" primary={true} onTouchTap={this.handleClose}/>,
+      //<FlatButton label="Cancel" primary={true} onTouchTap={this.handleClose}/>,
       ];
 
       let requiredFields ={
@@ -73,15 +73,19 @@ class Navigation extends React.Component {
 
     return (
       <div>
-      <Toolbar style={navbar}>
+      <Toolbar style={{'background-color':'transparent'}}>
         <ToolbarGroup>
             <Link to='/' className='logo'>{WPLogo}</Link>
-            <Link to='/'><ToolbarTitle text="Wantrepreneur"/></Link>
+            <Link to='/'><ToolbarTitle text=" Wantrepreneur"/></Link>
 
         </ToolbarGroup>
         <ToolbarGroup>
 
-          <RaisedButton label="My Account" onTouchTap={this.handleOpen}/>
+
+          <IconButton tooltip="My Account" >
+            <FontIcon className="material-icons" style={navbarIcon} onTouchTap={this.handleOpen}>home</FontIcon>
+          </IconButton>
+
 
             <Dialog actions={actions} modal={false} open={this.state.open} onRequesClose={this.handleClose}>
             <div className="row" style={{display: 'flex'}}>
@@ -92,12 +96,12 @@ class Navigation extends React.Component {
 
 
           <Badge badgeContent={this.props.cart ? this.props.cart.length : ''} secondary={true} badgeStyle={{top: 12, right: 12}}>
-            <IconButton tooltip="My Cart">
-              <Link to="/cart">
-              <FontIcon className="material-icons" style={cartIcon} hoverColor='#FCFCFC'>shopping_cart</FontIcon>
-              </Link>
-            </IconButton>
           </Badge>
+          <IconButton tooltip="My Cart">
+          <Link to="/cart">
+          <FontIcon className="material-icons" style={navbarIcon} hoverColor='#FCFCFC'>shopping_cart</FontIcon>
+          </Link>
+          </IconButton>
 
         </ToolbarGroup>
       </Toolbar>
