@@ -30,16 +30,14 @@ router.post('/submit', (req, res, next) => {
   Order.create({})
     .then(order => {
       createdOrder = order;
-      console.log('order', order);
       return Promise.map(req.body.cart, product => Product.findById(product.id));
     })
     .then(products => {
-      console.log('products');
       createdProducts = products;
       return createdOrder.setProducts(products);
     })
+    .then((newOrder) => newOrder.hash())
     .then(() => {
-      console.log('about to emit socket event and respond');
       io.sockets.emit('sold-products', createdProducts);
       res.sendStatus(201);
     })
