@@ -7,6 +7,12 @@ import Snackbar from 'material-ui/Snackbar';
 import { addToCart } from '../../reducers/cart';
 import io from 'socket.io-client';
 let socket;
+import {GridList, GridTile} from 'material-ui/GridList';
+import IconButton from 'material-ui/IconButton';
+import Subheader from 'material-ui/Subheader';
+import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+
+const snackbarAutoHideDuration = 4000;
 
 export default class extends React.Component {
   constructor (props) {
@@ -15,9 +21,7 @@ export default class extends React.Component {
       search: '',
       showModal: false,
       currentProduct: {},
-      autoHideDuration: 4000,
-      message: 'Business was added to your shopping cart',
-      open: false,
+      snackbarOpen: false,
     };
 
     this.onSearchInput = this.onSearchInput.bind(this);
@@ -43,6 +47,31 @@ export default class extends React.Component {
   }
 
   render () {
+
+    const sortedProducts =   this.props.products
+                              .sort((a, b) => a.name > b.name ? 1: -1)
+                              .filter(p => p.name.toLowerCase().includes(this.state.search)
+                                || p.description.toLowerCase().includes(this.state.search)
+                                || p.categories
+                                    .reduce((a, b) => a + b.name, '')
+                                    .toLowerCase()
+                                    .includes(this.state.search)
+                              )
+
+    const styles = {
+      root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+      },
+      gridList: {
+        width: 500,
+        height: 450,
+        overflowY: 'auto',
+        display: 'inline',
+      },
+    };
+
     return (
       <div className='potato'>
         <NavbarContainer />
@@ -57,22 +86,17 @@ export default class extends React.Component {
 
           <Row>
           {
-            this.props.products
-              .sort((a, b) => a.name > b.name ? 1: -1)
-              .filter(p => p.name.toLowerCase().includes(this.state.search)
-                || p.description.toLowerCase().includes(this.state.search)
-                || p.categories
-                    .reduce((a, b) => a + b.name, '')
-                    .toLowerCase()
-                    .includes(this.state.search)
-              )
-              .map(p => {
+
+              sortedProducts.map(p => {
                 return (
-                  <Col className="product-grid" key={p.id} sm={6} md={4} onClick={() => this.open(p)}>
-                    <Row><img src={ p.image }/>
-                    <p>{ p.name }</p>
-                    </Row>
-                  </Col>
+                <Col className="product-grid" key={p.id} sm={6} md={4} onClick={() => this.open(p)}>
+                  <GridList cellHeight={180} style={styles.gridList} >
+                      <GridTile key={p.name} title={p.name} subtitle={<span>by <b>AUTHOR</b></span>} actionIcon={<IconButton><StarBorder color="white" /></IconButton>} >
+                        <img src={p.image} />
+                      </GridTile>
+                  </GridList>
+                </Col>
+
                 )
             })
           }
@@ -97,10 +121,10 @@ export default class extends React.Component {
 
         <div>
           <Snackbar
-            open={this.state.open}
-            message={this.state.message}
+            open={this.state.snackbarOpen}
+            message={`${this.state.currentProduct.name} was added to your shopping cart`}
             action="undo"
-            autoHideDuration={this.state.autoHideDuration}
+            autoHideDuration={snackbarAutoHideDuration}
             onActionTouchTap={this.handleActionTouchTap}
             onRequestClose={this.handleRequestClose}
           />
@@ -125,21 +149,21 @@ export default class extends React.Component {
   // For shopping cart features
   handleTouchTap() {
     this.setState({
-      open: true,
+      snackbarOpen: true,
     });
     this.props.addItemToCart(this.state.currentProduct);
   };
 
   handleActionTouchTap() {
     this.setState({
-      open: false,
+      snackbarOpen: false,
     });
     this.props.removeItemFromCart(this.state.currentProduct);
   };
 
   handleRequestClose() {
     this.setState({
-      open: false,
+      snackbarOpen: false,
     });
   };
 
