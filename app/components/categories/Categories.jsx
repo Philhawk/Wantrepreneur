@@ -28,25 +28,24 @@ export default class Categories extends React.Component {
           <Navigation />
           <div className='categories-choices'>
             <Grid>
-              <Row className="show-grid">
-                <Col md={6} mdPush={6} className='rightDivCategoriesPage'>
-                  <Row className="show-grid">
 
-                    {this.props.categories.allCategories.map(category => (
-                      <Col md={6} mdPush={6} key={category.id} onClick={() => this.props.addCategory(category.name)}>
-                        <Jumbotron className='boxes'>
-                          <FontIcon className="material-icons" style={iconStyles}>{category.icon}</FontIcon>
-                            <p>{category.name}</p>
-                        </Jumbotron>
-                      </Col>
-                      ))}
-
-                  </Row>
-                </Col>
-                <Col md={6} mdPull={6} className='leftDivCategoriesPage'>
+              <Row>
+                <Col sm={12}>
                   <h1 className='categories-heading'><span>Categories</span></h1>
                   <h1 className='description-headline'>First, let's pick a category for your dream business</h1>
+                  <br/>
                 </Col>
+              </Row>
+
+              <Row>
+                {this.props.categories.allCategories.map(category => (
+                  <Col sm={6} md={4} key={category.id} onClick={() => this.props.addCategory(category.name)}>
+                    <Jumbotron className='boxes'>
+                      <FontIcon className="material-icons" style={iconStyles}>{category.icon}</FontIcon>
+                        <p>{category.name}</p>
+                    </Jumbotron>
+                  </Col>
+                  ))}
               </Row>
             </Grid>
           </div>

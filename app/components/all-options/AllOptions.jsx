@@ -42,6 +42,7 @@ export default class extends React.Component {
               <FormGroup>
                 <FormControl id="product-searchbar" type="text" placeholder="Search" onInput={this.onSearchInput} />
               </FormGroup>
+              <br />
             </Col>
           </Row>
 

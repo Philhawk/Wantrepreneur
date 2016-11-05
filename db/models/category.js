@@ -13,7 +13,7 @@ const Category = db.define('categories', {
   },
   icon: {
     type: Sequelize.STRING, 
-    defaultValue: 'theaters'
+    defaultValue: 'cached'
   }
 });
 
