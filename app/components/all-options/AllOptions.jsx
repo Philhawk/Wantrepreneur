@@ -2,7 +2,7 @@
 
 import React from 'react';
 import NavbarContainer from '../navbar/NavbarContainer';
-import {Grid, Col, Row, Modal, Button, FormGroup, FormControl} from 'react-bootstrap';
+import {Grid, Col, Row, Modal, Button, FormGroup, FormControl, DropdownButton, MenuItem} from 'react-bootstrap';
 import Snackbar from 'material-ui/Snackbar';
 import { addToCart } from '../../reducers/cart';
 import io from 'socket.io-client';
@@ -22,6 +22,8 @@ export default class extends React.Component {
       showModal: false,
       currentProduct: {},
       snackbarOpen: false,
+      sortField: 'name',
+      sortAscending: 1 // 1 for ascending, -1 for descending
     };
 
     this.onSearchInput = this.onSearchInput.bind(this);
@@ -31,6 +33,12 @@ export default class extends React.Component {
     this.handleActionTouchTap = this.handleActionTouchTap.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
     this.soldProducts = this.soldProducts.bind(this);
+    this.sortPriceAscending = this.sortPriceAscending.bind(this);
+    this.sortPriceDescending = this.sortPriceDescending.bind(this);
+    this.sortNameAscending = this.sortNameAscending.bind(this);
+    this.sortNameDescending = this.sortNameDescending.bind(this);
+    this.sortCategoryAscending = this.sortPriceAscending.bind(this);
+    this.sortCategoryDescending = this.sortPriceDescending.bind(this);
   }
 
   componentDidMount() {
@@ -46,10 +54,51 @@ export default class extends React.Component {
     socket = null;
   }
 
+  getSortFunction(field, direction) {
+    switch (field) {
+      case 'name':
+      default:
+        return (a, b) => a[field].toLowerCase() > b[field].toLowerCase() ? direction : -direction;
+      case 'price':
+        return (a, b) => direction * (a[field] - b[field]);
+      case 'category':
+        return (a,b) => a[field].name.toLowerCase() > b[field].name.toLowerCase() ? direction : -direction;
+    }
+  }
+
+  sortPriceAscending() {
+    this.state.sortField = 'price';
+    this.state.sortAscending = 1;
+  }
+
+  sortPriceDescending() {
+    this.state.sortField = 'price';
+    this.state.sortAscending = -1;
+  }
+
+  sortNameAscending() {
+    this.state.sortField = 'name';
+    this.state.sortAscending = 1;
+  }
+
+  sortNameDescending() {
+    this.state.sortField = 'name';
+    this.state.sortAscending = -1;
+  }
+
+  sortCategoryAscending() {
+    this.state.sortField = 'category';
+    this.state.sortAscending = 1;
+  }
+
+  sortCategoryDescending() {
+    this.state.sortField = 'category';
+    this.state.sortAscending = -1;
+  }
+
   render () {
 
     const sortedProducts =   this.props.products
-                              .sort((a, b) => a.name > b.name ? 1: -1)
                               .filter(p => p.name.toLowerCase().includes(this.state.search)
                                 || p.description.toLowerCase().includes(this.state.search)
                                 || p.categories
@@ -57,6 +106,7 @@ export default class extends React.Component {
                                     .toLowerCase()
                                     .includes(this.state.search)
                               )
+                              .sort(this.getSortFunction(this.state.sortField, this.state.sortAscending));
 
     const styles = {
       root: {
@@ -82,6 +132,16 @@ export default class extends React.Component {
                 <FormControl id="product-searchbar" type="text" placeholder="Search" onInput={this.onSearchInput} />
               </FormGroup>
             </Col>
+          </Row>
+          <Row>
+            <DropdownButton title="Sort by" id="sort-dropdown">
+              <MenuItem onClick={this.sortNameAscending}>Name (Ascending)</MenuItem>
+              <MenuItem onClick={this.sortNameDescending}>Name (Descending)</MenuItem>
+              <MenuItem onClick={this.sortCategoryAscending}>Category (Ascending)</MenuItem>
+              <MenuItem onClick={this.sortCategoryDescending}>Category (Descending)</MenuItem>
+              <MenuItem onClick={this.sortPriceAscending}>Price (Ascending)</MenuItem>
+              <MenuItem onClick={this.sortPriceDescending}>Price (Descending)</MenuItem>
+            </DropdownButton>
           </Row>
 
           <Row>
