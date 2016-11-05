@@ -1,6 +1,9 @@
 {
   "name": "wantrepreneur",
   "version": "0.0.1",
+  "engines": {
+    "node": "6.7.0"
+  },
   "description": "A happy little skeleton.",
   "main": "index.js",
   "scripts": {
