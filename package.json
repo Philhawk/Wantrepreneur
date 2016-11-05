@@ -9,7 +9,7 @@
     "seed": "node db/models/seed.js",
     "build": "webpack",
     "build-watch": "webpack -w",
-    "start": "nodemon server/start.js"
+    "start": "node server/start.js"
   },
   "repository": {
     "type": "git",
