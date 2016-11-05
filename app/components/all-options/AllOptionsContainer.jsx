@@ -3,9 +3,8 @@
 import axios from 'axios';
 import { connect } from 'react-redux';
 import AllOptions from './AllOptions';
-import { receiveAllProducts } from '../../reducers/products';
-import { addToCart, setCart } from '../../reducers/cart';
-import { getCartFromLocal, addToCartThunk, removeFromCartThunk } from '../cart/CartHelpers';
+import { receiveAllProducts, removeMultipleProducts } from '../../reducers/products';
+import { getCartFromLocal, addToCartThunk, removeFromCartThunk, removeMultipleFromCartThunk } from '../cart/CartHelpers';
 
 const receiveProducts = () => dispatch => {
   axios.get('/api/products')
@@ -26,6 +25,12 @@ const mapDispatchToProps = () => dispatch => ({
   },
   getCart: () => {
     dispatch(getCartFromLocal());
+  },
+  removeMultipleFromCart: products => {
+    dispatch(removeMultipleFromCartThunk(products));
+  },
+  removeMultipleProductsFromOptions: products => {
+    dispatch(removeMultipleProducts(products));
   }
 });
 

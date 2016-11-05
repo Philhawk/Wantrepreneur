@@ -4,16 +4,32 @@ import React from 'react';
 import NavbarContainer from '../navbar/NavbarContainer';
 import { Grid, Col, Row } from 'react-bootstrap';
 import CheckoutContainer from '../Checkout/CheckoutContainer';
+import io from 'socket.io-client';
+let socket;
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
 export default class extends React.Component {
   constructor (props) {
     super(props);
+    this.soldProducts = this.soldProducts.bind(this);
+    this.removeFromCart = this.removeFromCart.bind(this);
   }
 
   componentDidMount() {
     this.props.getCart();
+    socket = io('http://localhost:8080');
+    socket.on('sold-products', this.soldProducts);
+  }
+
+  componentWillUnmount() {
+    socket.off('sold-products', null);
+    socket.disconnect();
+    socket = null;
+  }
+
+  removeFromCart(item) {
+    this.props.removeFromCart(item);
   }
 
   render () {
@@ -30,7 +46,7 @@ export default class extends React.Component {
                     <Col lg={6}>
                        <CardHeader title={cartItem.name} subtitle={'$' + cartItem.price} actAsExpander={true} showExpandableButton={true} />
                        <CardActions>
-                         <FlatButton label="Remove from Cart" />
+                         <FlatButton label="Remove from Cart" onClick={() => this.removeFromCart(cartItem)}/>
                        </CardActions>
                      </Col>
                      <Col lg={6}>
@@ -47,5 +63,9 @@ export default class extends React.Component {
         </Grid>
       </div>
     );
+  }
+
+  soldProducts(products) {
+    this.props.removeMultipleFromCart(products);
   }
 }

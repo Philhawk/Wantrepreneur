@@ -8,6 +8,7 @@ const ADD_TO_CART = 'ADD_TO_CART';
 const RESET_CART = 'RESET_CART';
 const ADD_MULTIPLE_TO_CART = 'ADD_MULTIPLE_TO_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+const REMOVE_MULTIPLE_FROM_CART = 'REMOVE_MULTIPLE_FROM_CART';
 
 export const addToCart = product => {
   return {
@@ -37,12 +38,22 @@ export const removeFromCart = (product) => {
   };
 };
 
+export const removeMultipleFromCart = (products) => {
+  return {
+    type: REMOVE_MULTIPLE_FROM_CART,
+    payload: products
+  };
+};
+
 export default (state = initialState, action) => {
   switch(action.type) {
     case ADD_TO_CART:
       return _.unionBy(state, [action.payload], 'id');
     case REMOVE_FROM_CART:
-      return state.filter(product => product.id !== action.payload.id);
+      //return state.filter(product => product.id !== action.payload.id);
+      return _.differenceBy(state, [action.payload], 'id');
+    case REMOVE_MULTIPLE_FROM_CART:
+      return _.differenceBy(state, action.payload, 'id');
     case RESET_CART:
       return [];
     case ADD_MULTIPLE_TO_CART:
