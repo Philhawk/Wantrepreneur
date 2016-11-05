@@ -33,68 +33,77 @@ export default class extends React.Component {
 
   render () {
     return (
-      <div className='potato'>
+      <div>
         <NavbarContainer />
-        <Grid>
+        <div className='categories-choices'>
+          <Grid>
+            <Row>
+              <Col sm={12}>
+                <h1 className='categories-heading'><span>Select Your Dream Business</span></h1>
+                <h1 className='description-headline'>Click on each for more details</h1>
+                <br/>
+              </Col>
+            </Row>
 
-          <Row>
-            <Col sm={12}>
-              <FormGroup>
-                <FormControl id="product-searchbar" type="text" placeholder="Search" onInput={this.onSearchInput} />
-              </FormGroup>
-              <br />
-            </Col>
-          </Row>
+            <Row>
+              <Col sm={12}>
+                <FormGroup>
+                  <FormControl id="product-searchbar" type="text" placeholder="Search" onInput={this.onSearchInput} />
+                </FormGroup>
+                <br />
+              </Col>
+            </Row>
 
-          <Row>
-          {
-            this.props.products
-              .sort((a, b) => a.name > b.name ? 1: -1)
-              .filter(p => p.name.toLowerCase().includes(this.state.search)
-                || p.description.toLowerCase().includes(this.state.search)
-                || p.categories
-                    .reduce((a, b) => a + b.name, '')
-                    .toLowerCase()
-                    .includes(this.state.search)
-              )
-              .map(p => {
-                return (
-                  <Col className="product-grid" key={p.id} sm={6} md={4} onClick={() => this.open(p)}>
-                    <Row><img src={ p.image }/>
-                    <p>{ p.name }</p>
-                    </Row>
-                  </Col>
+            <Row>
+            {
+              this.props.products
+                .sort((a, b) => a.name > b.name ? 1: -1)
+                .filter(p => p.name.toLowerCase().includes(this.state.search)
+                  || p.description.toLowerCase().includes(this.state.search)
+                  || p.categories
+                      .reduce((a, b) => a + b.name, '')
+                      .toLowerCase()
+                      .includes(this.state.search)
                 )
-            })
-          }
-          </Row>
-        </Grid>
+                .map(p => {
+                  return (
+                    <Col className="product-grid" key={p.id} sm={6} md={4} onClick={() => this.open(p)}>
+                      <Row><img src={ p.image }/>
+                      <p>{ p.name }</p>
+                      </Row>
+                    </Col>
+                  )
+              })
+            }
+            </Row>
+          </Grid>
 
-        <Modal show={this.state.showModal} onHide={this.close}>
-          <Modal.Header closeButton>
-            <Modal.Title>{this.state.currentProduct.name}</Modal.Title>
-          </Modal.Header>
+          <Modal show={this.state.showModal} onHide={this.close}>
+            <Modal.Header closeButton>
+              <Modal.Title>{this.state.currentProduct.name}</Modal.Title>
+            </Modal.Header>
 
-          <Modal.Body>
-            <p><a href={this.state.currentProduct.url ? this.state.currentProduct.url : null}><img src={this.state.currentProduct.image}/></a></p>
-            <p className="product-price">Price: ${this.state.currentProduct.price ? this.state.currentProduct.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","): null}</p>
-            <p>{this.state.currentProduct.description}</p>
-          </Modal.Body>
+            <Modal.Body>
+              <p><a href={this.state.currentProduct.url ? this.state.currentProduct.url : null}><img src={this.state.currentProduct.image}/></a></p>
+              <p className="product-price">Price: ${this.state.currentProduct.price ? this.state.currentProduct.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","): null}</p>
+              <p>{this.state.currentProduct.description}</p>
+            </Modal.Body>
 
-          <Modal.Footer>
-            <Button onTouchTap={this.handleTouchTap}>Add to Cart</Button>
-          </Modal.Footer>
-        </Modal>
+            <Modal.Footer>
+              <Button onTouchTap={this.handleTouchTap}>Add to Cart</Button>
+            </Modal.Footer>
+          </Modal>
 
-        <div>
-          <Snackbar
-            open={this.state.open}
-            message={this.state.message}
-            action="undo"
-            autoHideDuration={this.state.autoHideDuration}
-            onActionTouchTap={this.handleActionTouchTap}
-            onRequestClose={this.handleRequestClose}
-          />
+          <div>
+            <Snackbar
+              open={this.state.open}
+              message={this.state.message}
+              action="undo"
+              autoHideDuration={this.state.autoHideDuration}
+              onActionTouchTap={this.handleActionTouchTap}
+              onRequestClose={this.handleRequestClose}
+            />
+          </div>
         </div>
       </div>
     )

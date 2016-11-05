@@ -5,7 +5,7 @@ import {Col, Row, Grid, Jumbotron} from "react-bootstrap";
 import {Link} from 'react-router';
 import FontIcon from 'material-ui/FontIcon';
 import {red500, yellow500, blue500} from 'material-ui/styles/colors';
-import Navigation from '../navbar/Navbar';
+import NavbarContainer from '../navbar/NavbarContainer';
 
 export default class Categories extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ export default class Categories extends React.Component {
 
       return (
         <div>
-          <Navigation />
+          <NavbarContainer />
           <div className='categories-choices'>
             <Grid>
 
@@ -39,12 +39,14 @@ export default class Categories extends React.Component {
 
               <Row>
                 {this.props.categories.allCategories.map(category => (
-                  <Col sm={6} md={4} key={category.id} onClick={() => this.props.addCategory(category.name)}>
-                    <Jumbotron className='boxes'>
-                      <FontIcon className="material-icons" style={iconStyles}>{category.icon}</FontIcon>
-                        <p>{category.name}</p>
-                    </Jumbotron>
-                  </Col>
+                  <Link to='/price' key={category.id}>
+                    <Col sm={6} md={4} onClick={() => this.props.addCategory(category.name)}>
+                      <Jumbotron className='boxes'>
+                        <FontIcon className="material-icons" style={iconStyles}>{category.icon}</FontIcon>
+                          <p>{category.name}</p>
+                      </Jumbotron>
+                    </Col>
+                  </Link>
                   ))}
               </Row>
             </Grid>
