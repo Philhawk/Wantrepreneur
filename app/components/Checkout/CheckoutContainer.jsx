@@ -12,6 +12,6 @@ const mapDispatchToProps = () => dispatch => ({
   clearCart: () => {
     dispatch(resetCartThunk());
   }
-})
+});
 
 export default connect (mapStateToProps, mapDispatchToProps)(Checkout);

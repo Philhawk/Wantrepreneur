@@ -42,10 +42,19 @@ export default class extends React.Component {
         // useful if you're using React-Tap-Event-Plugin
         triggerEvent="onTouchTap"
         >
-        <button className="btn btn-primary">
+        <button className="btn btn-primary" onClick={ this.validate }>
           Pay Now
         </button>
       </StripeCheckout>
     );
   }
-}
+
+  validate() {
+    console.log('validating order');
+    axios.post('/api/checkout/validate', {
+      cart: this.props.cart
+    })
+    .then(() => console.log('order validated'))
+    .catch(() => console.log('validation error'));
+  }
+};
