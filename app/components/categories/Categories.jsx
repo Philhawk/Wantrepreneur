@@ -40,7 +40,7 @@ export default class Categories extends React.Component {
               <Row>
                 {this.props.categories.allCategories.map(category => (
                   <Link to='/price' key={category.id}>
-                    <Col sm={6} md={4} onClick={() => this.props.addCategory(category.name)}>
+                    <Col sm={6} md={4} onClick={() => this.props.addCategory(category.id)}>
                       <Jumbotron className='boxes'>
                         <FontIcon className="material-icons" style={iconStyles}>{category.icon}</FontIcon>
                           <p>{category.name}</p>

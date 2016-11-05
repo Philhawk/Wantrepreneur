@@ -47,6 +47,12 @@ export default class extends React.Component {
   }
 
   render () {
+    // const filteredProducts = this.props.categories.filter &&
+    //                          this.props.products.filter(p => p.categories.name === this.props.categories.filter)
+
+
+                               // .filter(p => p.categories.name === this.props.categories.filter)
+                              // .filter(p => this.props.price[0] < p.price && p.price < this.props.price[1])
 
     const sortedProducts =   this.props.products
                               .sort((a, b) => a.name > b.name ? 1: -1)
@@ -102,6 +108,7 @@ export default class extends React.Component {
                        rows={2}
                      >
                        <img src={p.image} />
+                       {console.log(p.categories[0] && p.categories[0].id, this.props.categories.filter, p.categories.name === this.props.categories.filter)}
                      </GridTile>
                   </GridList>
                 </Col>
