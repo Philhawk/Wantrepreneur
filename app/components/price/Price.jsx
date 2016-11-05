@@ -5,6 +5,8 @@ import NavbarContainer from '../navbar/NavbarContainer';
 import Slider from 'material-ui/Slider';
 import {Grid, Col, Row, Button} from 'react-bootstrap';
 import {Link} from 'react-router';
+import 'rc-slider/assets/index.css';
+import Rcslider from 'rc-slider';
 
 export default class SliderExampleControlled extends React.Component {
 	constructor(props) {
@@ -39,7 +41,7 @@ export default class SliderExampleControlled extends React.Component {
 
 	      		<Col sm={8}>
 			      	<p>{this.state.firstSlider}</p>
-			      	
+			      	<Rcslider />
 			        <Slider
 			        	className='price-slider'
 			          min={0}

@@ -1,12 +1,12 @@
 'use strict';
 
-const initialState = [];
+const initialState = 0;
 
 const ADD_PRICE = 'ADD_PRICE';
 
 export const addPrice = price => {
   return {
-    type: ADD_CATEGORIES,
+    type: ADD_PRICE,
     price
   };
 };
