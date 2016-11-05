@@ -4,17 +4,28 @@ import React from 'react';
 import NavbarContainer from '../navbar/NavbarContainer';
 import { Grid, Col, Row } from 'react-bootstrap';
 import CheckoutContainer from '../Checkout/CheckoutContainer';
+import io from 'socket.io-client';
+let socket;
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
 export default class extends React.Component {
   constructor (props) {
     super(props);
+    this.soldProducts = this.soldProducts.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
   }
 
   componentDidMount() {
     this.props.getCart();
+    socket = io('http://localhost:8080');
+    socket.on('sold-products', this.soldProducts);
+  }
+
+  componentWillUnmount() {
+    socket.off('sold-products', null);
+    socket.disconnect();
+    socket = null;
   }
 
   removeFromCart(item) {
@@ -52,5 +63,9 @@ export default class extends React.Component {
         </Grid>
       </div>
     );
+  }
+
+  soldProducts(products) {
+    this.props.removeMultipleFromCart(products);
   }
 }

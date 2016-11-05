@@ -5,6 +5,8 @@ import NavbarContainer from '../navbar/NavbarContainer';
 import {Grid, Col, Row, Modal, Button, FormGroup, FormControl} from 'react-bootstrap';
 import Snackbar from 'material-ui/Snackbar';
 import { addToCart } from '../../reducers/cart';
+import io from 'socket.io-client';
+let socket;
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
@@ -28,11 +30,20 @@ export default class extends React.Component {
     this.handleTouchTap = this.handleTouchTap.bind(this);
     this.handleActionTouchTap = this.handleActionTouchTap.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
+    this.soldProducts = this.soldProducts.bind(this);
   }
 
   componentDidMount() {
     this.props.getProducts();
     this.props.getCart();
+    socket = io('http://localhost:8080');
+    socket.on('sold-products', this.soldProducts);
+  }
+
+  componentWillUnmount() {
+    socket.off('sold-products', null);
+    socket.disconnect();
+    socket = null;
   }
 
   render () {
@@ -65,7 +76,6 @@ export default class extends React.Component {
       <div className='potato'>
         <NavbarContainer />
         <Grid>
-
           <Row>
             <Col sm={12}>
               <FormGroup>
@@ -156,4 +166,9 @@ export default class extends React.Component {
       snackbarOpen: false,
     });
   };
+
+  soldProducts(products) {
+    this.props.removeMultipleFromCart(products);
+    this.props.removeMultipleProductsFromOptions(products);
+  }
 }
