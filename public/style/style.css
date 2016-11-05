@@ -1,4 +1,5 @@
 img {
+  border-radius: 10px;
 	width: 350px;
 	height: 350px;
 }
@@ -179,4 +180,12 @@ body {
 
   /* Support for IE. */
   font-feature-settings: 'liga';
+}
+
+.jumbotron {
+  color: #333333;
+}
+
+.jumbotron:hover {
+    opacity: .8;
 }

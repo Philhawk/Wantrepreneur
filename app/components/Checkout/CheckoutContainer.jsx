@@ -4,7 +4,7 @@ import Checkout from './Checkout';
 import { connect } from 'react-redux';
 import { resetCartThunk } from '../cart/CartHelpers';
 
-const mapStateToProps = ({ cart }, { params }) => ({
+const mapStateToProps = ({ cart }) => ({
   cart
 });
 

@@ -4,7 +4,7 @@ import Cart from './Cart';
 import { connect } from 'react-redux';
 import { getCartFromLocal, removeFromCartThunk, removeMultipleFromCartThunk } from './CartHelpers';
 
-const mapStateToProps = ({ cart }, { params }) => ({
+const mapStateToProps = ({ cart }) => ({
   cart
 });
 

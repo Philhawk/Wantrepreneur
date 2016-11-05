@@ -73,7 +73,7 @@ export default class extends React.Component {
     };
 
     return (
-      <div className='potato'>
+      <div>
         <NavbarContainer />
         <Grid>
           <Row>
