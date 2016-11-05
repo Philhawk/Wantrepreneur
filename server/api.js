@@ -11,6 +11,7 @@ api
   .use('/categories', require('./categories'))
   .use('/logout', require('./logout'))
   .use('/checkout', require('./checkout'))
+  .use('/orders', require('./orders'))
   .use('/register', require('./register'));
 
 
