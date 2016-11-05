@@ -9,7 +9,7 @@ export default class HomepageChoices extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      helpClass: "boxes"
+      helpClass: "boxes animated flipInX"
     };
   }
 
@@ -43,7 +43,7 @@ export default class HomepageChoices extends React.Component {
             </Col>
             <Col md={6} mdPull={6} className='leftDivOpeningPage'>
               <Col md={6} mdPush={6}>
-                <Jumbotron onClick={this.redirectToProducts} className="boxes">
+                <Jumbotron onClick={this.redirectToProducts} className="boxes animated flipInX">
                   <FontIcon className="material-icons" style={iconStyles}>check_circle</FontIcon>
                     <p> I know</p>
                 </Jumbotron>
