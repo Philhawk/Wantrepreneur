@@ -4,6 +4,7 @@ import React from 'react';
 import NavbarContainer from '../navbar/NavbarContainer';
 import {Grid, Col, Row, Modal, Button, FormGroup, FormControl, DropdownButton, MenuItem} from 'react-bootstrap';
 import Snackbar from 'material-ui/Snackbar';
+import FontIcon from 'material-ui/FontIcon';
 import { addToCart } from '../../reducers/cart';
 import io from 'socket.io-client';
 let socket;
@@ -104,12 +105,24 @@ export default class extends React.Component {
           </Row>
           <Row>
             <DropdownButton title="Sort by" id="sort-dropdown">
-              <MenuItem onClick={() => this.setSortMethod('name', 1)}>Name (Ascending)</MenuItem>
-              <MenuItem onClick={() => this.setSortMethod('name', -1)}>Name (Descending)</MenuItem>
-              <MenuItem onClick={() => this.setSortMethod('category', 1)}>Category (Ascending)</MenuItem>
-              <MenuItem onClick={() => this.setSortMethod('category', -1)}>Category (Descending)</MenuItem>
-              <MenuItem onClick={() => this.setSortMethod('price', 1)}>Price (Ascending)</MenuItem>
-              <MenuItem onClick={() => this.setSortMethod('price', -1)}>Price (Descending)</MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('name', 1)}>
+                <FontIcon className="material-icons sort-arrow">keyboard_arrow_down</FontIcon>Name
+              </MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('name', -1)}>
+                <FontIcon className="material-icons sort-arrow">keyboard_arrow_up</FontIcon>Name
+              </MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('category', 1)}>
+                <FontIcon className="material-icons sort-arrow">keyboard_arrow_up</FontIcon>Category
+              </MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('category', -1)} >
+                <FontIcon className="material-icons sort-arrow">keyboard_arrow_down</FontIcon>Category
+              </MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('price', 1)}>
+                <FontIcon className="material-icons sort-arrow">keyboard_arrow_up</FontIcon>Price
+              </MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('price', -1)}>
+                <FontIcon className="material-icons sort-arrow">keyboard_arrow_down</FontIcon>Price
+              </MenuItem>
             </DropdownButton>
           </Row>
 

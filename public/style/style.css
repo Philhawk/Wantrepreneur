@@ -4,7 +4,9 @@ img {
 	height: 350px;
 }
 
-
+.sort-arrow {
+  vertical-align: middle;
+}
 /* change to be responsive?*/
 .brand img {
   height: 50px;
