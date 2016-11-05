@@ -4,12 +4,14 @@ img {
 	height: 350px;
 }
 
-
-.logo img {
+.sort-arrow {
+  vertical-align: middle;
+}
+/* change to be responsive?*/
+.brand img {
   height: 50px;
   width: 50px;
 }
-
 
 .cart-image {
 	max-width: 12em;

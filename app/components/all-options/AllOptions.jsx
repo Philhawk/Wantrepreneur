@@ -2,8 +2,9 @@
 
 import React from 'react';
 import NavbarContainer from '../navbar/NavbarContainer';
-import {Grid, Col, Row, Modal, Button, FormGroup, FormControl} from 'react-bootstrap';
+import {Grid, Col, Row, Modal, Button, FormGroup, FormControl, DropdownButton, MenuItem} from 'react-bootstrap';
 import Snackbar from 'material-ui/Snackbar';
+import FontIcon from 'material-ui/FontIcon';
 import { addToCart } from '../../reducers/cart';
 import io from 'socket.io-client';
 let socket;
@@ -22,6 +23,8 @@ export default class extends React.Component {
       showModal: false,
       currentProduct: {},
       snackbarOpen: false,
+      sortField: 'name',
+      sortAscending: 1 // 1 for ascending, -1 for descending
     };
 
     this.onSearchInput = this.onSearchInput.bind(this);
@@ -31,6 +34,7 @@ export default class extends React.Component {
     this.handleActionTouchTap = this.handleActionTouchTap.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
     this.soldProducts = this.soldProducts.bind(this);
+    this.setSortMethod = this.setSortMethod.bind(this);
   }
 
   componentDidMount() {
@@ -46,10 +50,25 @@ export default class extends React.Component {
     socket = null;
   }
 
+  getSortFunction(field, direction) {
+    switch (field) {
+      case 'name':
+      default:
+        return (a, b) => a[field].toLowerCase() > b[field].toLowerCase() ? direction : -direction;
+      case 'price':
+        return (a, b) => direction * (a[field] - b[field]);
+      case 'category':
+        return (a,b) => a[field].name.toLowerCase() > b[field].name.toLowerCase() ? direction : -direction;
+    }
+  }
+
+  setSortMethod(sortField, sortAscending) {
+    this.setState({sortField, sortAscending});
+  }
+
   render () {
 
     const sortedProducts =   this.props.products
-                              .sort((a, b) => a.name > b.name ? 1: -1)
                               .filter(p => p.name.toLowerCase().includes(this.state.search)
                                 || p.description.toLowerCase().includes(this.state.search)
                                 || p.categories
@@ -57,6 +76,7 @@ export default class extends React.Component {
                                     .toLowerCase()
                                     .includes(this.state.search)
                               )
+                              .sort(this.getSortFunction(this.state.sortField, this.state.sortAscending));
 
     const styles = {
       root: {
@@ -82,6 +102,28 @@ export default class extends React.Component {
                 <FormControl id="product-searchbar" type="text" placeholder="Search" onInput={this.onSearchInput} />
               </FormGroup>
             </Col>
+          </Row>
+          <Row>
+            <DropdownButton title="Sort by" id="sort-dropdown">
+              <MenuItem onClick={() => this.setSortMethod('name', 1)}>
+                <FontIcon className="material-icons sort-arrow">keyboard_arrow_down</FontIcon>Name
+              </MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('name', -1)}>
+                <FontIcon className="material-icons sort-arrow">keyboard_arrow_up</FontIcon>Name
+              </MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('category', 1)}>
+                <FontIcon className="material-icons sort-arrow">keyboard_arrow_up</FontIcon>Category
+              </MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('category', -1)} >
+                <FontIcon className="material-icons sort-arrow">keyboard_arrow_down</FontIcon>Category
+              </MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('price', 1)}>
+                <FontIcon className="material-icons sort-arrow">keyboard_arrow_up</FontIcon>Price
+              </MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('price', -1)}>
+                <FontIcon className="material-icons sort-arrow">keyboard_arrow_down</FontIcon>Price
+              </MenuItem>
+            </DropdownButton>
           </Row>
 
           <Row>

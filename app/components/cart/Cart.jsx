@@ -39,7 +39,7 @@ export default class extends React.Component {
         <Grid>
           <Row>
 
-            {this.props.cart.length > 0 ? this.props.cart.map(cartItem => (
+            {this.props.cart.length > 0 ? this.props.cart.sort((a, b) => a.name > b.name ? 1 : -1).map(cartItem => (
               <Col sm={12} lg={6} key={ cartItem.id } className='cart-item'>
                 <Card>
                   <Row>
@@ -58,7 +58,9 @@ export default class extends React.Component {
             )) : null}
           </Row>
           <Row>
-              <CheckoutContainer />
+            {
+              this.props.cart.length > 0 ? <CheckoutContainer /> : "Cart is empty"
+            }
           </Row>
         </Grid>
       </div>
