@@ -11,6 +11,7 @@ import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import _ from 'lodash';
 
 const snackbarAutoHideDuration = 4000;
 
@@ -47,15 +48,8 @@ export default class extends React.Component {
   }
 
   render () {
-    // const filteredProducts = this.props.categories.filter &&
-    //                          this.props.products.filter(p => p.categories.name === this.props.categories.filter)
-
-
-                               // .filter(p => p.categories.name === this.props.categories.filter)
-                              // .filter(p => this.props.price[0] < p.price && p.price < this.props.price[1])
 
     const sortedProducts =   this.props.products
-                              .sort((a, b) => a.name > b.name ? 1: -1)
                               .filter(p => p.name.toLowerCase().includes(this.state.search)
                                 || p.description.toLowerCase().includes(this.state.search)
                                 || p.categories
@@ -63,6 +57,7 @@ export default class extends React.Component {
                                     .toLowerCase()
                                     .includes(this.state.search)
                               )
+                              .filter(p => p.categories.filter(category => category.id === this.props.categories.filter).length)
 
     const styles = {
       root: {
@@ -108,7 +103,6 @@ export default class extends React.Component {
                        rows={2}
                      >
                        <img src={p.image} />
-                       {console.log(p.categories[0] && p.categories[0].id, this.props.categories.filter, p.categories.name === this.props.categories.filter)}
                      </GridTile>
                   </GridList>
                 </Col>
