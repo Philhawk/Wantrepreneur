@@ -73,7 +73,7 @@ export default class extends React.Component {
     };
 
     return (
-      <div className='potato'>
+      <div>
         <NavbarContainer />
         <Grid>
           <Row>
@@ -89,14 +89,22 @@ export default class extends React.Component {
 
               sortedProducts.map(p => {
                 return (
-                <Col className="product-grid" key={p.id} sm={6} md={4} onClick={() => this.open(p)}>
+                <Col className="product-grid" key={p.id} sm={6} md={4} lg={6} onClick={() => this.open(p)}>
                   <GridList cellHeight={180} style={styles.gridList} >
-                      <GridTile key={p.name} title={p.name} subtitle={<span>by <b>AUTHOR</b></span>} actionIcon={<IconButton><StarBorder color="white" /></IconButton>} >
-                        <img src={p.image} />
-                      </GridTile>
+                    <GridTile
+                       key={p.id}
+                       title={p.name}
+                       actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+                       actionPosition="left"
+                       titlePosition="top"
+                       titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
+                       cols={2}
+                       rows={2}
+                     >
+                       <img src={p.image} />
+                     </GridTile>
                   </GridList>
                 </Col>
-
                 )
             })
           }

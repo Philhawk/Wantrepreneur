@@ -8,9 +8,11 @@ api
   .use('/auth', require('./auth'))
   .use('/users', require('./users'))
   .use('/products', require('./products'))
+  .use('/categories', require('./categories'))
   .use('/logout', require('./logout'))
   .use('/checkout', require('./checkout'))
   .use('/register', require('./register'));
+
 
 // Send along any errors
 api.use((err, req, res, next) => {

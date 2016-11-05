@@ -1,9 +1,10 @@
 'use strict';
 
 import React from'react';
-import Navbar from '../navbar/Navbar';
+import NavbarContainer from '../navbar/NavbarContainer';
 import Slider from 'material-ui/Slider';
-import {Grid, Col, Button} from 'react-bootstrap';
+import {Grid, Col, Row, Button} from 'react-bootstrap';
+import {Link} from 'react-router';
 
 export default class SliderExampleControlled extends React.Component {
 	constructor(props) {
@@ -24,25 +25,37 @@ export default class SliderExampleControlled extends React.Component {
   render() {
     return (
       <div>
-      	<Navbar />
-      	<Grid>
-      		<Col sm={8}>
-      			<h2>Select your maximum price:</h2>
-		      	<span>{this.state.firstSlider}</span>
-		      	
-		        <Slider
-		        	className='price-slider'
-		          min={0}
-		          max={100}
-		          step={1}
-		          defaultValue={50}
-		          value={this.state.firstSlider}
-		          onChange={this.handleFirstSlider}
-		        />
+      	<NavbarContainer />
+        <div className='categories-choices'>
+          <Grid>
 
-		        <Button>Next</Button>
-		       </Col>
-        </Grid>
+            <Row>
+              <Col sm={12}>
+                <h1 className='categories-heading'><span>Price Range</span></h1>
+                <h1 className='description-headline'>Next, select the ideal price range for your business</h1>
+                <br/>
+              </Col>
+            </Row>
+
+	      		<Col sm={8}>
+			      	<p>{this.state.firstSlider}</p>
+			      	
+			        <Slider
+			        	className='price-slider'
+			          min={0}
+			          max={100}
+			          step={1}
+			          defaultValue={50}
+			          value={this.state.firstSlider}
+			          onChange={this.handleFirstSlider}
+			        />
+
+			        <Link to='/all-options'>
+                <Button>Next</Button>
+              </Link>
+			      </Col>
+        	</Grid>
+        </div>
       </div>
     );
   }

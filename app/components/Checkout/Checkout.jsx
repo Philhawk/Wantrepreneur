@@ -32,7 +32,7 @@ export default class extends React.Component {
         description=""
         image="/WPNavbarLogo.png"
         ComponentClass="div"
-        amount={ this.props.cart.reduce((agg, product) => agg + product.price, 0) }
+        amount={ this.props.cart.reduce((agg, product) => agg + (product.price * 100), 0) }
         currency="USD"
         bitcoin
         allowRememberMe
