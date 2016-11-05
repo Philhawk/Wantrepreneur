@@ -90,8 +90,12 @@ export default class extends React.Component {
               sortedProducts.map(p => {
                 return (
                 <Col className="product-grid" key={p.id} sm={6} md={4} lg={6} onClick={() => this.open(p)}>
-                  <GridList cellHeight={180} style={styles.gridList} >
+                  <GridList
+                      cellHeight={180}
+                      style={styles.gridList}
+                  >
                     <GridTile
+                      className={this.props.cart.filter(c => c.id === p.id).length ? "cart-product" : ""}
                        key={p.id}
                        title={p.name}
                        actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
@@ -123,7 +127,10 @@ export default class extends React.Component {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button onTouchTap={this.handleTouchTap}>Add to Cart</Button>
+            { this.props.cart.filter(product => product.id === this.state.currentProduct.id).length ?
+              null
+              : <Button onTouchTap={this.handleTouchTap}>Add to Cart</Button>
+            }
           </Modal.Footer>
         </Modal>
 
