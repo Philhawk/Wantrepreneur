@@ -14,10 +14,7 @@ export default class HomepageChoices extends React.Component {
   }
 
   componentDidMount() {
-    window.setTimeout(() => {
-      console.log('about to animate');
-      this.setState({ helpClass: "boxes animated pulse"});
-    }, 5000);
+    window.setTimeout(() => this.setState({ helpClass: "boxes animated pulse"}), 5000);
   }
 
   helpMeChoose(){
