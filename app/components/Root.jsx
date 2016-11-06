@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavbarContainer from './navbar/NavbarContainer';
-import HomePageChoices from './homepage-choices/HomepageChoices';
+import HomePageChoicesContainer from './homepage-choices/HomepageChoicesContainer';
 
 export default class Root extends Component {
   constructor() {
@@ -11,7 +11,7 @@ export default class Root extends Component {
     return (
       <div>
         <NavbarContainer />
-        <HomePageChoices />
+        <HomePageChoicesContainer />
       </div>
     );
   }

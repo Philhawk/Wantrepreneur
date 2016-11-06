@@ -3,7 +3,7 @@
 import axios from 'axios';
 import { connect } from 'react-redux';
 import Categories from './Categories';
-import { receiveAllCategories, filterWithCategory } from '../../reducers/categories';
+import { receiveAllCategories, addCategory } from '../../reducers/categories';
 
 
 export const receiveCategories = () => dispatch => {
@@ -21,7 +21,7 @@ const mapDispatchToProps = () => dispatch => ({
 		dispatch(receiveCategories());
 	},
 	addCategory: (category) => {
-		dispatch(filterWithCategory(category));
+		dispatch(addCategory(category));
 	}
 });
 

@@ -30,7 +30,6 @@ export default class extends React.Component {
       undoAction: '', // 'add' or 'remove'
       sortField: 'name',
       sortAscending: 1, // 1 for ascending, -1 for descending
-      categories: []
     };
 
     this.onSearchInput = this.onSearchInput.bind(this);
@@ -52,7 +51,6 @@ export default class extends React.Component {
     this.props.getCategories(this.props.categories.allCategories);
     socket = io('http://localhost:8080');
     socket.on('sold-products', this.soldProducts);
-    if(this.props.categories.filter) { this.setState({ categories: [ this.props.categories.filter ] })}
   }
 
   componentWillUnmount() {
@@ -69,7 +67,7 @@ export default class extends React.Component {
       case 'price':
         return (a, b) => direction * (a[field] - b[field]);
       case 'category':
-        return (a,b) => a[field].name.toLowerCase() > b[field].name.toLowerCase() ? direction : -direction;
+        return (a,b) => a[field][0].name.toLowerCase() > b[field][0].name.toLowerCase() ? direction : -direction;
     }
   }
 
@@ -78,10 +76,10 @@ export default class extends React.Component {
   }
 
   handleChipClick(categoryId) {
-    if (this.state.categories.indexOf(categoryId) >= 0) {
-      this.setState({categories: this.state.categories.filter(c => c !== categoryId)});
+    if (this.props.categories.filter.indexOf(categoryId) >= 0) {
+      this.props.removeCategoryFromFilter(categoryId);
     } else {
-      this.setState({categories: [...this.state.categories, categoryId]});
+      this.props.addCategoryToFilter(categoryId);
     }
   }
 
@@ -90,7 +88,8 @@ export default class extends React.Component {
       <Chip
         style={styles.chip}
         onClick={() => this.handleChipClick(category.id)}
-        backgroundColor={this.state.categories.indexOf(category.id) >= 0 ? blue300 : grey50}
+        backgroundColor={this.props.categories.filter.indexOf(category.id) >= 0 ? blue300 : grey50}
+        key={category.id}
       >
         {category.name}
       </Chip>
@@ -98,19 +97,21 @@ export default class extends React.Component {
   }
 
   render () {
-
     const sortedProducts =   this.props.products
-                              .filter(p => this.props.price[0] <= p.price && p.price <= this.props.price[1])
-                              .filter(p => this.state.search ? p.name.toLowerCase().includes(this.state.search)
-                                           || p.description.toLowerCase().includes(this.state.search)
-                                           || p.categories
-                                                .reduce((a, b) => a + b.name, '')
-                                                .toLowerCase()
-                                                .includes(this.state.search)
-                                           : true
-                              )
+                              .filter(p => this.props.price.length ? this.props.price[0] <= p.price && p.price <= this.props.price[1] : true)
+                              .filter(p => {
+                                if (this.state.search !== '') {
+                                  return p.name.toLowerCase().includes(this.state.search)
+                                         || p.description.toLowerCase().includes(this.state.search)
+                                         || p.categories
+                                              .reduce((a, b) => a + b.name, '')
+                                              .toLowerCase()
+                                              .includes(this.state.search)
+                                }
+                                return true;
+                              })
                               .filter(p => p.categories.filter(category => {
-                                return this.state.categories.length ? this.state.categories.indexOf(category.id) >= 0 : true;
+                                return this.props.categories.filter.length ? this.props.categories.filter.indexOf(category.id) >= 0 : true;
                               }).length)
                               .sort(this.getSortFunction(this.state.sortField, this.state.sortAscending));
 
@@ -144,8 +145,10 @@ export default class extends React.Component {
               <AutoComplete
                   floatingLabelText="What are you looking for?"
                   filter={AutoComplete.caseInsensitiveFilter}
-                  dataSource={[...this.props.products.map(p => p.name), ]}
-                  onInput={this.onSearchInput}
+                  dataSource={[...this.props.products.map(p => p.name),...this.props.categories.allCategories.map(c => c.name)]}
+                  onUpdateInput={this.onSearchInput}
+                  onNewRequest={this.onSearchInput}
+                  maxSearchResults={8}
                   >
               </AutoComplete>
             </Col>
@@ -244,7 +247,7 @@ export default class extends React.Component {
 
   // For product modals
   onSearchInput(evt) {
-    this.setState({search: evt.target.value.toLowerCase()});
+    this.setState({search: evt.toLowerCase()});
   }
 
   open(product) {
