@@ -20,13 +20,20 @@ export default class Thanks extends React.Component {
       <div>
         <NavbarContainer />
         <Grid>
-          <Row>
             { this.props.orderLoading && !this.props.order.products ? null : (
-                <Col sm={12} lg={6}>
-                  <CardHeader title="Thank you for purchasing!" subtitle={`Order Id:${this.props.order.orderId}`}/>
-                </Col>
-              )}
-          </Row>
+              <div>
+                <Row>
+                  <Col sm={12} >
+                    <CardHeader title="Thank you for purchasing!" />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col sm={12} >
+                    <CardHeader title='Order Id:' subtitle={`${this.props.order.orderId}`}/>
+                  </Col>
+                </Row>
+              </div>
+            )}
           <Row>
             { this.props.orderLoading ?
               <CircularProgress size={80} thickness={5} color="#F4E04D" />
