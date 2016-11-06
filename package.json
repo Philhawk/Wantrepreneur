@@ -1,6 +1,9 @@
 {
   "name": "wantrepreneur",
   "version": "0.0.1",
+  "engines": {
+    "node": "6.7.0"
+  },
   "description": "A happy little skeleton.",
   "main": "index.js",
   "scripts": {
@@ -9,7 +12,7 @@
     "seed": "node db/models/seed.js",
     "build": "webpack",
     "build-watch": "webpack -w",
-    "start": "nodemon server/start.js"
+    "start": "node server/start.js"
   },
   "repository": {
     "type": "git",
@@ -35,6 +38,7 @@
     "axios": "^0.15.2",
     "babel-preset-stage-2": "^6.18.0",
     "bcrypt": "^0.8.7",
+    "bcrypt-as-promised": "^1.1.0",
     "body-parser": "^1.15.2",
     "chalk": "^1.1.3",
     "cookie-session": "^2.0.0-alpha.1",

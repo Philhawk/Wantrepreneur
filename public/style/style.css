@@ -4,7 +4,9 @@ img {
 	height: 350px;
 }
 
-
+.sort-arrow {
+  vertical-align: middle;
+}
 /* change to be responsive?*/
 .brand img {
   height: 50px;
@@ -17,6 +19,11 @@ img {
 	margin-right: -7em;
 }
 
+.cart-product {
+  border: #F4E04D;
+  border-style: solid;
+}
+
 .cart-item {
 	padding-top: 2em
 }
@@ -26,6 +33,7 @@ img {
 	border-bottom:3px solid #F4E04D;
 	padding-bottom: 30px;
 }
+
 
 .rightDivOpeningPage {
 	padding-left: 8em;
@@ -79,9 +87,21 @@ img {
 	color: #FCFCFC;
 
 }
+
 .boxes {
 	background-color: #F4E04D;
+  box-shadow: 4px 4px 2px #666;
+  -webkit-box-shadow: 4px 4px 2px #666;
+  -moz-box-shadow: 4px 4px 2px #666;
 }
+
+.boxes:active {
+  box-shadow: inset 4px 4px 2px #666;
+  -webkit-box-shadow: inset 4px 4px 2px #666;
+  -moz-box-shadow: inset 4px 4px 2px #666;
+}
+
+
 
 .heading {
 	color: #333333;
@@ -145,15 +165,12 @@ body {
   height:100vh;;
 }
 
-.navbar-inverse {
-  background-color: transparent;
-  border-color: transparent;
+/* Navbar CSS*/
+/* change to be responsive?*/
+.logo img {
+	height: 50px;
+	width: 50px;
 }
-
-.navbar-brand {
-  color: transparent;
-}
-
 
 /*ICONS*/
 

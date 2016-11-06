@@ -2,8 +2,9 @@
 
 import React from 'react';
 import NavbarContainer from '../navbar/NavbarContainer';
-import {Grid, Col, Row, Modal, Button, FormGroup, FormControl} from 'react-bootstrap';
+import {Grid, Col, Row, Modal, Button, FormGroup, FormControl, DropdownButton, MenuItem} from 'react-bootstrap';
 import Snackbar from 'material-ui/Snackbar';
+import FontIcon from 'material-ui/FontIcon';
 import { addToCart } from '../../reducers/cart';
 import io from 'socket.io-client';
 let socket;
@@ -23,6 +24,8 @@ export default class extends React.Component {
       showModal: false,
       currentProduct: {},
       snackbarOpen: false,
+      sortField: 'name',
+      sortAscending: 1 // 1 for ascending, -1 for descending
     };
 
     this.onSearchInput = this.onSearchInput.bind(this);
@@ -32,6 +35,7 @@ export default class extends React.Component {
     this.handleActionTouchTap = this.handleActionTouchTap.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
     this.soldProducts = this.soldProducts.bind(this);
+    this.setSortMethod = this.setSortMethod.bind(this);
   }
 
   componentDidMount() {
@@ -47,11 +51,30 @@ export default class extends React.Component {
     socket = null;
   }
 
+  getSortFunction(field, direction) {
+    switch (field) {
+      case 'name':
+      default:
+        return (a, b) => a[field].toLowerCase() > b[field].toLowerCase() ? direction : -direction;
+      case 'price':
+        return (a, b) => direction * (a[field] - b[field]);
+      case 'category':
+        return (a,b) => a[field].name.toLowerCase() > b[field].name.toLowerCase() ? direction : -direction;
+    }
+  }
+
+  setSortMethod(sortField, sortAscending) {
+    this.setState({sortField, sortAscending});
+  }
+
   render () {
 
     const sortedProducts =   this.props.products
+<<<<<<< HEAD
                               .filter(p => p.categories.filter(category => category.id === this.props.categories.filter).length)
                               .filter(p => this.props.price[0] <= p.price && p.price <= this.props.price[1])
+=======
+>>>>>>> master
                               .filter(p => p.name.toLowerCase().includes(this.state.search)
                                 || p.description.toLowerCase().includes(this.state.search)
                                 || p.categories
@@ -59,6 +82,7 @@ export default class extends React.Component {
                                     .toLowerCase()
                                     .includes(this.state.search)
                               )
+                              .sort(this.getSortFunction(this.state.sortField, this.state.sortAscending));
 
     const styles = {
       root: {
@@ -85,6 +109,28 @@ export default class extends React.Component {
               </FormGroup>
             </Col>
           </Row>
+          <Row>
+            <DropdownButton title="Sort by" id="sort-dropdown">
+              <MenuItem onClick={() => this.setSortMethod('name', 1)}>
+                <FontIcon className="material-icons sort-arrow">keyboard_arrow_down</FontIcon>Name
+              </MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('name', -1)}>
+                <FontIcon className="material-icons sort-arrow">keyboard_arrow_up</FontIcon>Name
+              </MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('category', 1)}>
+                <FontIcon className="material-icons sort-arrow">keyboard_arrow_up</FontIcon>Category
+              </MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('category', -1)} >
+                <FontIcon className="material-icons sort-arrow">keyboard_arrow_down</FontIcon>Category
+              </MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('price', 1)}>
+                <FontIcon className="material-icons sort-arrow">keyboard_arrow_up</FontIcon>Price
+              </MenuItem>
+              <MenuItem onClick={() => this.setSortMethod('price', -1)}>
+                <FontIcon className="material-icons sort-arrow">keyboard_arrow_down</FontIcon>Price
+              </MenuItem>
+            </DropdownButton>
+          </Row>
 
           <Row>
           {
@@ -92,8 +138,12 @@ export default class extends React.Component {
               sortedProducts.map(p => {
                 return (
                 <Col className="product-grid" key={p.id} sm={6} md={4} lg={6} onClick={() => this.open(p)}>
-                  <GridList cellHeight={180} style={styles.gridList} >
+                  <GridList
+                      cellHeight={180}
+                      style={styles.gridList}
+                  >
                     <GridTile
+                      className={this.props.cart.filter(c => c.id === p.id).length ? "cart-product" : ""}
                        key={p.id}
                        title={p.name}
                        actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
@@ -125,7 +175,10 @@ export default class extends React.Component {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button onTouchTap={this.handleTouchTap}>Add to Cart</Button>
+            { this.props.cart.filter(product => product.id === this.state.currentProduct.id).length ?
+              null
+              : <Button onTouchTap={this.handleTouchTap}>Add to Cart</Button>
+            }
           </Modal.Footer>
         </Modal>
 

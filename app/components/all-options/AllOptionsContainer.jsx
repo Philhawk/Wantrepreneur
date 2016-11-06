@@ -11,10 +11,11 @@ const receiveProducts = () => dispatch => {
   .then(products => dispatch(receiveAllProducts(products.data)));
 };
 
-const mapStateToProps = ({products, categories, price}) => ({
+const mapStateToProps = ({products, categories, price, cart}) => ({
   products,
   categories,
-  price
+  price,
+  cart
 });
 
 const mapDispatchToProps = () => dispatch => ({
