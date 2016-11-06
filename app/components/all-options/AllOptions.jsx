@@ -97,6 +97,7 @@ export default class extends React.Component {
   render () {
 
     const sortedProducts =   this.props.products
+                              .filter(p => this.props.price[0] <= p.price && p.price <= this.props.price[1])
                               .filter(p => p.name.toLowerCase().includes(this.state.search)
                                 || p.description.toLowerCase().includes(this.state.search)
                                 || p.categories
@@ -104,10 +105,10 @@ export default class extends React.Component {
                                     .toLowerCase()
                                     .includes(this.state.search)
                               )
-                              .sort(this.getSortFunction(this.state.sortField, this.state.sortAscending))
                               .filter(p => p.categories.filter(category => {
                                 return this.state.categories.length ? this.state.categories.indexOf(category.id) >= 0 : true;
                               }).length);
+                              .sort(this.getSortFunction(this.state.sortField, this.state.sortAscending));
 
     const styles = {
       root: {
