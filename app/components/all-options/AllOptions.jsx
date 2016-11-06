@@ -13,6 +13,8 @@ import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import _ from 'lodash';
+import Chip from 'material-ui/Chip';
+import {blue300, grey50} from 'material-ui/styles/colors';
 
 const snackbarAutoHideDuration = 4000;
 
@@ -25,7 +27,8 @@ export default class extends React.Component {
       currentProduct: {},
       snackbarOpen: false,
       sortField: 'name',
-      sortAscending: 1 // 1 for ascending, -1 for descending
+      sortAscending: 1, // 1 for ascending, -1 for descending
+      categories: []
     };
 
     this.onSearchInput = this.onSearchInput.bind(this);
@@ -36,13 +39,17 @@ export default class extends React.Component {
     this.handleRequestClose = this.handleRequestClose.bind(this);
     this.soldProducts = this.soldProducts.bind(this);
     this.setSortMethod = this.setSortMethod.bind(this);
+    this.categoryChips = this.categoryChips.bind(this);
+    this.handleChipClick = this.handleChipClick.bind(this);
   }
 
   componentDidMount() {
     this.props.getProducts();
     this.props.getCart();
+    this.props.getCategories(this.props.categories.allCategories);
     socket = io('http://localhost:8080');
     socket.on('sold-products', this.soldProducts);
+    if(this.props.categories.filter) { this.setState({ categories: [ this.props.categories.filter ] })}
   }
 
   componentWillUnmount() {
@@ -67,14 +74,30 @@ export default class extends React.Component {
     this.setState({sortField, sortAscending});
   }
 
+  handleChipClick(categoryId) {
+    if (this.state.categories.indexOf(categoryId) >= 0) {
+      this.setState({categories: this.state.categories.filter(c => c !== categoryId)});
+    } else {
+      this.setState({categories: [...this.state.categories, categoryId]});
+    }
+  }
+
+  categoryChips(styles) {
+    return this.props.categories.allCategories.map(category => (
+      <Chip
+        style={styles.chip}
+        onClick={() => this.handleChipClick(category.id)}
+        backgroundColor={this.state.categories.indexOf(category.id) >= 0 ? blue300 : grey50}
+      >
+        {category.name}
+      </Chip>
+    ));
+  }
+
   render () {
 
     const sortedProducts =   this.props.products
-<<<<<<< HEAD
-                              .filter(p => p.categories.filter(category => category.id === this.props.categories.filter).length)
                               .filter(p => this.props.price[0] <= p.price && p.price <= this.props.price[1])
-=======
->>>>>>> master
                               .filter(p => p.name.toLowerCase().includes(this.state.search)
                                 || p.description.toLowerCase().includes(this.state.search)
                                 || p.categories
@@ -82,6 +105,9 @@ export default class extends React.Component {
                                     .toLowerCase()
                                     .includes(this.state.search)
                               )
+                              .filter(p => p.categories.filter(category => {
+                                return this.state.categories.length ? this.state.categories.indexOf(category.id) >= 0 : true;
+                              }).length);
                               .sort(this.getSortFunction(this.state.sortField, this.state.sortAscending));
 
     const styles = {
@@ -95,6 +121,10 @@ export default class extends React.Component {
         height: 450,
         overflowY: 'auto',
         display: 'inline',
+      },
+      chip: {
+        margin: 4,
+        display: 'inline'
       },
     };
 
@@ -130,6 +160,11 @@ export default class extends React.Component {
                 <FontIcon className="material-icons sort-arrow">keyboard_arrow_down</FontIcon>Price
               </MenuItem>
             </DropdownButton>
+          </Row>
+          <Row>
+            <Col sm={12}>
+              {this.categoryChips(styles)}
+            </Col>
           </Row>
 
           <Row>
