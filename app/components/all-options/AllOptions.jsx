@@ -107,7 +107,7 @@ export default class extends React.Component {
                               )
                               .filter(p => p.categories.filter(category => {
                                 return this.state.categories.length ? this.state.categories.indexOf(category.id) >= 0 : true;
-                              }).length);
+                              }).length)
                               .sort(this.getSortFunction(this.state.sortField, this.state.sortAscending));
 
     const styles = {
