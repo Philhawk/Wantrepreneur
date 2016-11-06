@@ -46,13 +46,13 @@ export default class HomepageChoices extends React.Component {
               <Col md={6} mdPush={6}>
                 <Jumbotron onClick={this.redirectToProducts} className="boxes animated flipInX">
                   <FontIcon className="material-icons" style={iconStyles}>check_circle</FontIcon>
-                    <p> I know</p>
+                    <p>I know what I want</p>
                 </Jumbotron>
               </Col>
               <Col md={6} mdPull={6}>
                 <Jumbotron onClick={this.helpMeChoose} className={this.state.helpClass}>
                   <FontIcon className="material-icons" style={iconStyles}>help</FontIcon>
-                    <p> Help me </p>
+                    <p>Help me choose</p>
                 </Jumbotron>
               </Col>
             </Col>
