@@ -72,7 +72,7 @@ class Navigation extends React.Component {
       <Toolbar style={{'background-color':'transparent'}}>
         <ToolbarGroup>
             <Link to='/' className='logo'>{WPLogo}</Link>
-            <Link to='/'><ToolbarTitle text=" Wantrepreneur"/></Link>
+            <Link to='/'><ToolbarTitle text="Wantrepreneur"/></Link>
 
         </ToolbarGroup>
 
@@ -80,10 +80,11 @@ class Navigation extends React.Component {
 
 
             <Dialog actions={actions} modal={false} open={this.state.open} onRequesClose={this.handleClose}>
-            <div className="row" style={{display: 'flex'}}>
-              <RegistrationFrom className="col-md-6" close={this.handleClose}/>
-              <LoginForm className="col-md-6" close={this.handleClose}/>
-            </div>
+                <h4> My Account </h4>
+                <div className="row" style={{display: 'flex'}}>
+                  <RegistrationFrom className="col-md-6" close={this.handleClose}/>
+                  <LoginForm className="col-md-6" close={this.handleClose}/>
+                </div>
             </Dialog>
 
           <ToolbarGroup>
@@ -92,7 +93,7 @@ class Navigation extends React.Component {
               <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} onTouchTap={this.handleOpen}>home</FontIcon>
             </IconButton>
 
-          <Badge badgeContent={this.props.cart ? this.props.cart.length : ''} style ={{color:'#333333'}}badgeStyle={{top: 12, right: 12, fontSize: 15}}>
+          <Badge badgeContent={this.props.cart ? this.props.cart.length : ''} style ={{color:'#333333', padding:'1px 15px 10px 10px'}}badgeStyle={{top: 0, right: 0, fontSize: 15}}>
             <IconButton tooltip="My Cart">
               <Link to="/cart">
                 <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} >shopping_cart</FontIcon>
