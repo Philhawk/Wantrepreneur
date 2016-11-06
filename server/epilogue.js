@@ -15,7 +15,7 @@ const mustBeLoggedIn = (req, res, context) => {
 }
 
 const mustBeAdmin = (req, res, context) => {
-  if (!req.user.role === 'admin') {
+  if (!req.user.roles === 'admin') {
     res.status(401).send('You must be an admin');
     return context.stop;
   }
