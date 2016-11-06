@@ -245,11 +245,11 @@ export default class extends React.Component {
     )
   }
 
-  // For product modals
   onSearchInput(evt) {
     this.setState({search: evt.toLowerCase()});
   }
 
+  // For product modals
   open(product) {
     this.setState({showModal: true, currentProduct: product});
   }
