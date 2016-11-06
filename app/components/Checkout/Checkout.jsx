@@ -14,14 +14,12 @@ export default class extends React.Component {
   onToken(token) {
     axios.post('/api/checkout/submit', {
       cart: this.props.cart
-           //JSON.stringify(token),
     })
       .then(() => {
         this.props.clearCart();
         browserHistory.push('/');
       })
-      // TODO: error handling for stripe checkout
-      .catch(console.error);
+      .catch(() => browserHistory.push('/checkout'));
   }
 
   render() {
