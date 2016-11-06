@@ -49,11 +49,7 @@ class Navigation extends React.Component {
 //
   render() {
     // Material UI styles
-    let navbarIcon={
-      color: '#F4E04D',
-      width:"45px",
-      height:'45px'
-    };
+
 
 
 
@@ -79,12 +75,8 @@ class Navigation extends React.Component {
             <Link to='/'><ToolbarTitle text=" Wantrepreneur"/></Link>
 
         </ToolbarGroup>
-        <ToolbarGroup>
 
 
-          <IconButton tooltip="My Account" >
-            <FontIcon className="material-icons" style={navbarIcon} onTouchTap={this.handleOpen}>home</FontIcon>
-          </IconButton>
 
 
             <Dialog actions={actions} modal={false} open={this.state.open} onRequesClose={this.handleClose}>
@@ -94,15 +86,20 @@ class Navigation extends React.Component {
             </div>
             </Dialog>
 
+          <ToolbarGroup>
+          <div>
+            <IconButton tooltip="My Account" >
+              <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} onTouchTap={this.handleOpen}>home</FontIcon>
+            </IconButton>
 
-          <Badge badgeContent={this.props.cart ? this.props.cart.length : ''} secondary={true} badgeStyle={{top: 12, right: 12}}>
+          <Badge badgeContent={this.props.cart ? this.props.cart.length : ''} style ={{color:'#333333'}}badgeStyle={{top: 12, right: 12, fontSize: 15}}>
             <IconButton tooltip="My Cart">
               <Link to="/cart">
-                <FontIcon className="material-icons" style={navbarIcon} hoverColor='#FCFCFC'>shopping_cart</FontIcon>
+                <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} >shopping_cart</FontIcon>
               </Link>
             </IconButton>
           </Badge>
-
+          </div>
         </ToolbarGroup>
       </Toolbar>
       </div>

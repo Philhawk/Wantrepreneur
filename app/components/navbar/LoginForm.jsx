@@ -14,6 +14,7 @@ export default class LoginForm extends React.Component{
 
 
   render(){
+    let {close} = this.props;
 
     let requiredFields ={
       errorStyle: {
