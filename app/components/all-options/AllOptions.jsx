@@ -4,6 +4,7 @@ import React from 'react';
 import NavbarContainer from '../navbar/NavbarContainer';
 import {Grid, Col, Row, Modal, Button, FormGroup, FormControl, DropdownButton, MenuItem} from 'react-bootstrap';
 import Snackbar from 'material-ui/Snackbar';
+import AutoComplete from 'material-ui/AutoComplete';
 import FontIcon from 'material-ui/FontIcon';
 import { addToCart } from '../../reducers/cart';
 import io from 'socket.io-client';
@@ -96,16 +97,19 @@ export default class extends React.Component {
   }
 
   render () {
-
     const sortedProducts =   this.props.products
                               .filter(p => this.props.price.length ? this.props.price[0] <= p.price && p.price <= this.props.price[1] : true)
-                              .filter(p => p.name.toLowerCase().includes(this.state.search)
-                                || p.description.toLowerCase().includes(this.state.search)
-                                || p.categories
-                                    .reduce((a, b) => a + b.name, '')
-                                    .toLowerCase()
-                                    .includes(this.state.search)
-                              )
+                              .filter(p => {
+                                if (this.state.search !== '') {
+                                  return p.name.toLowerCase().includes(this.state.search)
+                                         || p.description.toLowerCase().includes(this.state.search)
+                                         || p.categories
+                                              .reduce((a, b) => a + b.name, '')
+                                              .toLowerCase()
+                                              .includes(this.state.search)
+                                }
+                                return true;
+                              })
                               .filter(p => p.categories.filter(category => {
                                 return this.props.categories.filter.length ? this.props.categories.filter.indexOf(category.id) >= 0 : true;
                               }).length)
@@ -135,9 +139,18 @@ export default class extends React.Component {
         <Grid>
           <Row>
             <Col sm={12}>
-              <FormGroup>
-                <FormControl id="product-searchbar" type="text" placeholder="Search" onInput={this.onSearchInput} />
-              </FormGroup>
+              {/* <FormGroup>
+                  <FormControl id="product-searchbar" type="text" placeholder="Search" onInput={this.onSearchInput} />
+                  </FormGroup> */}
+              <AutoComplete
+                  floatingLabelText="What are you looking for?"
+                  filter={AutoComplete.caseInsensitiveFilter}
+                  dataSource={[...this.props.products.map(p => p.name),...this.props.categories.allCategories.map(c => c.name)]}
+                  onUpdateInput={this.onSearchInput}
+                  onNewRequest={this.onSearchInput}
+                  maxSearchResults={8}
+                  >
+              </AutoComplete>
             </Col>
           </Row>
           <Row>
@@ -232,11 +245,11 @@ export default class extends React.Component {
     )
   }
 
-  // For product modals
   onSearchInput(evt) {
-    this.setState({search: evt.target.value.toLowerCase()});
+    this.setState({search: evt.toLowerCase()});
   }
 
+  // For product modals
   open(product) {
     this.setState({showModal: true, currentProduct: product});
   }
