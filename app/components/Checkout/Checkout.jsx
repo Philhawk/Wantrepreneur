@@ -15,9 +15,10 @@ export default class extends React.Component {
     axios.post('/api/checkout/submit', {
       cart: this.props.cart
     })
-      .then(() => {
+      .then((hash) => {
+        if (!hash) { throw new Error('Order submission failed.'); }
         this.props.clearCart();
-        browserHistory.push('/');
+        browserHistory.push(`/thanks?order=${hash}`);
       })
       .catch(() => browserHistory.push('/checkout'));
   }
