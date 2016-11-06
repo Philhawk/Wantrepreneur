@@ -7,17 +7,23 @@ import { receiveAllProducts, removeMultipleProducts } from '../../reducers/produ
 import { getCartFromLocal, addToCartThunk, removeFromCartThunk, removeMultipleFromCartThunk } from '../cart/CartHelpers';
 import { receiveCategories } from '../categories/CategoriesContainer';
 import { addCategory, removeCategory } from '../../reducers/categories';
+import { productsLoading, productsNotLoading } from '../../reducers/productsLoading';
 
 const receiveProducts = () => dispatch => {
+  dispatch(productsLoading());
   axios.get('/api/products')
-  .then(products => dispatch(receiveAllProducts(products.data)));
+    .then(products => {
+      dispatch(receiveAllProducts(products.data));
+      dispatch(productsNotLoading());
+    });
 };
 
-const mapStateToProps = ({products, cart, categories, price}) => ({
+const mapStateToProps = ({products, cart, categories, price, productsLoading}) => ({
   products,
   categories,
   price,
-  cart
+  cart,
+  productsLoading
 });
 
 const mapDispatchToProps = () => dispatch => ({
