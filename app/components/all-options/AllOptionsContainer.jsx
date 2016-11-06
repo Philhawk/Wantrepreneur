@@ -6,6 +6,7 @@ import AllOptions from './AllOptions';
 import { receiveAllProducts, removeMultipleProducts } from '../../reducers/products';
 import { getCartFromLocal, addToCartThunk, removeFromCartThunk, removeMultipleFromCartThunk } from '../cart/CartHelpers';
 import { receiveCategories } from '../categories/CategoriesContainer';
+import { addCategory, removeCategory } from '../../reducers/categories';
 
 const receiveProducts = () => dispatch => {
   axios.get('/api/products')
@@ -42,6 +43,12 @@ const mapDispatchToProps = () => dispatch => ({
     if (!categories.length) {
       dispatch(receiveCategories());
     }
+  },
+  addCategoryToFilter: category => {
+    dispatch(addCategory(category));
+  },
+  removeCategoryFromFilter: category => {
+    dispatch(removeCategory(category));
   }
 });
 
