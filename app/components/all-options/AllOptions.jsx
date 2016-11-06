@@ -172,7 +172,7 @@ export default class extends React.Component {
           <Row>
           {
 
-              sortedProducts.map(p => {
+              sortedProducts.length ? sortedProducts.map(p => {
                 return (
                 <Col className="product-grid" key={p.id} sm={6} md={4} lg={6} onClick={() => this.open(p)}>
                   <GridList
@@ -195,7 +195,7 @@ export default class extends React.Component {
                   </GridList>
                 </Col>
                 )
-            })
+            }) : "No matching businesses found."
           }
           </Row>
         </Grid>
