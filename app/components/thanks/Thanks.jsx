@@ -23,7 +23,7 @@ export default class Thanks extends React.Component {
           <Row>
             { this.props.orderLoading && !this.props.order.products ? null : (
                 <Col sm={12} lg={6}>
-                  <CardHeader title="Thank you for purchasing!" />
+                  <CardHeader title="Thank you for purchasing!" subtitle={`Order Id:${this.props.order.orderId}`}/>
                 </Col>
               )}
           </Row>
