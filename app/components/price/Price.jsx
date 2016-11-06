@@ -2,24 +2,24 @@
 
 import React from'react';
 import NavbarContainer from '../navbar/NavbarContainer';
-import Slider from 'material-ui/Slider';
 import {Grid, Col, Row, Button} from 'react-bootstrap';
 import {Link} from 'react-router';
+import 'rc-slider/assets/index.css';
+import Rcslider from 'rc-slider';
 
 export default class SliderExampleControlled extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-    	firstSlider: 50,
+    	priceRange: [0, 1000000]
   	};
 
-  	this.handleFirstSlider = this.handleFirstSlider.bind(this);
+  	this.setRange = this.setRange.bind(this);
   };
 
-
-	handleFirstSlider(event, value) {
-    this.setState({firstSlider: value});
+	setRange(value) {
+    this.setState({priceRange: value});
   };
 
   render() {
@@ -37,22 +37,23 @@ export default class SliderExampleControlled extends React.Component {
               </Col>
             </Row>
 
-	      		<Col sm={8}>
-			      	<p>{this.state.firstSlider}</p>
-			      	
-			        <Slider
-			        	className='price-slider'
-			          min={0}
-			          max={100}
-			          step={1}
-			          defaultValue={50}
-			          value={this.state.firstSlider}
-			          onChange={this.handleFirstSlider}
-			        />
+	      		<Col sm={12}>
+			      	<h3>Min: {this.state.priceRange[0]}, Max: {this.state.priceRange[1]}</h3>
+			      	<Rcslider 
+                min={0}
+                max={1000000}
+                range={true}
+                defaultValue={[0, 1000000]}
+                onAfterChange={this.setRange}
+              />
 
-			        <Link to='/all-options'>
-                <Button>Next</Button>
-              </Link>
+              <Row>
+                <br />
+  			        <Link to='/all-options'>
+                  <Button onClick={() => this.props.addPriceRange(this.state.priceRange)}>Next</Button>
+                </Link>
+              </Row>
+
 			      </Col>
         	</Grid>
         </div>

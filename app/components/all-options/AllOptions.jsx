@@ -12,6 +12,7 @@ import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import _ from 'lodash';
 
 const snackbarAutoHideDuration = 4000;
 
@@ -69,6 +70,11 @@ export default class extends React.Component {
   render () {
 
     const sortedProducts =   this.props.products
+<<<<<<< HEAD
+                              .filter(p => p.categories.filter(category => category.id === this.props.categories.filter).length)
+                              .filter(p => this.props.price[0] <= p.price && p.price <= this.props.price[1])
+=======
+>>>>>>> master
                               .filter(p => p.name.toLowerCase().includes(this.state.search)
                                 || p.description.toLowerCase().includes(this.state.search)
                                 || p.categories
