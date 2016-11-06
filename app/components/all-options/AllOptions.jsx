@@ -6,6 +6,7 @@ import {Grid, Col, Row, Modal, Button, FormGroup, FormControl, DropdownButton, M
 import Snackbar from 'material-ui/Snackbar';
 import AutoComplete from 'material-ui/AutoComplete';
 import FontIcon from 'material-ui/FontIcon';
+import CircularProgress from 'material-ui/CircularProgress';
 import { addToCart } from '../../reducers/cart';
 import io from 'socket.io-client';
 let socket;
@@ -184,30 +185,30 @@ export default class extends React.Component {
           <Row>
           {
 
-              sortedProducts.length ? sortedProducts.map(p => {
-                return (
-                <Col className="product-grid" key={p.id} sm={6} md={4} lg={6} onClick={() => this.open(p)}>
-                  <GridList
-                      cellHeight={180}
-                      style={styles.gridList}
+            sortedProducts.length ? sortedProducts.map(p => (
+              <Col className="product-grid" key={p.id} sm={6} md={4} lg={6} onClick={() => this.open(p)}>
+                <GridList
+                  cellHeight={180}
+                  style={styles.gridList}
                   >
-                    <GridTile
-                      className={this.props.cart.filter(c => c.id === p.id).length ? "cart-product" : ""}
-                       key={p.id}
-                       title={p.name}
-                       actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-                       actionPosition="left"
-                       titlePosition="top"
-                       titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
-                       cols={2}
-                       rows={2}
-                     >
-                       <img src={p.image} />
-                     </GridTile>
-                  </GridList>
-                </Col>
-                )
-            }) : "No matching businesses found."
+                  <GridTile
+                    className={this.props.cart.filter(c => c.id === p.id).length ? "cart-product" : ""}
+                    key={p.id}
+                    title={p.name}
+                    actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+                    actionPosition="left"
+                    titlePosition="top"
+                    titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
+                    cols={2}
+                    rows={2}
+                  >
+                  <img src={p.image} />
+                  </GridTile>
+                </GridList>
+              </Col>
+            )) : (this.props.productsLoading ?
+                  <CircularProgress size={80} thickness={5} color="#F4E04D" />
+                  : "No matching businesses found.")
           }
           </Row>
         </Grid>
