@@ -43,7 +43,7 @@ export default class SliderExampleControlled extends React.Component {
                 min={0}
                 max={1000000}
                 range={true}
-                defaultValue={[0, 1000]}
+                defaultValue={[0, 1000000]}
                 onAfterChange={this.setRange}
               />
 
