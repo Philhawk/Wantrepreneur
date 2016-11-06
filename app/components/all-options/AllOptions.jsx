@@ -4,6 +4,7 @@ import React from 'react';
 import NavbarContainer from '../navbar/NavbarContainer';
 import {Grid, Col, Row, Modal, Button, FormGroup, FormControl, DropdownButton, MenuItem} from 'react-bootstrap';
 import Snackbar from 'material-ui/Snackbar';
+import AutoComplete from 'material-ui/AutoComplete';
 import FontIcon from 'material-ui/FontIcon';
 import { addToCart } from '../../reducers/cart';
 import io from 'socket.io-client';
@@ -100,12 +101,13 @@ export default class extends React.Component {
 
     const sortedProducts =   this.props.products
                               .filter(p => this.props.price[0] <= p.price && p.price <= this.props.price[1])
-                              .filter(p => p.name.toLowerCase().includes(this.state.search)
-                                || p.description.toLowerCase().includes(this.state.search)
-                                || p.categories
-                                    .reduce((a, b) => a + b.name, '')
-                                    .toLowerCase()
-                                    .includes(this.state.search)
+                              .filter(p => this.state.search ? p.name.toLowerCase().includes(this.state.search)
+                                           || p.description.toLowerCase().includes(this.state.search)
+                                           || p.categories
+                                                .reduce((a, b) => a + b.name, '')
+                                                .toLowerCase()
+                                                .includes(this.state.search)
+                                           : true
                               )
                               .filter(p => p.categories.filter(category => {
                                 return this.state.categories.length ? this.state.categories.indexOf(category.id) >= 0 : true;
@@ -136,9 +138,16 @@ export default class extends React.Component {
         <Grid>
           <Row>
             <Col sm={12}>
-              <FormGroup>
-                <FormControl id="product-searchbar" type="text" placeholder="Search" onInput={this.onSearchInput} />
-              </FormGroup>
+              {/* <FormGroup>
+                  <FormControl id="product-searchbar" type="text" placeholder="Search" onInput={this.onSearchInput} />
+                  </FormGroup> */}
+              <AutoComplete
+                  floatingLabelText="What are you looking for?"
+                  filter={AutoComplete.caseInsensitiveFilter}
+                  dataSource={[...this.props.products.map(p => p.name), ]}
+                  onInput={this.onSearchInput}
+                  >
+              </AutoComplete>
             </Col>
           </Row>
           <Row>
