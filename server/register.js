@@ -12,7 +12,8 @@ router.post('/', (req, res, next) => {
       .then(user => {
       req.login(user, next);
       console.log("USER returned from create" + user);
-      res.status(201).send(user.id);
+      res.status(201).send(user);
+
     })
     .catch(next);
 });

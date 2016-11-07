@@ -38,13 +38,12 @@ class LoginForm extends React.Component{
   onSubmitSignup(event){
     event.preventDefault();
 
-    let user = {      name : `${this.state.name} ${this.state.lastName}`,
+    let user = {
       email: this.state.email,
-      password : this.state.password1
+      password : this.state.password
     };
 
-    console.log(user);
-  //login from user
+    this.props.loginUser(user);
   }
 
 
