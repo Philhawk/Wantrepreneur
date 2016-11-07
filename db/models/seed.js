@@ -45,7 +45,7 @@ const seedProducts = () => db.Promise.map([
     {
       name: 'Knocking Kenneth Korporation',
       price: 1000,
-      image: 'https://as2.ftcdn.net/jpg/01/21/00/27/500_F_121002772_zLfiQX2ScLPNbOoEo3QDvWh8Vdm4PFaF.jpg',
+      image: __dirname + 'public/bartendr.png',
       description: 'Ever feel like you\'re alone because you\'re too smart? Join Knocking Kenneth Korportaion and be one of the 2% smartest people on earth. You will learn to show love to others through actions rather than words.'
     }
 	], product => db.model('products').create(product));
