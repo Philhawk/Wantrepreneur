@@ -68,8 +68,7 @@ class RegistrationForm extends React.Component{
       email: this.state.email,
       password : this.state.password1
     };
-    console.log(newUser);
-  //  this.props.signUpUser("myUser");
+   this.props.signUpUser(newUser);
   }
 
 
