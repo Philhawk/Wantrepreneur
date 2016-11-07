@@ -8,6 +8,7 @@ import PriceContainer from './components/price/PriceContainer';
 import AllOptionsContainer from './components/all-options/AllOptionsContainer';
 import CartContainer from './components/cart/CartContainer';
 import ThanksContainer from './components/thanks/ThanksContainer';
+import UserPageContainer from './components/userpage/UserPageContainer';
 
 const routes =()=> (
   <Router history={browserHistory}>
@@ -18,6 +19,7 @@ const routes =()=> (
       <Route component={ AllOptionsContainer } path='/all-options'/>
       <Route component={ CartContainer } path='/cart' />
       <Route component={ ThanksContainer } path='/thanks' />
+      <Route componen={ UserPageContainer } path='/userpage' />
   </Route>
   </Router>
 );

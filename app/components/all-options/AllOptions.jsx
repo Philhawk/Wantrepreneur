@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import { Link } from 'react-router';
 import NavbarContainer from '../navbar/NavbarContainer';
 import {Grid, Col, Row, Modal, Button, FormGroup, FormControl, DropdownButton, MenuItem} from 'react-bootstrap';
 import Snackbar from 'material-ui/Snackbar';
@@ -236,7 +237,7 @@ export default class extends React.Component {
 
           <Modal.Footer>
             { this.props.cart.filter(product => product.id === this.state.currentProduct.id).length ?
-              <Button onTouchTap={this.handleTouchTapRemove}>Remove from Cart</Button>
+              <Link to='/cart'><Button>Go to Cart</Button></Link>
               : <Button onTouchTap={this.handleTouchTapAdd}>Add to Cart</Button>
             }
           </Modal.Footer>
