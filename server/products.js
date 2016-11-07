@@ -5,20 +5,53 @@ const db = require('APP/db');
 
 const productRoutes = require('express').Router();
 
+productRoutes.post('/createProduct', (req, res, next) => {
+	if (req.user && req.user.roles === 'admin') {
+		db.model('products').create(req.body)
+		.then(product => res.status(201).send(product))
+		.catch(next);
+	} else {
+		next(new ForbiddenError('You must be an admin to access this page.'));
+	}
+});
 
-productRoutes.put('/:productId', (req, res, next) => {
+productRoutes.put('/updateWithCategory/:productId', (req, res, next) => {
   if (req.user && req.user.roles === 'admin') {
-    db.model('products').update(req.body, {
-    	where: { id: req.params.productId },
-    	returning: true
-    })
-      .then(updatedProduct => {
-        if (updatedProduct) res.sendStatus(204)
-        else res.json("Product does not exist")
-      })
-      .catch(next);
+  	let foundProduct;
+  	db.model('products').findById(req.params.productId)
+  	.then(product => {
+  		if (!product) throw new Error('product not found');
+  		foundProduct = product;
+  		return db.model('categories').findById(req.body.category)
+  	})
+  	.then(category => {
+  		if (!category) throw new Error ('category not found');
+  		return foundProduct.addCategory(category);
+  	})
+  	.then(() => res.sendStatus(204))
+  	.catch(next);
   } else {
-    next(new ForbiddenError('You must be an admin to access this page.'));
+  	next(new ForbiddenError('You must be an admin to access this page.'));
+  }
+});
+
+productRoutes.put('/updateWithoutCategory/:productId', (req, res, next) => {
+  if (req.user && req.user.roles === 'admin') {
+  	let foundProduct;
+  	db.model('products').findById(req.params.productId)
+  	.then(product => {
+  		if (!product) throw new Error('product not found');
+  		foundProduct = product;
+  		return db.model('categories').findById(req.body.category)
+  	})
+  	.then(category => {
+  		if (!category) throw new Error ('category not found');
+  		return foundProduct.removeCategory(category);
+  	})
+  	.then(() => res.sendStatus(204))
+  	.catch(next);
+  } else {
+  	next(new ForbiddenError('You must be an admin to access this page.'));
   }
 });
 

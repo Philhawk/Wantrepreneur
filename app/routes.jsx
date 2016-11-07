@@ -12,15 +12,15 @@ import UserPageContainer from './components/userpage/UserPageContainer';
 
 const routes =()=> (
   <Router history={browserHistory}>
-  <Route path='/'>
-    <IndexRoute component={Root}/>
-      <Route component={ CategoriesContainer } path='/categories'/>
-      <Route component={ PriceContainer } path='/price'/>
-      <Route component={ AllOptionsContainer } path='/all-options'/>
-      <Route component={ CartContainer } path='/cart' />
-      <Route component={ ThanksContainer } path='/thanks' />
-      <Route componen={ UserPageContainer } path='/userpage' />
-  </Route>
+    <Route path='/'>
+      <IndexRoute component={Root}/>
+        <Route component={ CategoriesContainer } path='/categories'/>
+        <Route component={ PriceContainer } path='/price'/>
+        <Route component={ AllOptionsContainer } path='/all-options'/>
+        <Route component={ CartContainer } path='/cart' />
+        <Route component={ ThanksContainer } path='/thanks' />
+        <Route componen={ UserPageContainer } path='/userpage' />
+    </Route>
   </Router>
 );
 

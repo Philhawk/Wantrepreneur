@@ -3,7 +3,7 @@ import React from 'react';
 import {Link} from 'react-router';
 // redux
 import {connect} from 'react-redux';
-import {signUpUser} from '../../reducers/RegistrationForm';
+import {signUpUser} from '../../reducers/user';
 
 // material-ui
 import {FlatButton, RaisedButton, Dialog, TextField} from 'material-ui';
