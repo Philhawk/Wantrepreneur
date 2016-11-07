@@ -70,7 +70,7 @@ class Navigation extends React.Component {
             <Link to='/'><ToolbarTitle text="Wantrepreneur"/></Link>
 
         </ToolbarGroup>
-            <Dialog actions={actions} modal={false} open={this.state.open} onRequesClose={this.handleClose}>
+            <Dialog className='my-account' actions={actions} modal={false} open={this.state.open} onRequesClose={this.handleClose}>
                 <h4> My Account </h4>
                 <div className="row" style={{display: 'flex'}}>
                   <RegistrationForm className="col-md-6" close={this.handleClose}/>

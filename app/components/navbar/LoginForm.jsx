@@ -28,11 +28,13 @@ export default class LoginForm extends React.Component{
     return(
       <Card>
         <CardHeader title="Existing User"/>
-        <CardText>
-          <TextField hintText="Email"/><br/>
-          <TextField hintText="Password" type="password"/><br/>
+        <form>
+        <CardText className="form-group">
+          <TextField name='email' hintText="Email" required/><br/>
+          <TextField name='password' hintText="Password" type="password" required/><br/>
         </CardText>
         <CardActions><RaisedButton label="Login" onClick={close}/></CardActions>
+        </form>
       </Card>
 
 
