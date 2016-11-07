@@ -3,9 +3,13 @@ import axios from "axios";
 // ACTIONS
 
 const CREATE_USER = "CREATE_USER";
+const LOGOUT_USER = 'LOGOUT_USER';
+const LOGIN_USER = 'LOGIN_USER';
 
 // ACTION CREATORS
 const signup = user => ({type:CREATE_USER, user});
+const logout = () => ({type:LOGOUT_USER});
+const login = user => ({type: LOGIN_USER, user});
 
 
 //reducer
@@ -13,6 +17,10 @@ const reducer = (user = null, action) => {
   switch (action.type) {
     case CREATE_USER:
       return action.user;
+    case LOGIN_USER :
+      return user;
+    case LOGOUT_USER :
+      return null;
     default: return user;
 
   }
