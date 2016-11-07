@@ -61,6 +61,7 @@ class Navigation extends React.Component {
         }
       };
 
+    const badgeDisplay = this.props.cart && this.props.cart.length ? "inline" : "none";
 
 
     return (
@@ -88,8 +89,12 @@ class Navigation extends React.Component {
                 <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} onTouchTap={this.handleOpen}>home</FontIcon>
               </IconButton>
 
-              <Badge badgeContent={this.props.cart ? this.props.cart.length : ''} style ={{color:'#333333', padding:'1px 15px 10px 10px'}}badgeStyle={{top: 0, right: 0, fontSize: 15}}>
-                <IconButton tooltip="My Cart">
+              <Badge
+                  badgeContent={this.props.cart ? this.props.cart.length : ''}
+                  style ={{color:'#333333', padding:'1px 15px 10px 10px', display: badgeDisplay}}
+                  badgeStyle={{top: 0, right: 0, fontSize: 12}}
+              >
+                <IconButton tooltip="My Cart" >
                   <Link to="/cart">
                       <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} >shopping_cart</FontIcon>
                   </Link>
