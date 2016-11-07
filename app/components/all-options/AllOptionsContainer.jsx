@@ -8,6 +8,7 @@ import { getCartFromLocal, addToCartThunk, removeFromCartThunk, removeMultipleFr
 import { receiveCategories } from '../categories/CategoriesContainer';
 import { addCategory, removeCategory } from '../../reducers/categories';
 import { productsLoading, productsNotLoading } from '../../reducers/productsLoading';
+import { filterWithPrice } from '../../reducers/price';
 
 const receiveProducts = () => dispatch => {
   dispatch(productsLoading());
@@ -55,6 +56,9 @@ const mapDispatchToProps = () => dispatch => ({
   },
   removeCategoryFromFilter: category => {
     dispatch(removeCategory(category));
+  },
+  addPriceRange: priceRange => {
+    dispatch(filterWithPrice(priceRange));
   }
 });
 

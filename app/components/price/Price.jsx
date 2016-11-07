@@ -50,14 +50,14 @@ export default class Price extends React.Component {
 										<p>Less Expensive</p>
 									</Jumbotron>
 								</Col>
-								<Col sm={6} md={4} lg={4} onClick={() => (this.props.addPriceRange([0, 333333]))}>
+								<Col sm={6} md={4} lg={4} onClick={() => (this.props.addPriceRange([0, Infinity]))}>
 									<Jumbotron className='boxes'>
 										<FontIcon className="material-icons" style={iconStyles}>local_atm</FontIcon>
 										<FontIcon className="material-icons" style={iconStyles}>local_atm</FontIcon>
 										<p>More Expensive</p>
 									</Jumbotron>
 								</Col>
-								<Col sm={6} md={4} lg={4} onClick={() => (this.props.addPriceRange([0, 333333]))}>
+								<Col sm={6} md={4} lg={4} onClick={() => (this.props.addPriceRange([0, Math.random() < 0.5 ? 333333 : Infinity]))}>
 									<Jumbotron className='boxes'>
 										<FontIcon className="material-icons" style={iconStyles}>insert_emoticon</FontIcon>
 										<p>Surprise Me</p>

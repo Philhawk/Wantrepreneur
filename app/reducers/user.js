@@ -20,12 +20,25 @@ const reducer = (user = null, action) => {
 
 //DISPATCHERS
 export const signUpUser =(user) => dispatch => {
-
-  console.log(user);
   axios.post('/api/register', user)
-  .then(res=>dispatch(signup(res.data)) )
-  .catch();
+  .then(res=>dispatch(signup(res.data)))
+  .catch(err => console.log(err));
 
 };
+
+
+export const loginUser = (user) => dispatch => {
+  axios.post('/api/auth/local/login', user)
+  .then(res => dispatch(login(res.data)))
+  .catch(err=>console.log(err));
+
+};
+
+export const logoutUser = (user) => dispatch => {
+  axios.post('/api/logout')
+  .then(res => dispatch(logout()))
+  .catch(err=>console.log(err));
+};
+
 
 export default reducer;
