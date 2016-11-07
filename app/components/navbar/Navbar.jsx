@@ -64,6 +64,12 @@ class Navigation extends React.Component {
     const badgeDisplay = this.props.cart && this.props.cart.length ? "inline" : "none";
 
 
+    const logoutIcon =
+                    <IconButton tooltip="Log Out" >
+                          <FontIcon className="material-icons" onClick={this.props.logoutUser} hoverColor={'#FCFCFC'}>exit_to_app</FontIcon>
+                    </IconButton>
+
+
     return (
       <div>
         <Toolbar style={{'backgroundColor':'transparent'}}>
@@ -71,16 +77,16 @@ class Navigation extends React.Component {
             <Link to='/' className='logo'>{WPLogo}</Link>
             <Link to='/'><ToolbarTitle/></Link>
 
+        </ToolbarGroup>
 
-          </ToolbarGroup>
-          <Dialog className='my-account' actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}>
-            <h4> Please Login or Sign Up to see User Home Page </h4>
-            <div className="row" style={{display: 'flex'}}>
-              <RegistrationForm className="col-md-6" close={this.handleClose}/>
-              <span></span>
-              <LoginForm className="col-md-6" close={this.handleClose}/>
-            </div>
-          </Dialog>
+            <Dialog className='my-account' actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}>
+                <h4> Please Login or Sign Up to see User Home Page </h4>
+                <div className="row" style={{display: 'flex'}}>
+                  <RegistrationForm className="col-md-6" close={this.handleClose}/>
+                  <span></span>
+                  <LoginForm className="col-md-6" close={this.handleClose}/>
+                </div>
+            </Dialog>
 
 
           <ToolbarGroup>
@@ -89,11 +95,12 @@ class Navigation extends React.Component {
                 <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} onTouchTap={this.handleOpen}>home</FontIcon>
               </IconButton>
 
+              {(this.props.user === null) ? null : logoutIcon}
+
               <Badge
                   badgeContent={this.props.cart ? this.props.cart.length : ''}
                   style ={{color:'#333333', padding:'1px 15px 10px 10px', display: badgeDisplay}}
-                  badgeStyle={{top: 0, right: 0, fontSize: 12}}
-              >
+                  badgeStyle={{top: 0, right: 0, fontSize: 12}}>
                 <IconButton tooltip="My Cart" >
                   <Link to="/cart">
                       <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} >shopping_cart</FontIcon>

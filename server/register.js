@@ -9,11 +9,11 @@ router.post('/', (req, res, next) => {
   console.log( req.body + " register hit");
 
   db.model('users').create(req.body)
-      .then(user => {
-        req.login(user, err => {
-          if (err) next(err);
-          res.status(201).send(user);
-        });
+    .then(user => {
+      req.login(user, err => {
+        if (err) next(err);
+        res.status(201).send(user);
+      });
     })
     .catch(next);
 });
