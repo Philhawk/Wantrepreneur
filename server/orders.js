@@ -30,4 +30,36 @@ orderRoutes.get('/', (req, res, next) => {
   }
 });
 
+orderRoutes.put('/:orderId', (req, res, next) => {
+  if (req.user && req.user.roles === 'admin') {
+    db.model('orders').update(req.body, {
+      where: { id: req.params.orderId },
+      returning: true
+    })
+      .then(updatedOrder => {
+        if (updatedOrder) res.sendStatus(204)
+        else res.json("Order does not exist")
+      })
+      .catch(next);
+  } else {
+    next(new ForbiddenError('You must be an admin to access this page.'));
+  }
+});
+
+orderRoutes.delete('/:orderId', (req, res, next) => {
+  if (req.user && req.user.roles === 'admin') {
+    db.model('orders').destroy({
+      where: {id: req.params.orderId}
+    })
+      .then(numDeleted => {
+        if (numDeleted) res.sendStatus(204)
+        else res.json("Order does not exist")
+      })
+      .catch(next);
+  } else {
+    next(new ForbiddenError('You must be an admin to access this page.'));
+  }
+});
+
+
 module.exports = orderRoutes;
