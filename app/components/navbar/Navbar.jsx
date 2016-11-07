@@ -12,7 +12,7 @@ import {Card, CardHeader, CardActions, CardText} from 'material-ui';
 
 
 
-import RegistrationFrom from './RegistrationFrom.jsx';
+import RegistrationForm from './RegistrationForm.jsx';
 import LoginForm from './LoginForm.jsx';
 
 //Custom images Logos
@@ -82,7 +82,7 @@ class Navigation extends React.Component {
             <Dialog actions={actions} modal={false} open={this.state.open} onRequesClose={this.handleClose}>
                 <h4> My Account </h4>
                 <div className="row" style={{display: 'flex'}}>
-                  <RegistrationFrom className="col-md-6" close={this.handleClose}/>
+                  <RegistrationForm className="col-md-6" close={this.handleClose}/>
                   <LoginForm className="col-md-6" close={this.handleClose}/>
                 </div>
             </Dialog>
