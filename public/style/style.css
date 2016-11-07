@@ -13,6 +13,18 @@ img {
   width: 50px;
 }
 
+/*signup dialog*/
+.my-account h4 {
+  text-align: center;
+}
+
+.my-account div .row {
+  display: inline-flex;
+  padding: 7%;
+  margin: 3%;
+  text-align: center;
+}
+
 .cart-image {
 	max-width: 12em;
 	max-height: 12em;
@@ -166,10 +178,9 @@ body {
 }
 
 /* Navbar CSS*/
-/* change to be responsive?*/
 .logo img {
-	height: 50px;
-	width: 50px;
+	height: 4em;
+	width: 4em;
 }
 
 /*ICONS*/

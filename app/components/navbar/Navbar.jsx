@@ -12,7 +12,7 @@ import {Card, CardHeader, CardActions, CardText} from 'material-ui';
 
 
 
-import RegistrationFrom from './RegistrationFrom.jsx';
+import RegistrationForm from './RegistrationForm.jsx';
 import LoginForm from './LoginForm.jsx';
 
 //Custom images Logos
@@ -41,11 +41,6 @@ class Navigation extends React.Component {
   handleClose(){
     this.setState({open: false});
     }
-
-  onChangeHandler(e){
-    console.log(e.target.value);
-  }
-
 //
   render() {
     // Material UI styles
@@ -55,7 +50,6 @@ class Navigation extends React.Component {
 
     // actions for login/sign form buttons
     const actions = [
-      //<FlatButton label="Cancel" primary={true} onTouchTap={this.handleClose}/>,
       ];
 
       let requiredFields ={
@@ -72,35 +66,34 @@ class Navigation extends React.Component {
         <Toolbar style={{'backgroundColor':'transparent'}}>
           <ToolbarGroup>
             <Link to='/' className='logo'>{WPLogo}</Link>
-            <Link to='/'><ToolbarTitle/></Link>
-
-          </ToolbarGroup>
+            <Link to='/'><ToolbarTitle/>Wantrepreneur</Link>
 
 
+        </ToolbarGroup>
+            <Dialog className='my-account' actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}>
+                <h4> My Account </h4>
+                <div className="row" style={{display: 'flex'}}>
+                  <RegistrationForm className="col-md-6" close={this.handleClose}/>
+                  <LoginForm className="col-md-6" close={this.handleClose}/>
+                </div>
+            </Dialog>
 
-
-          <Dialog actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}>
-            <h4> My Account </h4>
-            <div className="row" style={{display: 'flex'}}>
-              <RegistrationFrom className="col-md-6" close={this.handleClose}/>
-              <LoginForm className="col-md-6" close={this.handleClose}/>
-            </div>
-          </Dialog>
 
           <ToolbarGroup>
             <div>
               <IconButton tooltip="My Account" >
-              <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} onTouchTap={this.handleOpen}>home</FontIcon>
-            </IconButton>
+                <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} onTouchTap={this.handleOpen}>home</FontIcon>
+              </IconButton>
 
-          <Badge badgeContent={this.props.cart ? this.props.cart.length : ''} style ={{color:'#333333', padding:'1px 15px 10px 10px'}}badgeStyle={{top: 0, right: 0, fontSize: 15}}>
-            <IconButton tooltip="My Cart">
-              <Link to="/cart">
-                <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} >shopping_cart</FontIcon>
-              </Link>
-            </IconButton>
-          </Badge>
-          </div>
+              <Badge badgeContent={this.props.cart ? this.props.cart.length : ''} style ={{color:'#333333', padding:'1px 15px 10px 10px'}}badgeStyle={{top: 0, right: 0, fontSize: 15}}>
+                <IconButton tooltip="My Cart">
+                  <Link to="/cart">
+                      <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} >shopping_cart</FontIcon>
+                  </Link>
+                </IconButton>
+              </Badge>
+            </div>
+
         </ToolbarGroup>
       </Toolbar>
       </div>
