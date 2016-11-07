@@ -15,7 +15,20 @@ productRoutes.post('/createProduct', (req, res, next) => {
 	}
 });
 
-productRoutes.put('/updateWithCategory/:productId', (req, res, next) => {
+productRoutes.put('/updateProduct/:productId', (req, res, next) => {
+  if (req.user && req.user.roles === 'admin') {
+  	db.model('products').update(req.body, {
+  		where: {id: req.params.productId},
+  		returning: true
+  	})
+  	.then(product => res.status(204).send(product))
+  	.catch(next);
+  } else {
+  	next(new ForbiddenError('You must be an admin to access this page.'));
+  }
+});
+
+productRoutes.put('/addCategory/:productId', (req, res, next) => {
   if (req.user && req.user.roles === 'admin') {
   	let foundProduct;
   	db.model('products').findById(req.params.productId)
@@ -35,7 +48,7 @@ productRoutes.put('/updateWithCategory/:productId', (req, res, next) => {
   }
 });
 
-productRoutes.put('/updateWithoutCategory/:productId', (req, res, next) => {
+productRoutes.put('/deleteCategory/:productId', (req, res, next) => {
   if (req.user && req.user.roles === 'admin') {
   	let foundProduct;
   	db.model('products').findById(req.params.productId)
