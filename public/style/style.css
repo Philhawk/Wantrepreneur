@@ -49,6 +49,7 @@ img {
 
 .rightDivOpeningPage {
 	padding-left: 8em;
+  text-align: left;
 }
 
 .rightDivCategoriesPage {
@@ -95,7 +96,7 @@ img {
 }
 
 .description-headline {
-	text-align: left;
+	text-align: center;
 	color: #FCFCFC;
 
 }
