@@ -17,8 +17,7 @@ class RegistrationForm extends React.Component{
   }
 
   onSubmitSignup(event){
-    this.props.close();
-    let clientInfo = event.target;
+
     console.log(this.props);
     console.log(event + "event");
   }
@@ -38,17 +37,17 @@ class RegistrationForm extends React.Component{
 
     return(
       <Card >
-        <CardHeader title="Create New User"/>
+        <CardHeader title="Signup as New User"/>
         <form onSubmit={this.onSubmitSignup}>
         <CardText>
           <TextField name='firstName' hintText="First Name"/><br/>
-          <TextField hintText="Last Name"/><br/>
-          <TextField type="email" hintText="Email"/><br/>
+          <TextField name='lastName' hintText="Last Name"/><br/>
+          <TextField name="email" type="email" hintText="Email"/><br/>
           <TextField hintText="Password" type="password"
           errorText="Required." errorStyle={requiredFields.errorStyle}       underlineFocusStyle={requiredFields.underlineStyle}/><br/>
           <TextField hintText="Confirm Password" type="password"           errorText="Required." errorStyle={requiredFields.errorStyle}       underlineFocusStyle={requiredFields.underlineStyle}/><br/>
           </CardText>
-        <CardActions><RaisedButton type="submit" label="Submit" /></CardActions>
+        <CardActions><RaisedButton type="submit" label="Submit" onClick={close} /></CardActions>
         </form>
       </Card>
 
