@@ -84,8 +84,7 @@ class RegistrationForm extends React.Component{
       email: this.state.email,
       password : this.state.password1
     };
-    console.log(newUser);
-  //  this.props.signUpUser("myUser");
+   this.props.signUpUser(newUser);
   }
 
 
@@ -118,7 +117,7 @@ class RegistrationForm extends React.Component{
            required/><br/>
           <TextField name='password2' hintText="Confirm Password" type="password" onChange={this.password2Handler}  required/><br/>
           </CardText>
-        <CardActions><RaisedButton disabled={this.state.match} type="submit" label="Submit"/></CardActions>
+        <CardActions><RaisedButton disabled={false} type="submit" label="Submit"/></CardActions>
         </form>
       </Card>
     </div>

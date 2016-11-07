@@ -19,12 +19,13 @@ const reducer = (user = [], action) => {
 };
 
 //DISPATCHERS
-export const signUpUser = (user) => dispatch => {
+export const signUpUser =(user) => dispatch => {
 
-  console.log(`${user} .... dispath hit, now work on route`);
-  // axios.post('/api/users', user)
-  // .then(res=>dispatch(signup(res.data)) )
-  // .catch()
+  console.log(user);
+  axios.post('/api/register', user)
+  .then(res=>dispatch(signup(res.data)) )
+  .catch();
+
 };
 
 export default reducer;
