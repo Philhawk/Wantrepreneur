@@ -13,13 +13,14 @@ class RegistrationForm extends React.Component{
   constructor(props){
     super(props);
 
-    this.onSubmit = this.onSubmit.bind(this);
+    this.onSubmitSignup = this.onSubmitSignup.bind(this);
   }
 
-  onSubmit(event){
+  onSubmitSignup(event){
+    this.props.close();
     let clientInfo = event.target;
-    console.log(this.props + "props aka submit button works");
-    console.log(clientInfo);
+    console.log(this.props);
+    console.log(event + "event");
   }
 
 
@@ -36,19 +37,19 @@ class RegistrationForm extends React.Component{
     };
 
     return(
-      <Card>
+      <Card >
         <CardHeader title="Create New User"/>
+        <form onSubmit={this.onSubmitSignup}>
         <CardText>
-
-          <TextField hintText="First Name"/><br/>
+          <TextField name='firstName' hintText="First Name"/><br/>
           <TextField hintText="Last Name"/><br/>
-          <TextField hintText="Email"/><br/>
+          <TextField type="email" hintText="Email"/><br/>
           <TextField hintText="Password" type="password"
           errorText="Required." errorStyle={requiredFields.errorStyle}       underlineFocusStyle={requiredFields.underlineStyle}/><br/>
           <TextField hintText="Confirm Password" type="password"           errorText="Required." errorStyle={requiredFields.errorStyle}       underlineFocusStyle={requiredFields.underlineStyle}/><br/>
-
-        </CardText>
-        <CardActions><RaisedButton label="Submit" onClick={this.onSubmit}/></CardActions>
+          </CardText>
+        <CardActions><RaisedButton type="submit" label="Submit" /></CardActions>
+        </form>
       </Card>
 
 
