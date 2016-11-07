@@ -75,9 +75,7 @@ class Navigation extends React.Component {
         <Toolbar style={{'backgroundColor':'transparent'}}>
           <ToolbarGroup>
             <Link to='/' className='logo'>{WPLogo}</Link>
-            <Link to='/'><ToolbarTitle/></Link>
-
-        </ToolbarGroup>
+          </ToolbarGroup>
 
             <Dialog className='my-account' actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}>
                 <h4> Please Login or Sign Up to see User Home Page </h4>
