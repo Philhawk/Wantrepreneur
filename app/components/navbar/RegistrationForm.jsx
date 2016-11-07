@@ -19,7 +19,6 @@ class RegistrationForm extends React.Component{
       email: '',
       password1 :'',
       password2 :'',
-      match: true
     };
 
     this.onSubmitSignup       = this.onSubmitSignup.bind(this);
@@ -30,6 +29,7 @@ class RegistrationForm extends React.Component{
     this.passwordHandler2     = this.passwordHandler2.bind(this);
   }
 
+// EventHandlers
   nameHandler(evt){
     this.setState({
       name : evt.target.value
@@ -60,6 +60,7 @@ class RegistrationForm extends React.Component{
     });
   }
 
+// submit handler
   onSubmitSignup(event){
     event.preventDefault();
 
@@ -89,7 +90,6 @@ class RegistrationForm extends React.Component{
     return(
 
     <div>
-        {this.state.match}
       <Card >
         <CardHeader title="Sign Up as New User"/>
         <form onSubmit={this.onSubmitSignup}>
@@ -101,7 +101,7 @@ class RegistrationForm extends React.Component{
            required/><br/>
           <TextField name='password2' hintText="Confirm Password" type="password" onChange={this.passwordHandler2}  required/><br/>
           </CardText>
-        <CardActions><RaisedButton disabled={this.state.password1 !== this.state.password2 || !this.state.password1.length} type="submit" label="Submit"/></CardActions>
+        <CardActions><RaisedButton disabled={(this.state.password1 !== this.state.password2) ? true : false} type="submit" label="Submit" onClick={close} /></CardActions>
         </form>
       </Card>
     </div>
