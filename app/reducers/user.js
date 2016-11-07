@@ -9,7 +9,7 @@ const signup = user => ({type:CREATE_USER, user});
 
 
 //reducer
-const reducer = (user = [], action) => {
+const reducer = (user = null, action) => {
   switch (action.type) {
     case CREATE_USER:
       return action.user;
