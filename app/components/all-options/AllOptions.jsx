@@ -92,7 +92,7 @@ export default class extends React.Component {
       <Chip
         onClick={() => this.handleChipClick(category.id)}
         style={styles.chip}
-        backgroundColor={this.props.categories.filter.indexOf(category.id) >= 0 ? blue300 : grey50}
+        backgroundColor={this.props.categories.filter.indexOf(category.id) >= 0 ? blue300 : '#BCBCBC'}
         key={category.id}
       >
         <Avatar color="#444" size={32} icon={<FontIcon className="material-icons">{category.icon}</FontIcon>} />
@@ -153,7 +153,6 @@ export default class extends React.Component {
               <AutoComplete
                 floatingLabelText="What are you looking for?"
                 style={{color: 'yellow'}}
-                floatingLabelFocusStyle={{ color: 'yellow'} }
                 filter={AutoComplete.caseInsensitiveFilter}
                 dataSource={[...this.props.products.map(p => p.name),...this.props.categories.allCategories.map(c => c.name)]}
                 onUpdateInput={this.onSearchInput}

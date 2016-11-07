@@ -20,7 +20,7 @@ export default class Categories extends React.Component {
 
     let iconStyles = {
       fontSize: '80px',
-      color: '#333333'
+      color: '#fffef9'
     };
 
       return (
@@ -31,7 +31,7 @@ export default class Categories extends React.Component {
 
               <Row>
                 <Col sm={12}>
-                  <h1><span className='css-animation'>Categories</span></h1>
+                  <h1 className='other-heading'><span className='blue-animation'>Categories</span></h1>
                   <h3 className='description-headline'>First, let's pick a category for your dream business</h3>
                   <br/>
                 </Col>
