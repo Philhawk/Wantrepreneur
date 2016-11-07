@@ -31,8 +31,8 @@ export default class Categories extends React.Component {
 
               <Row>
                 <Col sm={12}>
-                  <h1 className='categories-heading'><span className='css-animation'>Categories</span></h1>
-                  <h1 className='description-headline'>First, let's pick a category for your dream business</h1>
+                  <h1><span className='css-animation'>Categories</span></h1>
+                  <h3 className='description-headline'>First, let's pick a category for your dream business</h3>
                   <br/>
                 </Col>
               </Row>
@@ -43,11 +43,11 @@ export default class Categories extends React.Component {
                     <Col sm={6} md={4} onClick={() => this.props.addCategory(category.id)}>
                       <Jumbotron className='boxes'>
                         <FontIcon className="material-icons" style={iconStyles}>{category.icon}</FontIcon>
-                          <p>{category.name}</p>
+                        <p>{category.name}</p>
                       </Jumbotron>
                     </Col>
                   </Link>
-                  ))}
+                ))}
               </Row>
             </Grid>
           </div>

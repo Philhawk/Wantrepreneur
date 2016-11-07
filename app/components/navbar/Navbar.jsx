@@ -69,18 +69,18 @@ class Navigation extends React.Component {
         <Toolbar style={{'backgroundColor':'transparent'}}>
           <ToolbarGroup>
             <Link to='/' className='logo'>{WPLogo}</Link>
-            <Link to='/'><ToolbarTitle/>Wantrepreneur</Link>
+            <Link to='/'><ToolbarTitle/></Link>
 
 
-        </ToolbarGroup>
-            <Dialog className='my-account' actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}>
-                <h4> Please Login or Sign Up to see User Home Page </h4>
-                <div className="row" style={{display: 'flex'}}>
-                  <RegistrationForm className="col-md-6" close={this.handleClose}/>
-                  <span></span>
-                  <LoginForm className="col-md-6" close={this.handleClose}/>
-                </div>
-            </Dialog>
+          </ToolbarGroup>
+          <Dialog className='my-account' actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}>
+            <h4> Please Login or Sign Up to see User Home Page </h4>
+            <div className="row" style={{display: 'flex'}}>
+              <RegistrationForm className="col-md-6" close={this.handleClose}/>
+              <span></span>
+              <LoginForm className="col-md-6" close={this.handleClose}/>
+            </div>
+          </Dialog>
 
 
           <ToolbarGroup>
