@@ -21,7 +21,7 @@ const reducer = (user = [], action) => {
 //DISPATCHERS
 export const signUpUser = (user) => dispatch => {
 
-  console.log(`dispath hit, now work on route`);
+  console.log(`${user} .... dispath hit, now work on route`);
   // axios.post('/api/users', user)
   // .then(res=>dispatch(signup(res.data)) )
   // .catch()
