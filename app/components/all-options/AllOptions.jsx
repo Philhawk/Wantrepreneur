@@ -166,28 +166,6 @@ export default class extends React.Component {
             </Col>
           </Row>
           <Row>
-            {/* <DropdownButton title="Sort by" id="sort-dropdown">
-              <MenuItem onClick={() => this.setSortMethod('name', 1)}>
-              <FontIcon className="material-icons sort-arrow">keyboard_arrow_down</FontIcon>Name
-              </MenuItem>
-              <MenuItem onClick={() => this.setSortMethod('name', -1)}>
-              <FontIcon className="material-icons sort-arrow">keyboard_arrow_up</FontIcon>Name
-              </MenuItem>
-              <MenuItem onClick={() => this.setSortMethod('category', 1)}>
-              <FontIcon className="material-icons sort-arrow">keyboard_arrow_up</FontIcon>Category
-              </MenuItem>
-              <MenuItem onClick={() => this.setSortMethod('category', -1)} >
-              <FontIcon className="material-icons sort-arrow">keyboard_arrow_down</FontIcon>Category
-              </MenuItem>
-              <MenuItem onClick={() => this.setSortMethod('price', 1)}>
-              <FontIcon className="material-icons sort-arrow">keyboard_arrow_up</FontIcon>Price
-              </MenuItem>
-              <MenuItem onClick={() => this.setSortMethod('price', -1)}>
-              <FontIcon className="material-icons sort-arrow">keyboard_arrow_down</FontIcon>Price
-              </MenuItem>
-            </DropdownButton> */}
-          </Row>
-          <Row>
             <div style={styles.wrapper}>
               {this.categoryChips(styles)}
             </div>

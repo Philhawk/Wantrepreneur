@@ -12,7 +12,7 @@
     "seed": "node db/models/seed.js",
     "build": "webpack",
     "build-watch": "webpack -w",
-    "start": "webpack && node db/models/seed.js && nodemon server/start.js"
+    "start": "nodemon server/start.js"
   },
   "repository": {
     "type": "git",
