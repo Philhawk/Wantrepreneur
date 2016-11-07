@@ -4,8 +4,8 @@ const ForbiddenError = require('epilogue').Errors.ForbiddenError;
 const orderRoutes = require('express').Router();
 const db = require('APP/db');
 
-orderRoutes.get('/:orderId', (req, res, next) => {
-  db.model('orders').findByOrderId(req.params.orderId)
+orderRoutes.get('/thanks', (req, res, next) => {
+  db.model('orders').findByOrderId(req.query.orderId)
     .then(order => {
       if (!order) { throw new Error('Order not found.'); }
       res.json(order);

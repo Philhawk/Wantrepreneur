@@ -37,9 +37,9 @@ router.post('/submit', (req, res, next) => {
       return createdOrder.setProducts(products);
     })
     .then((newOrder) => newOrder.hash())
-    .then(() => {
+    .then((hashedOrder) => {
       io.sockets.emit('sold-products', createdProducts);
-      res.sendStatus(201);
+      res.status(201).send(hashedOrder.hash);
     })
     .catch(next);
 });

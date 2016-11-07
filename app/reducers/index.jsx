@@ -3,8 +3,10 @@ import products from './products';
 import cart from './cart';
 import categories from './categories';
 import price from './price';
-import productsLoading from './productsLoading.js';
 import signup from './RegistrationForm.js';
+import productsLoading from './productsLoading';
+import orderLoading from './orderLoading';
+import order from './order';
 
 export default combineReducers({
   products,
@@ -12,5 +14,7 @@ export default combineReducers({
   categories,
   price,
   productsLoading,
-  signup
+  signup,
+  order,
+  orderLoading
 });
