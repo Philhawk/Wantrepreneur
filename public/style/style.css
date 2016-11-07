@@ -46,6 +46,13 @@ img {
 	padding-bottom: 30px;
 }
 
+.blue-animation {
+	display:inline-block;
+	font-weight: bold;
+	border-bottom:3px solid #54F2F2;
+	padding-bottom: 30px;
+}
+
 
 .rightDivOpeningPage {
 	padding-left: 8em;
@@ -67,6 +74,18 @@ img {
 .homepage-choices {
 	padding-top: 6em;
 	padding-bottom: 8em;
+}
+
+.homepage-second {
+  background-image: url('travel.jpg');
+  background-size: cover;
+	padding-top: 6em;
+	padding-bottom: 15em;
+}
+
+.lower-heading, .lower-headline {
+  color: white;
+  text-align: left;
 }
 
 .row {
@@ -97,12 +116,13 @@ img {
 
 .description-headline {
 	text-align: center;
-	color: #FCFCFC;
+	color: #333333;
+  opacity: 0.7;
 
 }
 
 .boxes {
-	background-color: #F4E04D;
+	background-color: #333333;
   box-shadow: 4px 4px 2px #666;
   -webkit-box-shadow: 4px 4px 2px #666;
   -moz-box-shadow: 4px 4px 2px #666;
@@ -114,7 +134,16 @@ img {
   -moz-box-shadow: inset 4px 4px 2px #666;
 }
 
+.jumbotron p {
+  color: white;
+}
 
+.other-heading {
+  color: #333333;
+  font: helvetica;
+  font-size: 50px;
+  opacity: 0.8;
+}
 
 .heading {
 	color: #333333;
@@ -162,10 +191,12 @@ img {
 
 html,
 body {
-  height: 100%;
-	background-color: #5EB1BF;
-  background-size: cover;
-	background-repeat: no-repeat;
+  max-height: 100vh;
+	background-image: url('papyrus.jpg');
+  -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
 }
 
 .about-us {
@@ -210,6 +241,7 @@ body {
   /* Support for IE. */
   font-feature-settings: 'liga';
 }
+
 
 .jumbotron {
   color: #333333;
