@@ -25,7 +25,7 @@ export default class Price extends React.Component {
 
 		let iconStyles = {
 			fontSize: '80px',
-			color: '#333333'
+			color: '#fffef9'
 		};
 
 
@@ -37,7 +37,7 @@ export default class Price extends React.Component {
 
             <Row>
               <Col sm={12}>
-                <h1><span className='css-animation'>Price Range</span></h1>
+                <h1 className='other-heading'><span className='css-animation'>Price Range</span></h1>
                 <h3 className='description-headline'>Next, let us know how much you're willing to spend</h3>
                 <br/>
               </Col>
