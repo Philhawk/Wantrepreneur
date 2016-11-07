@@ -50,7 +50,6 @@ class Navigation extends React.Component {
 
     // actions for login/sign form buttons
     const actions = [
-      //<FlatButton label="Cancel" primary={true} onTouchTap={this.handleClose}/>,
       ];
 
       let requiredFields ={
@@ -67,11 +66,11 @@ class Navigation extends React.Component {
         <Toolbar style={{'backgroundColor':'transparent'}}>
           <ToolbarGroup>
             <Link to='/' className='logo'>{WPLogo}</Link>
-            <Link to='/'><ToolbarTitle/></Link>
+            <Link to='/'><ToolbarTitle/>Wantrepreneur</Link>
 
 
         </ToolbarGroup>
-            <Dialog className='my-account' actions={actions} modal={false} open={this.state.open} onRequesClose={this.handleClose}>
+            <Dialog className='my-account' actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}>
                 <h4> My Account </h4>
                 <div className="row" style={{display: 'flex'}}>
                   <RegistrationForm className="col-md-6" close={this.handleClose}/>
