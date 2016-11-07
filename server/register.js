@@ -10,8 +10,10 @@ router.post('/', (req, res, next) => {
 
   db.model('users').create(req.body)
       .then(user => {
-      req.login(user, next);
-      res.status(201).send(user);
+        req.login(user, err => {
+          if (err) next(err);
+          res.status(201).send(user);
+        });
     })
     .catch(next);
 });

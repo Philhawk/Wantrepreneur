@@ -123,11 +123,16 @@ passport.use(new (require('passport-local').Strategy) ({
 
 auth.get('/whoami', (req, res) => res.send(req.user))
 
-auth.post('/:strategy/login', (req, res, next) =>
-  passport.authenticate(req.params.strategy, {
-    successRedirect: '/'
-  })(req, res, next)
-)
+auth.post('/:strategy/login', (req, res, next) => {
+  passport.authenticate(req.params.strategy, (err, user, info) => {
+    if (err) { return next(err); }
+    if (!user) { return res.sendStatus(401); }
+    req.login(user, err => {
+      if (err) { return next(err); }
+      return res.send(user);
+    });
+  })(req, res, next);
+});
 
 
 module.exports = auth
