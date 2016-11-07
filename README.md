@@ -1,72 +1,23 @@
-# Hi, I'm bones
+# Wantrepreneur
 
-I'm a happy little skeleton. You can clone me to use as a starter on your projects!
-I have React, Redux, Sequelize, and Express all just rattling around in here ready
-to go.
+Have too much money laying around that you don't know how to spend? Be part of the American Dream and own your own business!
 
-## I need node >= 6.7.0
+## Or get help selecting the right business for you
 
-If you don't have it, I'll complain and tell you how to install it.
+Not sure what kind of business you would like? Navigate through our beautiful guide to find the right one! Change your mind? You can always change your options later.
 
-## 1. Make me into something!
+## Find your dream business
 
-Create a git repo however you want to. You can fork me on Github, but you can only do
-that once (so weird!). You can also create a Github repo and clone it, or just do
-`git init` in an empty directory on your machine.
+If you know exactly what kind of business you would like, simply select the filters that apply on our products page, and your dream buiness will magically appear!
 
-After you have a repo on your machine:
+## Ponder and come back... at your own risk!
 
-```
-git remote add bones https://github.com/queerviolet/bones.git
-git fetch bones
-git merge bones/master
-```
+If you log in and add your choices to the cart, they will be saved for when you return... ONLY if the business is not yet sold! Leave at your own risk :)
 
-And then you'll have me! If I change—which I probably will—you can get the most recent
-version by doing this again:
+## Invest your future
 
-```
-git fetch bones
-git merge bones/master
-```
+Secure your and your children's future through your own business!
 
-## 2. I need a name.
+## For Admins
 
-I don't have a name. I think I used to have one, but it turned to dust right along with my
-heart and liver and pituitary gland and all that stuff.
-
-Anyway, I'll need one. Give me a name in `package.json`.
-
-## 3. Start my dusty heart
-
-Short and sweet:
-
-```
-npm install
-npm run build-watch
-npm start
-```
-
-`npm start` doesn't build, so watch out for that. The reason it doesn't build is because you
-probably want to watch the build and run me in separate terminals. Otherwise, build errors get
-all mixed in with HTTP request logging.
-
-## My anatomy
-
-`/app` has the React/Redux setup. `main.jsx` is the entry point.
-
-`/db` has the Sequelize models and database setup. It'll create the database for you if it doesn't exist,
-assuming you're using postgres.
-
-`/server` has the Express server and routes. `start.js` is the entry point.
-
-`/bin` has scripts. (Right now it has *one* script that creates a useful symlink.)
-
-## Conventions
-
-I use `require` and `module.exports` in `.js` files.
-
-I use `import` and `export` in `.jsx` files, unless `require` makes for cleaner code.
-
-I use two spaces, no semi-colons, and trailing commas where possible. I'll
-have a linter someday soon.
+Login and navigate to /userpage to edit orders and products
