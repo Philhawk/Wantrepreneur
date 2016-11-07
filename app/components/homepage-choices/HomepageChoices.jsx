@@ -16,6 +16,7 @@ export default class HomepageChoices extends React.Component {
   componentDidMount() {
     window.setTimeout(() => this.setState({ helpClass: "boxes animated pulse"}), 5000);
     this.props.resetFilter();
+    console.log('  _       ___\n \\ \\    /| |_)\n  \\_\\/\\/ |_|');
   }
 
   helpMeChoose(){
