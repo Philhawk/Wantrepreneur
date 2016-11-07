@@ -69,14 +69,14 @@ class Navigation extends React.Component {
             <Link to='/'><ToolbarTitle/>Wantrepreneur</Link>
 
 
-        </ToolbarGroup>
-            <Dialog className='my-account' actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}>
-                <h4> My Account </h4>
-                <div className="row" style={{display: 'flex'}}>
-                  <RegistrationForm className="col-md-6" close={this.handleClose}/>
-                  <LoginForm className="col-md-6" close={this.handleClose}/>
-                </div>
-            </Dialog>
+          </ToolbarGroup>
+          <Dialog className='my-account' actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}>
+            <h4> My Account </h4>
+            <div className="row" style={{display: 'flex'}}>
+              <RegistrationForm className="col-md-6" close={this.handleClose}/>
+              <LoginForm className="col-md-6" close={this.handleClose}/>
+            </div>
+          </Dialog>
 
 
           <ToolbarGroup>
@@ -88,7 +88,7 @@ class Navigation extends React.Component {
               <Badge badgeContent={this.props.cart ? this.props.cart.length : ''} style ={{color:'#333333', padding:'1px 15px 10px 10px'}}badgeStyle={{top: 0, right: 0, fontSize: 15}}>
                 <IconButton tooltip="My Cart">
                   <Link to="/cart">
-                      <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} >shopping_cart</FontIcon>
+                    <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} >shopping_cart</FontIcon>
                   </Link>
                 </IconButton>
               </Badge>
