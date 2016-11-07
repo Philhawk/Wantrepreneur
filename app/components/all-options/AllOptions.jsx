@@ -5,6 +5,7 @@ import NavbarContainer from '../navbar/NavbarContainer';
 import {Grid, Col, Row, Modal, Button, FormGroup, FormControl, DropdownButton, MenuItem} from 'react-bootstrap';
 import Snackbar from 'material-ui/Snackbar';
 import AutoComplete from 'material-ui/AutoComplete';
+import Avatar from 'material-ui/Avatar';
 import FontIcon from 'material-ui/FontIcon';
 import CircularProgress from 'material-ui/CircularProgress';
 import { addToCart } from '../../reducers/cart';
@@ -86,12 +87,14 @@ export default class extends React.Component {
 
   categoryChips(styles) {
     return this.props.categories.allCategories.map(category => (
+
       <Chip
-        style={styles.chip}
         onClick={() => this.handleChipClick(category.id)}
+        style={styles.chip}
         backgroundColor={this.props.categories.filter.indexOf(category.id) >= 0 ? blue300 : grey50}
         key={category.id}
       >
+        <Avatar color="#444" size={32} icon={<FontIcon className="material-icons">{category.icon}</FontIcon>} />
         {category.name}
       </Chip>
     ));
@@ -122,6 +125,11 @@ export default class extends React.Component {
         flexWrap: 'wrap',
         justifyContent: 'space-around',
       },
+      wrapper: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        'text-align': 'center',
+      },
       gridList: {
         width: 500,
         height: 450,
@@ -140,75 +148,77 @@ export default class extends React.Component {
         <Grid>
           <Row>
             <Col sm={12}>
-              {/* <FormGroup>
-                  <FormControl id="product-searchbar" type="text" placeholder="Search" onInput={this.onSearchInput} />
-                  </FormGroup> */}
+
               <AutoComplete
-                  floatingLabelText="What are you looking for?"
-                  filter={AutoComplete.caseInsensitiveFilter}
-                  dataSource={[...this.props.products.map(p => p.name),...this.props.categories.allCategories.map(c => c.name)]}
-                  onUpdateInput={this.onSearchInput}
-                  onNewRequest={this.onSearchInput}
-                  maxSearchResults={8}
-                  >
+                floatingLabelText="What are you looking for?"
+                style={{color: 'yellow'}}
+                floatingLabelFocusStyle={{ color: 'yellow'} }
+                filter={AutoComplete.caseInsensitiveFilter}
+                dataSource={[...this.props.products.map(p => p.name),...this.props.categories.allCategories.map(c => c.name)]}
+                onUpdateInput={this.onSearchInput}
+                fullWidth={true}
+                menuStyle={{color: 'red'}}
+                onNewRequest={this.onSearchInput}
+                maxSearchResults={8}
+              >
               </AutoComplete>
             </Col>
           </Row>
           <Row>
-            <DropdownButton title="Sort by" id="sort-dropdown">
+            {/* <DropdownButton title="Sort by" id="sort-dropdown">
               <MenuItem onClick={() => this.setSortMethod('name', 1)}>
-                <FontIcon className="material-icons sort-arrow">keyboard_arrow_down</FontIcon>Name
+              <FontIcon className="material-icons sort-arrow">keyboard_arrow_down</FontIcon>Name
               </MenuItem>
               <MenuItem onClick={() => this.setSortMethod('name', -1)}>
-                <FontIcon className="material-icons sort-arrow">keyboard_arrow_up</FontIcon>Name
+              <FontIcon className="material-icons sort-arrow">keyboard_arrow_up</FontIcon>Name
               </MenuItem>
               <MenuItem onClick={() => this.setSortMethod('category', 1)}>
-                <FontIcon className="material-icons sort-arrow">keyboard_arrow_up</FontIcon>Category
+              <FontIcon className="material-icons sort-arrow">keyboard_arrow_up</FontIcon>Category
               </MenuItem>
               <MenuItem onClick={() => this.setSortMethod('category', -1)} >
-                <FontIcon className="material-icons sort-arrow">keyboard_arrow_down</FontIcon>Category
+              <FontIcon className="material-icons sort-arrow">keyboard_arrow_down</FontIcon>Category
               </MenuItem>
               <MenuItem onClick={() => this.setSortMethod('price', 1)}>
-                <FontIcon className="material-icons sort-arrow">keyboard_arrow_up</FontIcon>Price
+              <FontIcon className="material-icons sort-arrow">keyboard_arrow_up</FontIcon>Price
               </MenuItem>
               <MenuItem onClick={() => this.setSortMethod('price', -1)}>
-                <FontIcon className="material-icons sort-arrow">keyboard_arrow_down</FontIcon>Price
+              <FontIcon className="material-icons sort-arrow">keyboard_arrow_down</FontIcon>Price
               </MenuItem>
-            </DropdownButton>
+            </DropdownButton> */}
           </Row>
           <Row>
-            <Col sm={12}>
+            <div style={styles.wrapper}>
               {this.categoryChips(styles)}
-            </Col>
+            </div>
           </Row>
 
           <Row>
-          {
+            {
 
-            sortedProducts.length ? sortedProducts.map(p => (
-              <Col className="product-grid" key={p.id} sm={6} md={4} lg={6} onClick={() => this.open(p)}>
-                <GridList
-                  cellHeight={180}
-                  style={styles.gridList}
+              sortedProducts.length ? sortedProducts.map(p => (
+                <Col className="product-grid" key={p.id} sm={6} md={4} lg={6} onClick={() => this.open(p)}>
+                  <GridList
+                    cellHeight={180}
+                    style={styles.gridList}
                   >
-                  <GridTile
-                    className={this.props.cart.filter(c => c.id === p.id).length ? "cart-product" : ""}
-                    key={p.id}
-                    title={p.name}
-                    actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-                    actionPosition="left"
-                    titlePosition="top"
-                    titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
-                    cols={2}
-                    rows={2}
-                  >
-                  <img src={p.image} />
-                  </GridTile>
-                </GridList>
-              </Col>
-            )) : (this.props.productsLoading ?
-                  <CircularProgress size={80} thickness={5} color="#F4E04D" />
-                  : "No matching businesses found.")
+                    <GridTile
+                      className={this.props.cart.filter(c => c.id === p.id).length ? "cart-product" : ""}
+                      key={p.id}
+                      title={p.name}
+                      actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+                      actionPosition="left"
+                      titlePosition="top"
+                      titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
+                      cols={2}
+                      rows={2}
+                    >
+                      <img src={p.image} />
+                    </GridTile>
+                  </GridList>
+                </Col>
+              )) : (this.props.productsLoading ?
+                <CircularProgress size={80} thickness={5} color="#F4E04D" />
+              : "No matching businesses found.")
           }
           </Row>
         </Grid>

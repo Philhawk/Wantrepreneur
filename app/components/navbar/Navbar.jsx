@@ -64,10 +64,11 @@ class Navigation extends React.Component {
 
     return (
       <div>
-      <Toolbar style={{'background-color':'transparent'}}>
-        <ToolbarGroup>
+        <Toolbar style={{'backgroundColor':'transparent'}}>
+          <ToolbarGroup>
             <Link to='/' className='logo'>{WPLogo}</Link>
-            <Link to='/'><ToolbarTitle text="Wantrepreneur"/></Link>
+            <Link to='/'><ToolbarTitle/></Link>
+
 
         </ToolbarGroup>
             <Dialog className='my-account' actions={actions} modal={false} open={this.state.open} onRequesClose={this.handleClose}>
@@ -77,6 +78,7 @@ class Navigation extends React.Component {
                   <LoginForm className="col-md-6" close={this.handleClose}/>
                 </div>
             </Dialog>
+
 
           <ToolbarGroup>
             <div>
@@ -92,6 +94,7 @@ class Navigation extends React.Component {
                 </IconButton>
               </Badge>
             </div>
+
         </ToolbarGroup>
       </Toolbar>
       </div>
