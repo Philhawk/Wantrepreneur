@@ -69,6 +69,28 @@ class Navigation extends React.Component {
                           <FontIcon className="material-icons" onClick={this.props.logoutUser} hoverColor={'#FCFCFC'}>exit_to_app</FontIcon>
                     </IconButton>
 
+    const houseIcon =
+        <IconButton tooltip="My Account" >
+            <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} onTouchTap={this.handleOpen}>home</FontIcon>
+        </IconButton>
+
+    const accountCircle =
+     <Link to='/'>
+        <IconButton tooltip="Home Page" >
+            <FontIcon className="material-icons"  hoverColor={'#FCFCFC'}>account_circle</FontIcon>
+        </IconButton>
+      </Link>
+
+    const loginSignIn =
+          <Dialog className='my-account' actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}>
+              <h4> Please Login or Sign Up to see User Home Page </h4>
+              <div className="row" style={{display: 'flex'}}>
+                  <RegistrationForm className="col-md-6" close={this.handleClose}/>
+                  <span></span>
+                  <LoginForm className="col-md-6" close={this.handleClose}/>
+              </div>
+          </Dialog>
+
 
     return (
       <div>
@@ -77,24 +99,10 @@ class Navigation extends React.Component {
             <Link to='/' className='logo'>{WPLogo}</Link>
           </ToolbarGroup>
 
-            <Dialog className='my-account' actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}>
-                <h4> Please Login or Sign Up to see User Home Page </h4>
-                <div className="row" style={{display: 'flex'}}>
-                  <RegistrationForm className="col-md-6" close={this.handleClose}/>
-                  <span></span>
-                  <LoginForm className="col-md-6" close={this.handleClose}/>
-                </div>
-            </Dialog>
-
-
           <ToolbarGroup>
             <div>
-              <IconButton tooltip="My Account" >
-                <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} onTouchTap={this.handleOpen}>home</FontIcon>
-              </IconButton>
-
-              {(this.props.user === null) ? null : logoutIcon}
-
+              {(this.props.user === null)?  houseIcon : accountCircle}
+              {loginSignIn}
               <Badge
                   badgeContent={this.props.cart ? this.props.cart.length : ''}
                   style ={{color:'#333333', padding:'1px 15px 10px 10px', display: badgeDisplay}}
@@ -105,8 +113,8 @@ class Navigation extends React.Component {
                   </Link>
                 </IconButton>
               </Badge>
+              {(this.props.user === null) ? null : logoutIcon}
             </div>
-
         </ToolbarGroup>
       </Toolbar>
       </div>

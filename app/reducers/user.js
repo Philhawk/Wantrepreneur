@@ -18,7 +18,7 @@ const reducer = (user = null, action) => {
     case CREATE_USER:
       return action.user;
     case LOGIN_USER :
-      return user;
+      return action.user;
     case LOGOUT_USER :
       return null;
     default: return user;
