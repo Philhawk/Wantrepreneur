@@ -33,7 +33,10 @@ const Product = db.define('products', {
   },
   image: {
     type: Sequelize.STRING,
-    defaultValue: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97350&w=350&h=350'
+    defaultValue: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97350&w=350&h=350',
+    validate: {
+      isUrl: true
+    }
   }
 });
 
