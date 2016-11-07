@@ -71,9 +71,10 @@ class Navigation extends React.Component {
 
         </ToolbarGroup>
             <Dialog className='my-account' actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}>
-                <h4> My Account </h4>
+                <h4> Please Login or Signup to see User Home Page </h4>
                 <div className="row" style={{display: 'flex'}}>
                   <RegistrationForm className="col-md-6" close={this.handleClose}/>
+                  <span></span>
                   <LoginForm className="col-md-6" close={this.handleClose}/>
                 </div>
             </Dialog>

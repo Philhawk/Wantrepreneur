@@ -12,14 +12,11 @@ import {Card, CardHeader, CardActions, CardText} from 'material-ui';
 class RegistrationForm extends React.Component{
   constructor(props){
     super(props);
-
-
-
     this.onSubmitSignup = this.onSubmitSignup.bind(this);
   }
 
   onSubmitSignup(event){
-
+    event.preventDefault();
     console.log(this.props);
     console.log(event + "event");
   }
