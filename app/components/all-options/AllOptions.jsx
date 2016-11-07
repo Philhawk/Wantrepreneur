@@ -151,11 +151,13 @@ export default class extends React.Component {
 
               <AutoComplete
                 floatingLabelText="What are you looking for?"
+                style={{color: 'yellow'}}
+                floatingLabelFocusStyle={{ color: 'yellow'} }
                 filter={AutoComplete.caseInsensitiveFilter}
                 dataSource={[...this.props.products.map(p => p.name),...this.props.categories.allCategories.map(c => c.name)]}
                 onUpdateInput={this.onSearchInput}
                 fullWidth={true}
-                menuStyle={'color: red'}
+                menuStyle={{color: 'red'}}
                 onNewRequest={this.onSearchInput}
                 maxSearchResults={8}
               >

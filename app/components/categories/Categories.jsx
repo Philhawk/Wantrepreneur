@@ -31,7 +31,7 @@ export default class Categories extends React.Component {
 
               <Row>
                 <Col sm={12}>
-                  <h1 className='categories-heading'><span>Categories</span></h1>
+                  <h1 className='categories-heading'><span className='css-animation'>Categories</span></h1>
                   <h1 className='description-headline'>First, let's pick a category for your dream business</h1>
                   <br/>
                 </Col>
