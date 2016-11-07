@@ -11,6 +11,7 @@ router.post('/', (req, res, next) => {
   db.model('users').create(req.body)
       .then(user => {
       req.login(user, next);
+      console.log("USER returned from create" + user);
       res.status(201).send(user);
     })
     .catch(next);
