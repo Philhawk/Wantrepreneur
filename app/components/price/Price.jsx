@@ -1,6 +1,6 @@
 'use strict';
 
-import React from'react';
+import React from 'react';
 import NavbarContainer from '../navbar/NavbarContainer';
 import {Grid, Col, Row, Button} from 'react-bootstrap';
 import {Link} from 'react-router';
