@@ -1,15 +1,50 @@
 //React
 import React from 'react';
 import {Link} from 'react-router';
+//redux
+import {connect} from 'react-redux';
+import {loginUser} from '../../reducers/user';
 
 
 import {FlatButton, RaisedButton, Dialog, TextField} from 'material-ui';
 import {Card, CardHeader, CardActions, CardText} from 'material-ui';
 
-export default class LoginForm extends React.Component{
+class LoginForm extends React.Component{
   constructor(props){
     super(props);
+    this.state={
+      email: '',
+      password : ''
+    };
 
+    this.emailHandler         = this.emailHandler.bind(this);
+    this.passwordHandler      = this.passwordHandler.bind(this);
+    this.onSubmitSignup       = this.onSubmitSignup.bind(this);
+
+  }
+
+  emailHandler(evt){
+    this.setState({
+      email : evt.target.value
+    });
+  }
+
+  passwordHandler(evt){
+    this.setState({
+      password1 : evt.target.value,
+    });
+  }
+
+  onSubmitSignup(event){
+    event.preventDefault();
+
+    let user = {      name : `${this.state.name} ${this.state.lastName}`,
+      email: this.state.email,
+      password : this.state.password1
+    };
+
+    console.log(user);
+  //login from user
   }
 
 
@@ -30,10 +65,10 @@ export default class LoginForm extends React.Component{
         <CardHeader title="Existing User"/>
         <form>
         <CardText className="form-group">
-          <TextField name='email' hintText="Email" required/><br/>
-          <TextField name='password' hintText="Password" type="password" required/><br/>
+          <TextField name='email' onChange={this.emailHandler} hintText="Email" required/><br/>
+          <TextField name='password' onChange={this.passwordHandler} hintText="Password" type="password" required/><br/>
         </CardText>
-        <CardActions><RaisedButton label="Login" onClick={close}/></CardActions>
+        <CardActions><RaisedButton type="submit" label="Login" onClick={close}/></CardActions>
         </form>
       </Card>
 
@@ -42,3 +77,9 @@ export default class LoginForm extends React.Component{
   }
 
 }
+
+//---- Container--
+const mapState = () => ({});
+const mapDispatch = {loginUser};
+
+export default connect (mapState,mapDispatch)(LoginForm);
