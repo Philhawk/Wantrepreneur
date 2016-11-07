@@ -143,6 +143,11 @@ export default class extends React.Component {
       },
     };
 
+		const iconStyles = {
+			fontSize: '80px',
+			color: '#333333'
+		};
+
     return (
       <div>
         <NavbarContainer />
@@ -168,6 +173,24 @@ export default class extends React.Component {
           <Row>
             <div style={styles.wrapper}>
               {this.categoryChips(styles)}
+              <div>
+                <Chip
+                    onClick={() => this.props.addPriceRange([0, 333333])}
+                    style={styles.chip}
+                    backgroundColor={!this.props.price.length || this.props.price[1] >= 333333 ? blue300 : grey50}
+                    key={1111111111}
+                >
+                  $
+                </Chip>
+                <Chip
+                    onClick={()=> this.props.addPriceRange([0, Infinity])}
+                    style={styles.chip}
+                    backgroundColor={!this.props.price.length || this.props.price[1] === Infinity ? blue300 : grey50}
+                    key={222222222222222}
+                >
+                    $$
+                </Chip>
+              </div>
             </div>
           </Row>
 
