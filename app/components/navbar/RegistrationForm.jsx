@@ -28,8 +28,6 @@ class RegistrationForm extends React.Component{
     this.emailHandler         = this.emailHandler.bind(this);
     this.passwordHandler1     = this.passwordHandler1.bind(this);
     this.passwordHandler2     = this.passwordHandler2.bind(this);
-    this.passwordConfirmation = this.passwordConfirmation.bind(this);
-
   }
 
   nameHandler(evt){
@@ -54,30 +52,16 @@ class RegistrationForm extends React.Component{
     this.setState({
       password1 : evt.target.value,
     });
-
-    this.passwordConfirmation();
   }
 
   passwordHandler2(evt){
     this.setState({
       password2 : evt.target.value,
     });
-    this.passwordConfirmation();
-
-  }
-
-  passwordConfirmation(){
-    if (this.state.password1 !== this.state.password2) {
-      this.setState({match:true});
-    } else this.setState({match : false});
-
-    console.log(this.state.match);
   }
 
   onSubmitSignup(event){
     event.preventDefault();
-
-
 
     let newUser = {
       name : `${this.state.name} ${this.state.lastName}`,
@@ -108,17 +92,17 @@ class RegistrationForm extends React.Component{
     <div>
         {this.state.match}
       <Card >
-        <CardHeader title="Signup as New User"/>
+        <CardHeader title="Sign Up as New User"/>
         <form onSubmit={this.onSubmitSignup}>
         <CardText className="form-group" >
           <TextField name='firstName' label='firstName' hintText="First Name" onChange={this.nameHandler} /><br/>
           <TextField name='lastName' hintText="Last Name" onChange={this.lastnameHandler}/><br/>
           <TextField name='email' type="email" hintText="Email" onChange={this.emailHandler} required/><br/>
-          <TextField name='password1' hintText="Password" type="password" onChange={this.password1Handler}
+          <TextField name='password1' hintText="Password" type="password" onChange={this.passwordHandler1}
            required/><br/>
-          <TextField name='password2' hintText="Confirm Password" type="password" onChange={this.password2Handler}  required/><br/>
+          <TextField name='password2' hintText="Confirm Password" type="password" onChange={this.passwordHandler2}  required/><br/>
           </CardText>
-        <CardActions><RaisedButton disabled={this.state.match} type="submit" label="Submit"/></CardActions>
+        <CardActions><RaisedButton disabled={this.state.password1 !== this.state.password2 || !this.state.password1.length} type="submit" label="Submit"/></CardActions>
         </form>
       </Card>
     </div>
