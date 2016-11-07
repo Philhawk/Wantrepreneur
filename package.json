@@ -12,7 +12,7 @@
     "seed": "node db/models/seed.js",
     "build": "webpack",
     "build-watch": "webpack -w",
-    "start": "node server/start.js"
+    "start": "webpack && node db/models/seed.js && nodemon server/start.js"
   },
   "repository": {
     "type": "git",
@@ -65,14 +65,13 @@
     "react-stripe-checkout": "^2.2.5",
     "react-tap-event-plugin": "^1.0.0",
     "redux": "^3.6.0",
+    "redux-form": "^6.2.0",
     "redux-form-material-ui": "^4.1.0",
     "redux-logger": "^2.7.0",
     "redux-thunk": "^2.1.0",
     "sequelize": "^3.24.6",
     "socket.io": "^1.5.1",
-    "style-loader": "^0.13.1"
-  },
-  "devDependencies": {
+    "style-loader": "^0.13.1",
     "babel": "^6.5.2",
     "babel-core": "^6.18.0",
     "babel-loader": "^6.2.7",
@@ -88,5 +87,7 @@
     "supertest-as-promised": "^4.0.1",
     "volleyball": "^1.4.1",
     "webpack": "^1.13.3"
+  },
+  "devDependencies": {
   }
 }
