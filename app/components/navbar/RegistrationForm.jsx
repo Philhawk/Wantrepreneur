@@ -92,7 +92,7 @@ class RegistrationForm extends React.Component{
     <div>
         {this.state.match}
       <Card >
-        <CardHeader title="Signup as New User"/>
+        <CardHeader title="Sign Up as New User"/>
         <form onSubmit={this.onSubmitSignup}>
         <CardText className="form-group" >
           <TextField name='firstName' label='firstName' hintText="First Name" onChange={this.nameHandler} /><br/>
@@ -102,7 +102,7 @@ class RegistrationForm extends React.Component{
            required/><br/>
           <TextField name='password2' hintText="Confirm Password" type="password" onChange={this.passwordHandler2}  required/><br/>
           </CardText>
-        <CardActions><RaisedButton disabled={this.state.password1 !== this.state.password2 && this.state.password1.length} type="submit" label="Submit"/></CardActions>
+        <CardActions><RaisedButton disabled={this.state.password1 !== this.state.password2 || !this.state.password1.length} type="submit" label="Submit"/></CardActions>
         </form>
       </Card>
     </div>
