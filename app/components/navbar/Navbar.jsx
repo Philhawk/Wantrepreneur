@@ -69,10 +69,10 @@ class Navigation extends React.Component {
 
     return (
       <div>
-      <Toolbar style={{'background-color':'transparent'}}>
-        <ToolbarGroup>
+        <Toolbar style={{'background-color':'transparent'}}>
+          <ToolbarGroup>
             <Link to='/' className='logo'>{WPLogo}</Link>
-            <Link to='/'><ToolbarTitle text="Wantrepreneur"/></Link>
+            <Link to='/'><ToolbarTitle/></Link>
 
         </ToolbarGroup>
 

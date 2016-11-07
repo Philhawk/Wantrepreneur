@@ -44,16 +44,16 @@ export default class extends React.Component {
                 <Card>
                   <Row>
                     <Col lg={6}>
-                       <CardHeader title={cartItem.name} subtitle={'$' + cartItem.price} actAsExpander={true} showExpandableButton={true} />
-                       <CardActions>
-                         <FlatButton label="Remove from Cart" onClick={() => this.removeFromCart(cartItem)}/>
-                       </CardActions>
-                     </Col>
-                     <Col lg={6}>
+                      <CardHeader title={cartItem.name} subtitle={'$' + cartItem.price} actAsExpander={true} showExpandableButton={true} />
+                      <CardActions>
+                        <FlatButton label="Remove from Cart" onClick={() => this.removeFromCart(cartItem)}/>
+                      </CardActions>
+                    </Col>
+                    <Col lg={6}>
                       <img className='cart-image' src={ cartItem.image}/>
-                     </Col>
-                 </Row>
-              </Card>
+                    </Col>
+                  </Row>
+                </Card>
               </Col>
             )) : null}
           </Row>
