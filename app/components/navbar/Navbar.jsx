@@ -76,6 +76,7 @@ class Navigation extends React.Component {
           <ToolbarGroup>
             <Link to='/' className='logo'>{WPLogo}</Link>
             <Link to='/'><ToolbarTitle/></Link>
+
         </ToolbarGroup>
 
             <Dialog className='my-account' actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}>
