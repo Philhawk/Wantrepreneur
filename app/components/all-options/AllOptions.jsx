@@ -108,10 +108,7 @@ export default class extends React.Component {
                                 if (this.state.search !== '') {
                                   return p.name.toLowerCase().includes(this.state.search)
                                          || p.description.toLowerCase().includes(this.state.search)
-                                         || p.categories
-                                              .reduce((a, b) => a + b.name, '')
-                                              .toLowerCase()
-                                              .includes(this.state.search)
+                                         || p.categories.map(c => c.name.toLowerCase()).includes(this.state.search)
                                 }
                                 return true;
                               })
