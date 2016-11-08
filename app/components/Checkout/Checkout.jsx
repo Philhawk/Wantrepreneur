@@ -20,7 +20,7 @@ export default class extends React.Component {
         this.props.clearCart();
         browserHistory.push(`/thanks?order=${order.data.orderId}`);
       })
-      .catch(() => browserHistory.push('/checkout'));
+      .catch(() => browserHistory.push('/cart'));
   }
 
   render() {
