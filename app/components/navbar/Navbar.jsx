@@ -31,6 +31,7 @@ class Navigation extends React.Component {
   }
 
   componentDidMount() {
+    this.props.getLocalStorage();
     socket.on('sold-products', this.props.removeMultipleFromCart);
   }
 

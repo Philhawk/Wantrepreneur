@@ -4,7 +4,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import AllOptions from './AllOptions';
 import { receiveAllProducts, removeMultipleProducts } from '../../reducers/products';
-import { getCartFromLocal, addToCartThunk, removeFromCartThunk, removeMultipleFromCartThunk } from '../cart/CartHelpers';
+import { addToCartThunk, removeFromCartThunk, removeMultipleFromCartThunk } from '../cart/CartHelpers';
 import { receiveCategories } from '../categories/CategoriesContainer';
 import { addCategory, removeCategory } from '../../reducers/categories';
 import { productsLoading, productsNotLoading } from '../../reducers/productsLoading';
@@ -36,9 +36,6 @@ const mapDispatchToProps = () => dispatch => ({
   },
   removeItemFromCart: product => {
     dispatch(removeFromCartThunk(product));
-  },
-  getCart: () => {
-    dispatch(getCartFromLocal());
   },
   removeMultipleFromCart: products => {
     dispatch(removeMultipleFromCartThunk(products));

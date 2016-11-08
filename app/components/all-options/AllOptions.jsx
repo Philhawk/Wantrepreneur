@@ -49,7 +49,6 @@ export default class extends React.Component {
 
   componentDidMount() {
     this.props.getProducts();
-    this.props.getCart();
     this.props.getCategories(this.props.categories.allCategories);
     socket.on('sold-products', this.soldProducts);
   }
