@@ -2,4 +2,6 @@
 
 import io from 'socket.io-client';
 
-export default socket = io.connect('http://wantre-preneur.herokuapp.com/');
+const socket = io.connect('http://wantre-preneur.herokuapp.com/');
+
+export default socket;
