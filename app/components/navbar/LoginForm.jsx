@@ -38,8 +38,8 @@ class LoginForm extends React.Component{
   onSubmitSignup(event){
     event.preventDefault();
     this.props.loginUser(this.state);
+    window.localStorage.setItem('user', JSON.stringify(this.state));
   }
-
 
   render(){
     let {close} = this.props;
