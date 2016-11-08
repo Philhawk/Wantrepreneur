@@ -62,7 +62,7 @@ class LoginForm extends React.Component{
     return(
       <Card>
         <CardHeader title="Existing User"/>
-        <form>
+        <form onSubmit={this.onSubmitSignup}>
         <CardText className="form-group">
           <TextField name='email' onChange={this.emailHandler} hintText="Email" required/><br/>
           <TextField name='password' onChange={this.passwordHandler} hintText="Password" type="password" required/><br/>
