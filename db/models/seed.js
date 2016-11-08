@@ -45,7 +45,7 @@ const seedProducts = () => db.Promise.map([
     {
       name: 'Knocking Kenneth Korporation',
       price: 1000,
-      image: __dirname + 'public/bartendr.png',
+      image: 'http://punchdrink.com/wp-content/uploads/2016/02/Article-Shingo-Gokan-Bartender-Angels-Share-NYC-Flair-Bartending.jpg',
       description: 'Ever feel like you\'re alone because you\'re too smart? Join Knocking Kenneth Korportaion and be one of the 2% smartest people on earth. You will learn to show love to others through actions rather than words.'
     }
 	], product => db.model('products').create(product));
