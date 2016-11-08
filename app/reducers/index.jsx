@@ -7,6 +7,7 @@ import user from './user';
 import productsLoading from './productsLoading';
 import orderLoading from './orderLoading';
 import order from './order';
+import orders from './orders';
 
 export default combineReducers({
   products,
@@ -16,5 +17,6 @@ export default combineReducers({
   productsLoading,
   user,
   order,
+  orders,
   orderLoading
 });

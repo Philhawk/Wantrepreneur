@@ -15,14 +15,14 @@ class LoginForm extends React.Component{
     this.state={
       email: '',
       password : '',
-      error : "Invalid Passord or Email",
+      error : "Invalid Password or Email",
       loginAttempts: 0
     };
 
     this.emailHandler         = this.emailHandler.bind(this);
     this.passwordHandler      = this.passwordHandler.bind(this);
     this.onSubmitSignup       = this.onSubmitSignup.bind(this);
-    this.attempted            =this.attempted.bind(this);
+    this.attempted            = this.attempted.bind(this);
 
   }
 // Event handlers

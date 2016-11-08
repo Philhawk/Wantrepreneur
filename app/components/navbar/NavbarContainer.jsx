@@ -12,8 +12,8 @@ const mapStateToProps = ({ cart, user }) => ({
 });
 
 const mapDispatchToProps = () => dispatch => ({
-  loginUser: () => {
-    dispatch(loginUser());
+  loginUser: (user) => {
+    dispatch(loginUser(user));
   },
   logoutUser: () => {
     dispatch(logoutUser());
