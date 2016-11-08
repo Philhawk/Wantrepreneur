@@ -2,7 +2,7 @@
 
 import Navigation from './Navbar';
 import { connect } from 'react-redux';
-import {logoutUser} from '../../reducers/user'
+import {logoutUser, loginUser} from '../../reducers/user'
 import { getCartFromLocal } from '../cart/CartHelpers';
 import { removeMultipleFromCartThunk } from '../cart/CartHelpers';
 
@@ -12,6 +12,9 @@ const mapStateToProps = ({ cart, user }) => ({
 });
 
 const mapDispatchToProps = () => dispatch => ({
+  loginUser: () => {
+    dispatch(loginuser());
+  },
   logoutUser: () => {
     dispatch(logoutUser());
   },

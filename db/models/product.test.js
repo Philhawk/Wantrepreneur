@@ -47,8 +47,8 @@ describe('Product', () => {
     // category: 'beauty',
     price: '100000000',
     description: 'test description',
-    url: 'http://google.com',
-    image: 'url here'
+    url: 'url here',
+    image: 'images/test.jpg'
   };
 
   before('wait for the db', () => db.didSync);
@@ -64,6 +64,6 @@ describe('Product', () => {
 
     it('fails if name is empty', () => Product.create(emptyName).should.be.rejected);
 
-    it('fails if image url is invalid', () => Product.create(invalidUrl).should.be.rejected);
+    it('fails if url is invalid', () => Product.create(invalidUrl).should.be.rejected);
   });
 });

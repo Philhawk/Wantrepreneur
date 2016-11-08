@@ -27,7 +27,7 @@ describe('/api/auth', () => {
       request(app)
         .post('/api/auth/local/login')
         .send(alice)
-        .expect(302)
+        .expect(201)
         .expect('Set-Cookie', /session=.*/)
       )
 

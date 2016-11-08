@@ -47,6 +47,14 @@ class Navigation extends React.Component {
   handleClose(){
     this.setState({open: false});
     }
+
+  componentWillMount() {
+    let loggedUser = window.localStorage.getItem('user');
+    if (loggedUser) {
+      this.props.loginUser(JSON.parse(loggedUser));
+    }
+  }
+
 //
   render() {
     // Material UI styles
