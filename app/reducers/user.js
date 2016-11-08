@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {browserHistory} from 'react-router';
 
 // ACTIONS
 
@@ -51,6 +52,7 @@ export const logoutUser = (user) => dispatch => {
   .then(res => {
     window.localStorage.setItem('user', '');
     dispatch(logout());
+    browserHistory.push('/');
   })
   .catch(err => console.log(err));
 };
