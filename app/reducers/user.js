@@ -34,17 +34,22 @@ export const signUpUser = (user) => dispatch => {
 
 };
 
-
 export const loginUser = (user) => dispatch => {
   axios.post('/api/auth/local/login', user)
-  .then(res => dispatch(login(res.data)))
+  .then(res => {
+    window.localStorage.setItem('user', JSON.stringify(user));
+    dispatch(login(res.data));
+  })
   .catch(err => console.log(err));
 
 };
 
 export const logoutUser = (user) => dispatch => {
   axios.post('/api/logout')
-  .then(res => dispatch(logout()))
+  .then(res => {
+    window.localStorage.setItem('user', '');
+    dispatch(logout());
+  })
   .catch(err => console.log(err));
 };
 
