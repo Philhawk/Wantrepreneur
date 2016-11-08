@@ -72,22 +72,17 @@ class Navigation extends React.Component {
     const actions = [
       ];
 
-    let requiredFields ={
-      errorStyle: {
-        color: '#F4E04D',
-      },
-      underlineStyle: {
-        borderColor: '#54F2f2',
-      }
-    };
+
 
     const badgeDisplay = this.props.cart && this.props.cart.length ? "inline" : "none";
 
 // icon components
     const logoutIcon =
+
                     <IconButton tooltip="Log Out" >
-                          <FontIcon className="material-icons" onClick={this.props.logoutUser} hoverColor={'#FCFCFC'}>exit_to_app</FontIcon>
+                          <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} onClick={this.props.logoutUser} onTouchTap={this.handleClose}>exit_to_app</FontIcon>
                     </IconButton>
+
 
     const houseIcon =
         <IconButton tooltip="My Account" >
@@ -95,7 +90,7 @@ class Navigation extends React.Component {
         </IconButton>
 
     const accountCircle =
-     <Link to='/'>
+     <Link to='/userpage'>
         <IconButton tooltip="Home Page" >
             <FontIcon className="material-icons"  hoverColor={'#FCFCFC'}>account_circle</FontIcon>
         </IconButton>
