@@ -61,19 +61,25 @@ class Navigation extends React.Component {
 
 
 
-
+    const styles = {
+      toolbar: {
+        'backgroundColor': 'transparent',
+        'padding-left': '8px',
+        'margin-top': '0.2em',
+      }
+    };
     // actions for login/sign form buttons
     const actions = [
       ];
 
-      let requiredFields ={
-        errorStyle: {
-          color: '#F4E04D',
-        },
-        underlineStyle: {
-          borderColor: '#54F2f2',
-        }
-      };
+    let requiredFields ={
+      errorStyle: {
+        color: '#F4E04D',
+      },
+      underlineStyle: {
+        borderColor: '#54F2f2',
+      }
+    };
 
     const badgeDisplay = this.props.cart && this.props.cart.length ? "inline" : "none";
 
@@ -108,7 +114,7 @@ class Navigation extends React.Component {
 
     return (
       <div>
-        <Toolbar style={{'backgroundColor':'transparent'}}>
+        <Toolbar style={styles.toolbar}>
           <ToolbarGroup>
             <Link to='/' className='logo'>{WPLogo}</Link>
           </ToolbarGroup>
