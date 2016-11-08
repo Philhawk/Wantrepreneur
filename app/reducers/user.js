@@ -40,7 +40,9 @@ export const loginUser = (user) => dispatch => {
     window.localStorage.setItem('user', JSON.stringify(user));
     dispatch(login(res.data));
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    console.log(err);
+  });
 
 };
 
