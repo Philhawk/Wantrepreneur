@@ -5,10 +5,15 @@ import NavbarContainer from '../navbar/NavbarContainer';
 import { Grid, Col, Row } from 'react-bootstrap';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import { Link } from 'react-router';
 
 export default class UserPage extends React.Component {
   constructor (props) {
     super(props);
+  }
+
+  componentDidMount () {
+    this.props.getOrders();
   }
 
   render () {
@@ -26,6 +31,9 @@ export default class UserPage extends React.Component {
 
           <Row>
             <p>Email: {this.props.user && this.props.user.email}</p>
+            {this.props.orders && this.props.orders.map((order, index) => (
+              <Link to={`/thanks?order=${order.orderId}`}>Order {index + 1}</Link>
+            ))}
           </Row>
         </Grid>
       </div>
