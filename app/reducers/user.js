@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios from 'axios';
 
 // ACTIONS
 
-const CREATE_USER = "CREATE_USER";
+const CREATE_USER = 'CREATE_USER';
 const LOGOUT_USER = 'LOGOUT_USER';
 const LOGIN_USER = 'LOGIN_USER';
 
@@ -27,9 +27,9 @@ const reducer = (user = null, action) => {
 };
 
 //DISPATCHERS
-export const signUpUser =(user) => dispatch => {
+export const signUpUser = (user) => dispatch => {
   axios.post('/api/register', user)
-  .then(res=>dispatch(signup(res.data)))
+  .then(res => dispatch(signup(res.data)))
   .catch(err => console.log(err));
 
 };
@@ -38,14 +38,14 @@ export const signUpUser =(user) => dispatch => {
 export const loginUser = (user) => dispatch => {
   axios.post('/api/auth/local/login', user)
   .then(res => dispatch(login(res.data)))
-  .catch(err=>console.log(err));
+  .catch(err => console.log(err));
 
 };
 
 export const logoutUser = (user) => dispatch => {
   axios.post('/api/logout')
   .then(res => dispatch(logout()))
-  .catch(err=>console.log(err));
+  .catch(err => console.log(err));
 };
 
 

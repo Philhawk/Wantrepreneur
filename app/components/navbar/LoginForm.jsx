@@ -31,19 +31,13 @@ class LoginForm extends React.Component{
 
   passwordHandler(evt){
     this.setState({
-      password1 : evt.target.value,
+      password : evt.target.value,
     });
   }
 
   onSubmitSignup(event){
     event.preventDefault();
-
-    let user = {
-      email: this.state.email,
-      password : this.state.password
-    };
-
-    this.props.loginUser(user);
+    this.props.loginUser(this.state);
   }
 
 

@@ -129,7 +129,7 @@ auth.post('/:strategy/login', (req, res, next) => {
     if (!user) { return res.sendStatus(401); }
     req.login(user, err => {
       if (err) { return next(err); }
-      return res.status(302).send(user);
+      res.status(201).send(user);
     });
   })(req, res, next);
 });
