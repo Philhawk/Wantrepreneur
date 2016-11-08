@@ -192,7 +192,7 @@ img {
 html,
 body {
   max-height: 100vh;
-	background-image: url('papyrus.jpg');
+	background-color: #FFFEDD;
   -webkit-background-size: cover;
    -moz-background-size: cover;
    -o-background-size: cover;

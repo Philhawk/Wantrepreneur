@@ -10,8 +10,6 @@ import Avatar from 'material-ui/Avatar';
 import FontIcon from 'material-ui/FontIcon';
 import CircularProgress from 'material-ui/CircularProgress';
 import { addToCart } from '../../reducers/cart';
-import io from 'socket.io-client';
-let socket;
 import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
@@ -19,6 +17,7 @@ import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import _ from 'lodash';
 import Chip from 'material-ui/Chip';
 import {blue300, grey50} from 'material-ui/styles/colors';
+import socket from '../../socket';
 
 const snackbarAutoHideDuration = 4000;
 
@@ -50,16 +49,8 @@ export default class extends React.Component {
 
   componentDidMount() {
     this.props.getProducts();
-    this.props.getCart();
     this.props.getCategories(this.props.categories.allCategories);
-    socket = io('http://localhost:8080');
     socket.on('sold-products', this.soldProducts);
-  }
-
-  componentWillUnmount() {
-    socket.off('sold-products', null);
-    socket.disconnect();
-    socket = null;
   }
 
   getSortFunction(field, direction) {
@@ -303,7 +294,6 @@ export default class extends React.Component {
   };
 
   soldProducts(products) {
-    this.props.removeMultipleFromCart(products);
     this.props.removeMultipleProductsFromOptions(products);
   }
 }
