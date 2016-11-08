@@ -2,4 +2,4 @@
 
 import io from 'socket.io-client';
 
-export default io('http://wantre-preneur.herokuapp.com:8080');
+export default io('http://localhost:8080');
