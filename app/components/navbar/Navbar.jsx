@@ -83,7 +83,7 @@ class Navigation extends React.Component {
 
     const badgeDisplay = this.props.cart && this.props.cart.length ? "inline" : "none";
 
-
+// icon components
     const logoutIcon =
                     <IconButton tooltip="Log Out" >
                           <FontIcon className="material-icons" onClick={this.props.logoutUser} hoverColor={'#FCFCFC'}>exit_to_app</FontIcon>
@@ -102,7 +102,7 @@ class Navigation extends React.Component {
       </Link>
 
     const loginSignIn =
-          <Dialog className='my-account' actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}>
+          <Dialog className='my-account' actions={actions} modal={false} open={(this.props.user === null) ?this.state.open : false} onRequestClose={this.handleClose}>
               <h4> Please Login or Sign Up to see User Home Page </h4>
               <div className="row" style={{display: 'flex'}}>
                   <RegistrationForm className="col-md-6" close={this.handleClose}/>
@@ -112,6 +112,8 @@ class Navigation extends React.Component {
           </Dialog>
 
 
+
+// Navbar component
     return (
       <div>
         <Toolbar style={styles.toolbar}>
