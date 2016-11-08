@@ -29,6 +29,10 @@ class Navigation extends React.Component {
     this.handleClose = this.handleClose.bind(this);
   }
 
+  componentDidMount() {
+    this.props.getLocalStorage();
+  }
+
   // temp function to put in for buttons and events
   handleTouchTap() {
   alert('onTouchTap triggered on the component');
