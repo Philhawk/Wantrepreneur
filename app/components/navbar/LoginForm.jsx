@@ -14,15 +14,18 @@ class LoginForm extends React.Component{
     super(props);
     this.state={
       email: '',
-      password : ''
+      password : '',
+      error : "Invalid Passord or Email",
+      loginAttempts: 0
     };
 
     this.emailHandler         = this.emailHandler.bind(this);
     this.passwordHandler      = this.passwordHandler.bind(this);
     this.onSubmitSignup       = this.onSubmitSignup.bind(this);
+    this.attempted            =this.attempted.bind(this);
 
   }
-
+// Event handlers
   emailHandler(evt){
     this.setState({
       email : evt.target.value
@@ -38,29 +41,37 @@ class LoginForm extends React.Component{
   onSubmitSignup(event){
     event.preventDefault();
     this.props.loginUser(this.state);
+    this.attempted();
+
   }
 
+  attempted(){
+    this.setState({
+      password:'',
+      loginAttempts: this.state.logintries++
+    });
+
+  }
+
+
+  // Login Form compnent
   render(){
     let {close} = this.props;
-
-    let requiredFields ={
-      errorStyle: {
-        color: '#F4E04D',
-      },
-      underlineStyle: {
-        borderColor: '#54F2f2',
-      }
-    };
 
     return(
       <Card>
         <CardHeader title="Existing User"/>
-        <form onSubmit={this.onSubmitSignup}>
+        <form onSubmit={this.onSubmitSignup} >
         <CardText className="form-group">
-          <TextField name='email' onChange={this.emailHandler} hintText="Email" required/><br/>
-          <TextField name='password' onChange={this.passwordHandler} hintText="Password" type="password" required/><br/>
+          <TextField name='email' type='email'
+            floatingLabelText="Email"
+            onChange={this.emailHandler}
+            value={this.state.email}
+            hintText="Email"
+            required/><br/>
+          <TextField name='password' onChange={this.passwordHandler} floatingLabelText="Password" hintText="Password" type="password" value={this.state.password} errorText={(this.state.loginAttempts===0 && !this.props.user) ? null : this.state.error} required/><br/>
         </CardText>
-        <CardActions><RaisedButton type="submit" label="Login" onClick={close}/></CardActions>
+        <CardActions><RaisedButton type="submit" label="Login" /></CardActions>
         </form>
       </Card>
 
