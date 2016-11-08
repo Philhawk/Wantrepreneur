@@ -9,6 +9,7 @@ import {FontIcon,Badge,IconButton,ActionHome } from 'material-ui';
 //Dialog modol
 import {FlatButton, RaisedButton, Dialog, TextField} from 'material-ui';
 import {Card, CardHeader, CardActions, CardText} from 'material-ui';
+import socket from '../../socket';
 
 
 
@@ -31,6 +32,7 @@ class Navigation extends React.Component {
 
   componentDidMount() {
     this.props.getLocalStorage();
+    socket.on('sold-products', this.props.removeMultipleFromCart);
   }
 
   // temp function to put in for buttons and events

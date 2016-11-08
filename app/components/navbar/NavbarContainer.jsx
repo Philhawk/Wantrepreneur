@@ -4,6 +4,7 @@ import Navigation from './Navbar';
 import { connect } from 'react-redux';
 import {logoutUser} from '../../reducers/user'
 import { getCartFromLocal } from '../cart/CartHelpers';
+import { removeMultipleFromCartThunk } from '../cart/CartHelpers';
 
 const mapStateToProps = ({ cart, user }) => ({
   cart,
@@ -16,6 +17,9 @@ const mapDispatchToProps = () => dispatch => ({
   },
   getLocalStorage: () => {
     dispatch(getCartFromLocal());
+  },
+  removeMultipleFromCart(products) {
+    dispatch(removeMultipleFromCartThunk(products));
   }
 });
 
