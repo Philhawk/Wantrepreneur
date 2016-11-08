@@ -45,7 +45,7 @@ const seedProducts = () => db.Promise.map([
     {
       name: 'Knocking Kenneth Korporation',
       price: 1000,
-      image: 'http://punchdrink.com/wp-content/uploads/2016/02/Article-Shingo-Gokan-Bartender-Angels-Share-NYC-Flair-Bartending.jpg',
+      image: '/images/bartendr.png',
       description: 'Ever feel like you\'re alone because you\'re too smart? Join Knocking Kenneth Korportaion and be one of the 2% smartest people on earth. You will learn to show love to others through actions rather than words.'
     }
 	], product => db.model('products').create(product));
@@ -67,9 +67,9 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-let createdCategories;
+let createdCategories, createdProducts;
 
-db.didSync
+  db.didSync
   .then(() => db.sync({force: true}))
   .then(seedUsers)
   .then(users => console.log(`Seeded ${users.length} users OK`))
@@ -80,9 +80,15 @@ db.didSync
   })
   .then(seedProducts)
   .then(products => {
-  	createdProducts = products;
-  	return db.Promise.all(products.map(product => product.addCategory(createdCategories[getRandomIntInclusive(0, createdCategories.length)])));
+    createdProducts = products;
+    console.log(`Seeded ${products.length} products OK`);
   })
-  .then(products => console.log(`Seeded ${products.length} products OK`))
+  .then(() => createdProducts[0].addCategory(createdCategories[3]))
+  .then(() => createdProducts[1].addCategory(createdCategories[3]))
+  .then(() => createdProducts[2].addCategories([createdCategories[5], createdCategories[7]]))
+  .then(() => createdProducts[3].addCategory(createdCategories[5]))
+  .then(() => createdProducts[4].addCategory(createdCategories[3]))
+  .then(() => createdProducts[5].addCategory(createdCategories[1]))
+  .then(() => createdProducts[6].addCategory(createdCategories[5]))
   .catch(error => console.error(error))
   .finally(() => db.close());
