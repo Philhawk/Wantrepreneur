@@ -12,7 +12,8 @@
     "seed": "node db/models/seed.js",
     "build": "webpack",
     "build-watch": "webpack -w",
-    "start": "nodemon server/start.js"
+    "run": "nodemon server/start.js",
+    "start": "webpack && npm run seed && node server/start.js"
   },
   "repository": {
     "type": "git",
