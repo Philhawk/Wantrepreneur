@@ -25,7 +25,7 @@ export default class UserPage extends React.Component {
           </Row>
 
           <Row>
-
+            <p>Email: {this.props.user && this.props.user.email}</p>
           </Row>
         </Grid>
       </div>
