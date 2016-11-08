@@ -19,7 +19,7 @@ const routes =()=> (
         <Route component={ AllOptionsContainer } path='/all-options'/>
         <Route component={ CartContainer } path='/cart' />
         <Route component={ ThanksContainer } path='/thanks' />
-        <Route componen={ UserPageContainer } path='/userpage' />
+        <Route component={ UserPageContainer } path='/userpage' />
     </Route>
   </Router>
 );

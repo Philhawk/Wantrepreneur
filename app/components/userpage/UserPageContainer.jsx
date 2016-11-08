@@ -3,9 +3,10 @@
 import UserPage from './UserPage';
 import { connect } from 'react-redux';
 
-const mapStateToProps = ({ order, user }) => ({
-  order,
-  user
+const mapStateToProps = ({ user, products, order }) => ({
+  user,
+  products,
+  order
 });
 
 const mapDispatchToProps = () => dispatch => ({

@@ -6,17 +6,9 @@ import { Grid, Col, Row } from 'react-bootstrap';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
-export default class extends React.Component {
+export default class UserPage extends React.Component {
   constructor (props) {
     super(props);
-  }
-
-  componentDidMount() {
-
-  }
-
-  componentWillUnmount() {
-
   }
 
   render () {
@@ -25,9 +17,15 @@ export default class extends React.Component {
         <NavbarContainer />
         <Grid>
           <Row>
+            <Col sm={12}>
+              <h1 className='other-heading'><span className='blue-animation'>Welcome to your User Page {this.props.user && this.props.user.name}</span></h1>
+              <h3 className='description-headline'>First, let's pick a category for your dream business</h3>
+              <br/>
+            </Col>
+          </Row>
 
-            <p>{this.props.order}</p>
-            {console.log(this.props.order)}
+          <Row>
+
           </Row>
         </Grid>
       </div>
