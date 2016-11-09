@@ -1,3 +1,73 @@
+
+
+html,
+body {
+  max-height: 100vh;
+	background-image: url('papyrus.jpg');
+  -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+}
+
+.about-us {
+	background-color: white;
+}
+.main {
+  text-align: center;
+  background-color: #333333;
+  width:100vw;
+  height:100vh;;
+}
+
+/* Navbar CSS*/
+.logo img {
+	height: 4em;
+	width: 4em;
+}
+
+/*ICONS*/
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 60px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+
+.jumbotron {
+  color: #333333;
+}
+
+.jumbotron:hover {
+  opacity: .8;
+}
+
+.tableHeader {
+  text-align: center;
+}
+
+
+
 img {
   border-radius: 10px;
 	width: 350px;
@@ -189,68 +259,71 @@ img {
 }
 
 
-html,
-body {
-  max-height: 100vh;
-	background-image: url('papyrus.jpg');
-  -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-   background-size: cover;
+/*super large*/
+@media (min-width: 1201px) {
+  html, body {
+    background-color: red;
+    background-image: none;
+
+  }
 }
 
-.about-us {
-	background-color: white;
+/*Large Screen*/
+@media (min-width: 992px) {
+  .rightDivOpeningPage {
+    padding-left: 0.4em;
+  }
+  .jumbotron p {
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 20;
+  }
+  .heading {
+    font-size: 40px;
+  }
 }
-.main {
-  text-align: center;
-  background-color: #333333;
-  width:100vw;
-  height:100vh;;
-}
+/*Large Screen*/
+@media (min-width: 602px) {
+  .leftDivOpeningPage {
+    padding-top: 2em;
+  }
+  .rightDivOpeningPage {
+    padding-left: 2.4em;
+  }
 
-/* Navbar CSS*/
-.logo img {
-	height: 4em;
-	width: 4em;
-}
-
-/*ICONS*/
-
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 60px;  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
+  .css-animation {
+    padding-left: 1em;
+  }
+  .description-headline {
+    text-align: left;
+    padding-left: 1em;
+  }
 }
 
+/*small screen*/
 
-.jumbotron {
-  color: #333333;
+@media (max-width: 601px) {
+  .rightDivOpeningPage {
+    padding-left: 4em;
+  }
+  .leftDivOpeningPage {
+    padding-top: 2em;
+  }
+  .heading {
+    font-size: 32px;
+  }
+  .description-headline {
+    text-align: left;
+  }
 }
 
-.jumbotron:hover {
-  opacity: .8;
-}
 
-.tableHeader {
-  text-align: center;
+/*iphone5*/
+@media (max-width: 321px) {
+  .heading {
+    font-size: 24px;
+  }
+  .rightDivOpeningPage {
+    padding-left: 3em;
+  }
 }

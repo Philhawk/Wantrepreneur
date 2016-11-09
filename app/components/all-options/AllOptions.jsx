@@ -17,7 +17,6 @@ import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import _ from 'lodash';
 import Chip from 'material-ui/Chip';
 import {blue300, grey50} from 'material-ui/styles/colors';
-import socket from '../../socket';
 
 const snackbarAutoHideDuration = 4000;
 
@@ -50,7 +49,6 @@ export default class extends React.Component {
   componentDidMount() {
     this.props.getProducts();
     this.props.getCategories(this.props.categories.allCategories);
-    socket.on('sold-products', this.soldProducts);
   }
 
   getSortFunction(field, direction) {
