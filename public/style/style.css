@@ -80,8 +80,8 @@ body {
 
 img {
   border-radius: 10px;
-	width: 350px;
-	height: 350px;
+	width: 100%;
+	height: 364px;
 }
 
 .sort-arrow {
@@ -94,14 +94,15 @@ img {
 }
 
 /*signup dialog*/
-.my-account h4 {
+.my-account h3 {
   text-align: center;
 }
 
 .my-account div .row {
-  display: inline-flex;
-  padding: 7%;
-  margin: 3%;
+  display: flex;
+  padding-bottom: 1%;
+  padding-left: 10%;
+  margin: 1%;
   text-align: center;
 }
 
