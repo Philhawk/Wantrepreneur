@@ -58,8 +58,8 @@ class LoginForm extends React.Component{
   render(){
     let {close} = this.props;
     let style={
-      "height" : "30em",
-      "width" : "30em"
+      "height" : "50em",
+      "width" : "50em"
     };
 
     return(
