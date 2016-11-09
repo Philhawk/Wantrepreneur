@@ -9,7 +9,6 @@ import {FontIcon,Badge,IconButton,ActionHome } from 'material-ui';
 //Dialog modol
 import {FlatButton, RaisedButton, Dialog, TextField} from 'material-ui';
 import {Card, CardHeader, CardActions, CardText} from 'material-ui';
-import socket from '../../socket';
 
 
 
@@ -32,7 +31,6 @@ class Navigation extends React.Component {
 
   componentDidMount() {
     this.props.getLocalStorage();
-    socket.on('sold-products', this.props.removeMultipleFromCart);
   }
 
   // temp function to put in for buttons and events
@@ -61,54 +59,61 @@ class Navigation extends React.Component {
 
 
 
+    const styles = {
+      toolbar: {
+        'backgroundColor': 'transparent',
+        'padding-left': '8px',
+        'margin-top': '0.2em',
+      }
+    };
 
+    const dialogstyle = {
+      width: '100%',
+      maxWidth: 'none',
+    };
     // actions for login/sign form buttons
     const actions = [
       ];
 
-      let requiredFields ={
-        errorStyle: {
-          color: '#F4E04D',
-        },
-        underlineStyle: {
-          borderColor: '#54F2f2',
-        }
-      };
+
 
     const badgeDisplay = this.props.cart && this.props.cart.length ? "inline" : "none";
 
-
+// icon components
     const logoutIcon =
-                    <IconButton tooltip="Log Out" >
-                          <FontIcon className="material-icons" onClick={this.props.logoutUser} hoverColor={'#FCFCFC'}>exit_to_app</FontIcon>
-                    </IconButton>
+        <IconButton tooltip="Log Out" >
+              <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} onClick={this.props.logoutUser} onTouchTap={this.handleClose}>exit_to_app</FontIcon>
+        </IconButton>;
+
 
     const houseIcon =
         <IconButton tooltip="My Account" >
             <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} onTouchTap={this.handleOpen}>home</FontIcon>
-        </IconButton>
+        </IconButton>;
 
     const accountCircle =
-     <Link to='/userpage'>
+      <Link to='/userpage'>
         <IconButton tooltip="Home Page" >
             <FontIcon className="material-icons"  hoverColor={'#FCFCFC'}>account_circle</FontIcon>
         </IconButton>
-      </Link>
+      </Link>;
 
     const loginSignIn =
-          <Dialog className='my-account' actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}>
-              <h4> Please Login or Sign Up to see User Home Page </h4>
+          <Dialog className='my-account' contentStyle={dialogstyle} actions={actions} modal={false} open={(this.props.user === null) ?this.state.open : false} autoScrollBodyContent={true} onRequestClose={this.handleClose}>
+              <h3> Please Login or Sign Up to see User Home Page </h3>
               <div className="row" style={{display: 'flex'}}>
                   <RegistrationForm className="col-md-6" close={this.handleClose}/>
-                  <span></span>
+                  <div style={{'width':'7em'}}></div>
                   <LoginForm className="col-md-6" close={this.handleClose}/>
               </div>
-          </Dialog>
+          </Dialog>;
 
 
+
+// Navbar component
     return (
       <div>
-        <Toolbar style={{'backgroundColor':'transparent'}}>
+        <Toolbar style={styles.toolbar}>
           <ToolbarGroup>
             <Link to='/' className='logo'>{WPLogo}</Link>
           </ToolbarGroup>

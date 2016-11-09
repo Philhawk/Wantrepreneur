@@ -2,8 +2,7 @@
 
 const router = require('express').Router();
 const Promise = require('sequelize').Promise;
-const { Product, Order } = require('../db/models');
-const io = require('./sockets');
+const { Product, Order, User } = require('../db/models');
 
 router.post('/validate', (req, res, next) => {
   const itemsInCart = (!req.body.cart || req.body.cart.length === 0);
@@ -26,6 +25,7 @@ router.post('/validate', (req, res, next) => {
 router.post('/submit', (req, res, next) => {
   let createdOrder;
   let createdProducts;
+  let productsOrder;
 
   Order.create({})
     .then(order => {
@@ -36,10 +36,18 @@ router.post('/submit', (req, res, next) => {
       createdProducts = products;
       return createdOrder.setProducts(products);
     })
-    .then((newOrder) => newOrder.hash())
+    .then((order) => {
+      productsOrder = order;
+      if (req.user) { return User.findById(req.user.id) }
+      return Promise.resolve(null);
+    })
+    .then(user => {
+      if (user) { return createdOrder.setUser(user); }
+      return Promise.resolve(null);
+    })
+    .then(() => productsOrder.hash())
     .then(() => Order.findById(createdOrder.id))
     .then((hashedOrder) => {
-      io.sockets.emit('sold-products', createdProducts);
       res.status(201).send(hashedOrder);
     })
     .catch(next);
