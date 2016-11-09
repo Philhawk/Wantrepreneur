@@ -80,8 +80,8 @@ body {
 
 img {
   border-radius: 10px;
-	width: 350px;
-	height: 350px;
+	width: 100%;
+	height: 364px;
 }
 
 .sort-arrow {
@@ -94,14 +94,15 @@ img {
 }
 
 /*signup dialog*/
-.my-account h4 {
+.my-account h3 {
   text-align: center;
 }
 
 .my-account div .row {
-  display: inline-flex;
-  padding: 7%;
-  margin: 3%;
+  display: flex;
+  padding-bottom: 1%;
+  padding-left: 10%;
+  margin: 1%;
   text-align: center;
 }
 
@@ -359,4 +360,40 @@ img {
   .rightDivOpeningPage {
     padding-left: 3em;
   }
+}
+
+/*ICONS*/
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 60px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+
+.jumbotron {
+  color: #333333;
+}
+
+.jumbotron:hover {
+  opacity: .8;
 }
