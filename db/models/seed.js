@@ -51,7 +51,7 @@ const seedProducts = () => db.Promise.map([
     {
       name: 'Opulence',
       price: 5000000,
-      image: '/images/opulence.jpg',
+      image: '/images/opulence.jpg  ',
       description: 'American mens fashion & lifestyle blog featuring the latest in gear, tech, cars, style, products, culture & more.'
     },
     {
@@ -106,9 +106,10 @@ let createdCategories, createdProducts;
   .then(() => createdProducts[2].addCategories([createdCategories[5], createdCategories[7]]))
   .then(() => createdProducts[3].addCategory(createdCategories[5]))
   .then(() => createdProducts[4].addCategory(createdCategories[3]))
-  .then(() => createdProducts[5].addCategory(createdCategories[1]))
-  .then(() => createdProducts[6].addCategory(createdCategories[5]))
-  .then(() => createdProducts[7].addCategory(createdCategories[5]))
-  .then(() => createdProducts[8].addCategory(createdCategories[5]))
+  .then(() => createdProducts[6].addCategories([createdCategories[5], createdCategories[3]]))
+  .then(() => createdProducts[5].addCategory(createdCategories[5]))
+  .then(() => createdProducts[7].addCategory(createdCategories[2]))
+  .then(() => createdProducts[8].addCategory(createdCategories[1]))
+  .then(() => createdProducts[9].addCategory(createdCategories[2]))
   .catch(error => console.error(error))
   .finally(() => db.close());
