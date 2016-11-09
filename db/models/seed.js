@@ -49,6 +49,12 @@ const seedProducts = () => db.Promise.map([
       description: 'Life is about the finer things in life. With this easy to purchase, you will generate easy returns.'
     },
     {
+      name: 'Opulence',
+      price: 5000000,
+      image: '/images/opulence.jpg',
+      description: 'American mens fashion & lifestyle blog featuring the latest in gear, tech, cars, style, products, culture & more.'
+    },
+    {
       name: 'For The Music',
       price: 200000,
       image: '/images/forTheMusic.png',
@@ -57,7 +63,7 @@ const seedProducts = () => db.Promise.map([
     {
       name: 'JustHome',
       price: 300000,
-      image: '/images/forTheMusic.png',
+      image: '/images/justhome.png',
       description: 'Shop Wayfair for A Zillion Things Home across all styles and budgets. 5000 brands of furniture, lighting, cookware, and more. Free Shipping on most items..'
     }
 	], product => db.model('products').create(product));
