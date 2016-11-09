@@ -261,17 +261,13 @@ img {
 
 /*super large*/
 @media (min-width: 1201px) {
-  html, body {
-    background-color: red;
-    background-image: none;
 
-  }
 }
 
 /*Large Screen*/
 @media (min-width: 992px) {
   .rightDivOpeningPage {
-    padding-left: 0.4em;
+    padding-left: 3.4em;
   }
   .jumbotron p {
     margin-bottom: 15px;
@@ -282,13 +278,23 @@ img {
     font-size: 40px;
   }
 }
-/*Large Screen*/
-@media (min-width: 602px) {
+/*mediun Screen*/
+@media (max-width: 991px) {
+  .rightDivOpeningPage {
+    padding-left: 2.4em;
+  }
+
   .leftDivOpeningPage {
     padding-top: 2em;
   }
-  .rightDivOpeningPage {
-    padding-left: 2.4em;
+
+  .jumbotron p {
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 20;
+  }
+  .heading {
+    font-size: 40px;
   }
 
   .css-animation {
@@ -300,11 +306,12 @@ img {
   }
 }
 
+
 /*small screen*/
 
 @media (max-width: 601px) {
   .rightDivOpeningPage {
-    padding-left: 4em;
+    padding-left: 2em;
   }
   .leftDivOpeningPage {
     padding-top: 2em;
