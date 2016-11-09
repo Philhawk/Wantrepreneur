@@ -1,5 +1,6 @@
 'use strict';
 
+import axios from 'axios';
 import React from 'react';
 import NavbarContainer from '../navbar/NavbarContainer';
 import { Grid, Col, Row, Modal } from 'react-bootstrap';
@@ -19,18 +20,44 @@ export default class UserPage extends React.Component {
       showOrderModal: false,
       showProductModal: false,
       currentOrder: {},
-      currentProduct: {}
+      currentProduct: {},
+      productName: null,
+      productPrice: null,
+      productDescription: null,
+      productURL: null,
+      productImage: null
     };
 
     this.openOrder = this.openOrder.bind(this);
     this.openProduct = this.openProduct.bind(this);
     this.closeOrder = this.closeOrder.bind(this);
     this.closeProduct = this.closeProduct.bind(this);
+    // this.orderChange = this.orderChange.bind(this);
+    // this.productChange = this.productChange.bind(this);
+    this.nameHandler = this.nameHandler.bind(this);
+    this.adminCreate = this.adminCreate.bind(this);
 
   }
 
   orderChange (event, index, value) {this.setState({value})}
   productChange (event, index, value) {this.setState({value})};
+  nameHandler (e) {
+    this.setState({productName: e.target.value})
+  }
+  adminCreate(event) {
+    let newProduct = {
+      name: this.state.productName && this.state.productName,
+      price: this.state.productPrice && this.state.productPrice,
+      description: this.state.productDescription && this.state.productDescription,
+      url: this.state.productUrl && this.state.productUrl,
+      image: this.state.productImage && this.state.productImage
+    }
+
+    axios.put(`/api/products/updateProduct/:${this.state.currentProduct.id}`, newProduct)
+    .then(res => {
+      alert(res.name, 'updated!')
+    });
+  }
 
   componentWillMount () {
     this.props.getOrders();
@@ -112,7 +139,7 @@ export default class UserPage extends React.Component {
                       <TableRowColumn>Orders</TableRowColumn>
 
                       <TableRowColumn>
-                        <DropDownMenu value={this.state.order} onChange={this.orderChange}>
+                        <DropDownMenu value={this.state.order} onChange={() => this.orderChange}>
                           {this.props.orders && this.props.orders.map((order, index) => (
                               <MenuItem key={`${order.id}`} value={index} primaryText={`${order.id}`} />
                           ))}
@@ -125,7 +152,7 @@ export default class UserPage extends React.Component {
                       <TableRowColumn>Products</TableRowColumn>
 
                       <TableRowColumn>
-                        <DropDownMenu value={this.state.product} onChange={this.productChange}>
+                        <DropDownMenu value={this.state.product} onChange={() => this.productChange}>
                           {this.props.products && this.props.products.map((product, index) => (
                               <MenuItem key={`${product.id}`} value={index} primaryText={`${product.name}`} />
                           ))}
@@ -150,7 +177,7 @@ export default class UserPage extends React.Component {
             <CardHeader title={this.state.currentOrder.id}/>
             <form onSubmit={this.onSubmitSignup}>
             <CardText className="form-group">
-              <TextField name='email' onChange={this.emailHandler} hintText="Email"/><br/>
+              <TextField name='email' onChange={this.emailHandler} hintText="OrderId"/><br/>
               <TextField name='password' onChange={this.passwordHandler} hintText="Password" type="password"/><br/>
             </CardText>
             <CardActions><RaisedButton type="submit" label="Update" onClick={close}/></CardActions>
@@ -162,17 +189,48 @@ export default class UserPage extends React.Component {
         <Modal show={this.state.showProductModal} onHide={this.closeProduct}>
           <Card>
             <CardHeader title={this.state.currentProduct.name}/>
-            <form onSubmit={this.onSubmitSignup}>
+            <form onSubmit={this.adminCreate}>
             <CardText className="form-group">
-              Name <TextField name='name' fullWidth={true} onChange={this.emailHandler} hintText={`${this.state.currentProduct.name}`}/><br/>
-              Price <TextField name='price' fullWidth={true} onChange={this.passwordHandler} hintText={`${this.state.currentProduct.price}`}/><br/>
-              Description <TextField multiLine={true} fullWidth={true} rows={2} name='description' onChange={this.passwordHandler} hintText={`${this.state.currentProduct.description}`}/><br/>
-              URL <TextField multiLine={true} rowsMax={100} fullWidth={true}  name='url' onChange={this.passwordHandler} hintText={`${this.state.currentProduct.url}`}/><br/>
-              Image <TextField name='price' fullWidth={true} onChange={this.passwordHandler} hintText={`${this.state.currentProduct.image}`}/><br/>
+              Name <TextField
+                name='name'
+                fullWidth={true}
+                onChange={this.nameHandler}
+                value={this.state.productName}
+                hintText={`${this.state.currentProduct.name}`}
+              /><br/>
+              Price <TextField
+                name='price'
+                fullWidth={true}
+                onChange={this.priceHandler}
+                hintText={`${this.state.currentProduct.price}`}
+              /><br/>
+              Description <TextField
+                multiLine={true}
+                fullWidth={true} 
+                rows={2} name='description'
+                onChange={this.descriptionHandler}
+                hintText={`${this.state.currentProduct.description}`}
+              /><br/>
+              URL <TextField
+                multiLine={true} 
+                rowsMax={100} 
+                fullWidth={true}
+                name='url' 
+                onChange={this.urlHandler} 
+                hintText={`${this.state.currentProduct.url}`}
+              /><br/>
+              Image <TextField 
+                name='image' 
+                fullWidth={true} 
+                onChange={this.imageHandler}
+                hintText={`${this.state.currentProduct.image && this.state.currentProduct.image.split('').slice(0, 70).join('')}`}
+              /><br/>
             </CardText>
-            <CardActions><RaisedButton type="submit" label="Create" onClick={close}/>
+            <CardActions>
+            <RaisedButton type="submit" label="Create" onClick={this.adminCreate}/>
             <RaisedButton type="submit" label="Update" onClick={close}/>
-            <RaisedButton type="submit" label="Delete" onClick={close}/></CardActions>
+            <RaisedButton type="submit" label="Delete" onClick={close}/>
+            </CardActions>
             </form>
           </Card>
         </Modal>
