@@ -220,10 +220,10 @@ export default class UserPage extends React.Component {
                 hintText={`${this.state.currentProduct.url}`}
               /><br/>
               Image <TextField 
-                name='price' 
+                name='image' 
                 fullWidth={true} 
-                onChange={this.imageHandler} 
-                hintText={`${this.state.currentProduct.image}`}
+                onChange={this.imageHandler}
+                hintText={`${this.state.currentProduct.image && this.state.currentProduct.image.split('').slice(0, 70).join('')}`}
               /><br/>
             </CardText>
             <CardActions>
