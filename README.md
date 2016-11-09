@@ -20,4 +20,4 @@ Secure your and your children's future through your own business!
 
 ## For Admins
 
-Login and navigate to /userpage to edit orders and products
+Login and navigate to /userpage to edit orders, products, and users!
