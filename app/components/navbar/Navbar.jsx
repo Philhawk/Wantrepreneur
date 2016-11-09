@@ -89,7 +89,7 @@ class Navigation extends React.Component {
         </IconButton>
 
     const accountCircle =
-     <Link to='/'>
+     <Link to='/userpage'>
         <IconButton tooltip="Home Page" >
             <FontIcon className="material-icons"  hoverColor={'#FCFCFC'}>account_circle</FontIcon>
         </IconButton>

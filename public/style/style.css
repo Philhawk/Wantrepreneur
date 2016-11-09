@@ -250,7 +250,3 @@ body {
 .jumbotron:hover {
   opacity: .8;
 }
-
-.tableHeader {
-  text-align: center;
-}

@@ -100,12 +100,12 @@ products.create.auth(mustBeAdmin);
 products.create.auth(mustBeAdmin);
 
 products.list.fetch.before((req, res, context) => {
-  if(!req.user || req.user.role === 'user') { context.criteria['order_id'] = null; }
+  if(!req.user || req.user.roles === 'user') { context.criteria['order_id'] = null; }
   return context.continue;
 });
 
 products.read.fetch.before((req, res, context) => {
-  if(!req.user || req.user.role === 'user') { context.criteria['order_id'] = null; }
+  if(!req.user || req.user.roles === 'user') { context.criteria['order_id'] = null; }
   return context.continue;
 })
 
