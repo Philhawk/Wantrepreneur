@@ -3,7 +3,9 @@
 const router = require('express').Router();
 const Promise = require('sequelize').Promise;
 const { Product, Order, User } = require('../db/models');
-const io = require('./sockets');
+// const io = require('./sockets');
+const io = require('./start').io;
+console.log('IO in checkout.js', io);
 
 router.post('/validate', (req, res, next) => {
   const itemsInCart = (!req.body.cart || req.body.cart.length === 0);
@@ -49,7 +51,7 @@ router.post('/submit', (req, res, next) => {
     .then(() => productsOrder.hash())
     .then(() => Order.findById(createdOrder.id))
     .then((hashedOrder) => {
-      io.sockets.emit('sold-products', createdProducts);
+      // io.sockets.emit('sold-products', createdProducts);
       res.status(201).send(hashedOrder);
     })
     .catch(next);

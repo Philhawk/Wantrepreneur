@@ -17,7 +17,8 @@ import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import _ from 'lodash';
 import Chip from 'material-ui/Chip';
 import {blue300, grey50} from 'material-ui/styles/colors';
-import socket from '../../socket';
+// import socket from '../../socket
+const socket = require('socket.io-client')();
 
 const snackbarAutoHideDuration = 4000;
 

@@ -4,6 +4,7 @@ import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import { browserHistory } from 'react-router';
+const socket = require('socket.io-client')();
 
 export default class extends React.Component {
   constructor(props) {
@@ -19,6 +20,7 @@ export default class extends React.Component {
         if (!order) { throw new Error('Order submission failed.'); }
         this.props.clearCart();
         browserHistory.push(`/thanks?order=${order.data.orderId}`);
+        socket.emit('purchase', 'test');
       })
       .catch(() => browserHistory.push('/cart'));
   }

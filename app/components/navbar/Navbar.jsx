@@ -2,6 +2,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 
+//s
 // For Navbar
 import {AppBar, Tabs, Tab, Toolbar, ToolbarGroup, ToolbarTitle, NotificationsIcon} from 'material-ui';
 //Cart
@@ -9,8 +10,10 @@ import {FontIcon,Badge,IconButton,ActionHome } from 'material-ui';
 //Dialog modol
 import {FlatButton, RaisedButton, Dialog, TextField} from 'material-ui';
 import {Card, CardHeader, CardActions, CardText} from 'material-ui';
-import socket from '../../socket';
-
+// const socket = io();
+// const socket = window.io;
+const socket = require('socket.io-client')();
+// console.log('SOCKET IS', socket);
 
 
 import RegistrationForm from './RegistrationForm.jsx';
