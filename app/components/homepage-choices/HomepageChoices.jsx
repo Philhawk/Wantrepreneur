@@ -80,11 +80,11 @@ export default class HomepageChoices extends React.Component {
             <Row className="show-grid">
 
               <Col md={6} mdPush={6} className='rightDivOpeningPage'>
-                <h2 className='lower-heading'><span className='blue-animation'>Be your own boss</span></h2>
-                <h3 className='lower-headline'>Because life's too short to not enjoy it.</h3>
+
               </Col>
               <Col md={6} mdPull={6} className='leftDivOpeningPage'>
-
+                <h2 className='lower-heading'><span className='blue-animation'>Not sure where to start?</span></h2>
+                <h3 className='lower-headline'>Answer a few short questions and we'll help you figure it out.</h3>
               </Col>
             </Row>
           </Grid>

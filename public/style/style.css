@@ -53,6 +53,13 @@ body {
   font-feature-settings: 'liga';
 }
 
+.own-boss {
+	display:inline-block;
+	font-weight: bold;
+  color: black;
+	border-bottom:3px solid #54F2F2;
+	padding-bottom: 30px;
+}
 
 .jumbotron {
   color: #333333;
@@ -66,6 +73,9 @@ body {
   text-align: center;
 }
 
+.not-other-jumbotrons {
+  opacity: 1;
+}
 
 
 img {
@@ -153,6 +163,18 @@ img {
 	padding-bottom: 15em;
 }
 
+.homepage-third {
+  background-image: url('road.jpeg');
+  background-size: cover;
+	padding-top: 6em;
+	padding-bottom: 15em;
+}
+
+.lower-boss-headline {
+  color: black;
+  text-align: left;
+}
+
 .lower-heading, .lower-headline {
   color: white;
   text-align: left;
@@ -206,6 +228,10 @@ img {
 
 .jumbotron p {
   color: white;
+}
+
+.leftDivOpeningPageBottom {
+  opacity: 0.8;
 }
 
 .other-heading {
