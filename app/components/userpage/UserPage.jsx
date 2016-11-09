@@ -13,6 +13,7 @@ export default class UserPage extends React.Component {
 
   componentDidMount () {
     this.props.getOrders();
+    this.props.getProducts();
   }
 
   render () {
@@ -27,62 +28,80 @@ export default class UserPage extends React.Component {
             </Col>
           </Row>
 
+
           <Row>
+            <Col sm={12}>
+              <Table>
+                <TableHeader displaySelectAll={false}>
+                  <TableRow>
+                    <TableHeaderColumn><h4>User Information</h4></TableHeaderColumn>
+                  </TableRow>
+                </TableHeader>
 
-              <div className='container'>
-                  <Table>
-                  <TableHeader displaySelectAll={false}>
+                <TableBody displayRowCheckbox={false}>
                     <TableRow>
-                      <TableHeaderColumn><h4>User Information</h4></TableHeaderColumn>
+                      <TableRowColumn>Name</TableRowColumn>
+                      <TableRowColumn>
+                        {this.props.user && this.props.user.name}
+                      </TableRowColumn>
                     </TableRow>
-                  </TableHeader>
 
-                  <TableBody displayRowCheckbox={false}>
-                      <TableRow>
-                        <TableRowColumn>Name</TableRowColumn>
+                    <TableRow>
+                      <TableRowColumn>Email</TableRowColumn>
+                      <TableRowColumn>
+                        {this.props.user && this.props.user.email}
+                      </TableRowColumn>
+                    </TableRow>
+                </TableBody>
+              </Table>
+
+              <Table>
+                <TableHeader displaySelectAll={false}>
+                  <TableRow>
+                    <TableHeaderColumn><h4>Order History</h4></TableHeaderColumn>
+                  </TableRow>
+                </TableHeader>
+
+                <TableBody displayRowCheckbox={false}>
+                  {this.props.orders.length ?
+                    this.props.orders.map((order, index) => (
+                      <TableRow key={`${order.id}`}>
                         <TableRowColumn>
-                          {this.props.user && this.props.user.name}
+                          <Link to={`/thanks?order=${order.orderId}`}>{order.created_at.toString().slice(0, 10)}</Link>
                         </TableRowColumn>
                       </TableRow>
+                    ))
+                  : 
+                    <TableRow><TableRowColumn>You have no orders!</TableRowColumn></TableRow>
+                }
+                </TableBody>
+              </Table>
 
-                      <TableRow>
-                        <TableRowColumn>Email</TableRowColumn>
-                        <TableRowColumn>
-                          {this.props.user && this.props.user.email}
-                        </TableRowColumn>
-                      </TableRow>
-
-                      <TableRow>
-                        <TableRowColumn>Password</TableRowColumn>
-                        <TableRowColumn>
-                          <input></input><button>Update</button>
-                        </TableRowColumn>
-                      </TableRow>
-                  </TableBody>
-                </Table>
-
-
-
+              {this.props.user && this.props.user.roles === 'admin' ? 
                 <Table>
                   <TableHeader displaySelectAll={false}>
                     <TableRow>
-                      <TableHeaderColumn><h4>Order History</h4></TableHeaderColumn>
+                      <TableHeaderColumn><h4>Admin Features</h4></TableHeaderColumn>
                     </TableRow>
                   </TableHeader>
 
                   <TableBody displayRowCheckbox={false}>
-                    {this.props.orders && this.props.orders.map((order, index) => (
+                    {this.props.orders ? this.props.orders.map((order, index) => (
                     <TableRow key={`${order.id}`}>
                       <TableRowColumn>
                         <Link to={`/thanks?order=${order.orderId}`}>{order.created_at.toString().slice(0, 10)}</Link>
                       </TableRowColumn>
                     </TableRow>
-                    ))}
+                    ))
+                    : 
+                    <TableRow><TableRowColumn>You have no orders!</TableRowColumn></TableRow>}
                   </TableBody>
                 </Table>
-              </div>
+              : null}
 
+            </Col>
           </Row>
+
 
           <Row>
           {this.props.products && this.props.products.map(product => (<p>product.name</p>))}

@@ -10,7 +10,7 @@ import { addCategory, removeCategory } from '../../reducers/categories';
 import { productsLoading, productsNotLoading } from '../../reducers/productsLoading';
 import { filterWithPrice } from '../../reducers/price';
 
-const receiveProducts = () => dispatch => {
+export const receiveProducts = () => dispatch => {
   dispatch(productsLoading());
   axios.get('/api/products')
     .then(products => {

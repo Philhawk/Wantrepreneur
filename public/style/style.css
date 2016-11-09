@@ -248,9 +248,9 @@ body {
 }
 
 .jumbotron:hover {
-    opacity: .8;
+  opacity: .8;
 }
 
-.container {
-  position: center;
+.tableHeader {
+  text-align: center;
 }
