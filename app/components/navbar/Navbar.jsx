@@ -100,10 +100,10 @@ class Navigation extends React.Component {
 
     const loginSignIn =
           <Dialog className='my-account' contentStyle={dialogstyle} actions={actions} modal={false} open={(this.props.user === null) ?this.state.open : false} autoScrollBodyContent={true} onRequestClose={this.handleClose}>
-              <h4> Please Login or Sign Up to see User Home Page </h4>
+              <h3> Please Login or Sign Up to see User Home Page </h3>
               <div className="row" style={{display: 'flex'}}>
                   <RegistrationForm className="col-md-6" close={this.handleClose}/>
-                  <span></span>
+                  <div style={{'width':'7em'}}></div>
                   <LoginForm className="col-md-6" close={this.handleClose}/>
               </div>
           </Dialog>;

@@ -90,8 +90,8 @@ class RegistrationForm extends React.Component{
     let {close} = this.props;
 
     let style={
-      "height" : "50em",
-      "width" : "50em"
+      "height" : "33em",
+      "width" : "30em"
     };
 
     return(
