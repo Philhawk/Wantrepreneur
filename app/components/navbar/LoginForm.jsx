@@ -57,9 +57,13 @@ class LoginForm extends React.Component{
   // Login Form compnent
   render(){
     let {close} = this.props;
+    let style={
+      "height" : "30em",
+      "width" : "30em"
+    };
 
     return(
-      <Card>
+      <Card style={style}>
         <CardHeader title="Existing User"/>
         <form onSubmit={this.onSubmitSignup} >
         <CardText className="form-group">

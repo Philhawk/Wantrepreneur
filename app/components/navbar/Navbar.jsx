@@ -66,6 +66,11 @@ class Navigation extends React.Component {
         'margin-top': '0.2em',
       }
     };
+
+    const dialogstyle = {
+      width: '100%',
+      maxWidth: 'none',
+    };
     // actions for login/sign form buttons
     const actions = [
       ];
@@ -76,33 +81,32 @@ class Navigation extends React.Component {
 
 // icon components
     const logoutIcon =
-
-                    <IconButton tooltip="Log Out" >
-                          <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} onClick={this.props.logoutUser} onTouchTap={this.handleClose}>exit_to_app</FontIcon>
-                    </IconButton>
+        <IconButton tooltip="Log Out" >
+              <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} onClick={this.props.logoutUser} onTouchTap={this.handleClose}>exit_to_app</FontIcon>
+        </IconButton>;
 
 
     const houseIcon =
         <IconButton tooltip="My Account" >
             <FontIcon className="material-icons"  hoverColor={'#FCFCFC'} onTouchTap={this.handleOpen}>home</FontIcon>
-        </IconButton>
+        </IconButton>;
 
     const accountCircle =
-     <Link to='/userpage'>
+      <Link to='/userpage'>
         <IconButton tooltip="Home Page" >
             <FontIcon className="material-icons"  hoverColor={'#FCFCFC'}>account_circle</FontIcon>
         </IconButton>
-      </Link>
+      </Link>;
 
     const loginSignIn =
-          <Dialog className='my-account' actions={actions} modal={false} open={(this.props.user === null) ?this.state.open : false} onRequestClose={this.handleClose}>
+          <Dialog className='my-account' contentStyle={dialogstyle} actions={actions} modal={false} open={(this.props.user === null) ?this.state.open : false} autoScrollBodyContent={true} onRequestClose={this.handleClose}>
               <h4> Please Login or Sign Up to see User Home Page </h4>
               <div className="row" style={{display: 'flex'}}>
                   <RegistrationForm className="col-md-6" close={this.handleClose}/>
                   <span></span>
                   <LoginForm className="col-md-6" close={this.handleClose}/>
               </div>
-          </Dialog>
+          </Dialog>;
 
 
 

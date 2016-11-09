@@ -82,7 +82,6 @@ class RegistrationForm extends React.Component{
       password2: "",
       signAttempted: this.state.signAttempted +1
     });
-    console.log(this.state.signAttempted)
 
   }
 
@@ -90,11 +89,15 @@ class RegistrationForm extends React.Component{
   render(){
     let {close} = this.props;
 
+    let style={
+      "height" : "30em",
+      "width" : "30em"
+    };
 
     return(
 
     <div>
-      <Card >
+      <Card style={style}>
         <CardHeader title="Sign Up as New User"/>
         <form onSubmit={this.onSubmitSignup}>
         <CardText className="form-group" >
