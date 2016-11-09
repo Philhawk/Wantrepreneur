@@ -58,7 +58,7 @@ if (module === require.main) {
   io.on('connection', (socket) => {
     console.log('Socket connected.');
     socket.on('checkout', (products) => {
-      console.log('Client checkout out. Emitting sold products to all connected clients.');
+      console.log('Client checkout. Emitting sold products to all connected clients.');
       io.sockets.emit('sold-products', products);
     });
   });

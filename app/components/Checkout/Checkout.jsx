@@ -21,6 +21,7 @@ export default class extends React.Component {
         this.props.clearCart();
         browserHistory.push(`/thanks?order=${order.data.orderId}`);
         window.clientSocket.emit('checkout', products);
+        this.props.removeProducts(products);
       })
       .catch((err) => {
         console.log(err);
