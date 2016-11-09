@@ -5,6 +5,7 @@ import UserPage from './UserPage';
 import { connect } from 'react-redux';
 import { receiveOrders } from '../../reducers/orders';
 import { receiveProducts } from '../all-options/AllOptionsContainer';
+import {createProduct} from '../../reducers/products';
 
 const fetchOrders = () => dispatch => {
   axios.get(`/api/orders`)
@@ -25,6 +26,9 @@ const mapDispatchToProps = () => dispatch => ({
   },
   getProducts: () => {
     dispatch(receiveProducts());
+  },
+  createOneProduct: (product) => {
+    dispatch(createProduct(product));
   }
 });
 
