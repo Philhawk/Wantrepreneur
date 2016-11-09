@@ -75,7 +75,7 @@ export default class HomepageChoices extends React.Component {
             </Row>
           </Grid>
         </div>
-        <div className='homepage-second'>
+        <div className='homepage-third'>
           <Grid>
             <Row className="show-grid">
 
