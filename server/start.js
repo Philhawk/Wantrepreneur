@@ -54,4 +54,13 @@ if (module === require.main) {
       console.log(`Listening on ${JSON.stringify(server.address())}`)
     }
   )
+  const io = require('socket.io').listen(server);
+  io.on('connection', (socket) => {
+    console.log('Socket connected.');
+    socket.on('checkout', (products) => {
+      console.log('Client checkout out. Emitting sold products to all connected clients.');
+      io.sockets.emit('sold-products', products);
+    });
+  });
+
 }
