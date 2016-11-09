@@ -13,12 +13,12 @@ const seedProducts = () => db.Promise.map([
       description: 'A candy store full of candy curated by four programmers who decided life would be better selling candy!'},
 		{
       name: 'Leonidas Coffee Shop',
-      price: 2,
+      price: 200000,
       image: 'http://www.antwerpenkoekenstad.be/wp-content/uploads/2013/10/Leonidas-Chocolates-Caf%C3%A9WEB.jpg',
       description: 'Our chocolate is good, but our customer service is as bitter as our espresso!'
     },
     {
-      name: 'Awake Anthony AARP',
+      name: 'Emoji Incorporated',
       price: 62474,
       image: 'https://t3.ftcdn.net/jpg/01/18/40/62/240_F_118406286_ZxPtDpa8VzhECWWwkzUJkx7AN2T0TB5s.jpg',
       description: 'Ever feel like there are not enough emojis in the world to express your emotions? Just make a request and Awake Anthony AARP and we will make you the perfect set of emojis for only $9.99!'
@@ -43,10 +43,22 @@ const seedProducts = () => db.Promise.map([
       description: 'A club for those who can\'t dance! Come show off your moves in complete darkness so that no one can laugh at you!'
     },
     {
-      name: 'Knocking Kenneth Korporation',
-      price: 1000,
+      name: 'Bartendr',
+      price: 4000000,
       image: '/images/bartendr.png',
-      description: 'Ever feel like you\'re alone because you\'re too smart? Join Knocking Kenneth Korportaion and be one of the 2% smartest people on earth. You will learn to show love to others through actions rather than words.'
+      description: 'Life is about the finer things in life. With this easy to purchase, you will generate easy returns.'
+    },
+    {
+      name: 'For The Music',
+      price: 200000,
+      image: '/images/forTheMusic.png',
+      description: 'Buy and sell sports tickets, concert tickets, theater tickets and Broadway tickets on StubHub!',
+    },
+    {
+      name: 'JustHome',
+      price: 300000,
+      image: '/images/forTheMusic.png',
+      description: 'Shop Wayfair for A Zillion Things Home across all styles and budgets. 5000 brands of furniture, lighting, cookware, and more. Free Shipping on most items..'
     }
 	], product => db.model('products').create(product));
 
@@ -90,5 +102,7 @@ let createdCategories, createdProducts;
   .then(() => createdProducts[4].addCategory(createdCategories[3]))
   .then(() => createdProducts[5].addCategory(createdCategories[1]))
   .then(() => createdProducts[6].addCategory(createdCategories[5]))
+  .then(() => createdProducts[7].addCategory(createdCategories[5]))
+  .then(() => createdProducts[8].addCategory(createdCategories[5]))
   .catch(error => console.error(error))
   .finally(() => db.close());
