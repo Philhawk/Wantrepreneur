@@ -17,10 +17,16 @@ export default class extends React.Component {
     })
       .then((order) => {
         if (!order) { throw new Error('Order submission failed.'); }
+        const products = this.props.cart;
         this.props.clearCart();
         browserHistory.push(`/thanks?order=${order.data.orderId}`);
+        window.clientSocket.emit('checkout', products);
+        this.props.removeProducts(products);
       })
-      .catch(() => browserHistory.push('/cart'));
+      .catch((err) => {
+        console.log(err);
+        browserHistory.push('/cart');
+      });
   }
 
   render() {
