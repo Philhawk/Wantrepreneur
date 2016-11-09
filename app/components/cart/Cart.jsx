@@ -13,10 +13,6 @@ export default class extends React.Component {
     this.removeFromCart = this.removeFromCart.bind(this);
   }
 
-  componentDidMount() {
-    this.props.getCart();
-  }
-
   removeFromCart(item) {
     this.props.removeFromCart(item);
   }
