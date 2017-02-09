@@ -62,18 +62,15 @@ class Navigation extends React.Component {
     const styles = {
       toolbar: {
         'backgroundColor': 'transparent',
-        'padding-left': '8px',
-        'margin-top': '0.2em',
+        'paddingLeft': '8px',
+        'marginTop': '0.2em',
       }
     };
 
     const dialogstyle = {
-      width: '100%',
-      maxWidth: 'none',
+      width: '100vw',
+      maxWidth : "none"
     };
-    // actions for login/sign form buttons
-    const actions = [
-      ];
 
 
 
@@ -99,12 +96,18 @@ class Navigation extends React.Component {
       </Link>;
 
     const loginSignIn =
-          <Dialog className='my-account' contentStyle={dialogstyle} actions={actions} modal={false} open={(this.props.user === null) ?this.state.open : false} autoScrollBodyContent={true} onRequestClose={this.handleClose}>
-              <h3> Please Login or Sign Up to see User Home Page </h3>
-              <div className="row" style={{display: 'flex'}}>
-                  <RegistrationForm className="col-md-6" close={this.handleClose}/>
-                  <div style={{'width':'7em'}}></div>
-                  <LoginForm className="col-md-6" close={this.handleClose}/>
+          <Dialog className='my-account' contentStyle={dialogstyle} modal={false} open={(this.props.user === null) ?this.state.open : false} autoScrollBodyContent={true} onRequestClose={this.handleClose}>
+              <h3> Please Login or Sign Up</h3>
+              <div className="row">
+               <div className="col-xs-12 col-md-6">
+                  <RegistrationForm close={this.handleClose}/>
+                </div>
+
+                <div id="divider" className="col-xs-12 col-md-1"></div>
+
+                <div className="col-xs-12 col-md-6">
+                  <LoginForm close={this.handleClose}/>
+                </div>
               </div>
           </Dialog>;
 

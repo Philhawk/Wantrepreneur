@@ -58,13 +58,12 @@ class LoginForm extends React.Component{
   render(){
     let {close} = this.props;
     let style={
-      "height" : "33em",
-      "width" : "30em"
+
     };
 
     return(
       <Card style={style}>
-        <CardHeader title="Existing User"/>
+        <CardHeader title="Existing User" textStyle={{fontVariant: "small-caps", textDecoration:"underlined"}}/>
         <form onSubmit={this.onSubmitSignup} >
         <CardText className="form-group">
           <TextField name='email' type='email'
