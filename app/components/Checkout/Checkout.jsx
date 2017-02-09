@@ -43,14 +43,17 @@ export default class extends React.Component {
         allowRememberMe
         token={this.onToken}
         reconfigureOnUpdate={false}
-        // Note: you can change the event to `onTouchTap`, `onClick`, `onTouchStart`
-        // useful if you're using React-Tap-Event-Plugin
         triggerEvent="onTouchTap"
         >
+        <div style={{margin:"13px"}}>
         <button className="btn btn-primary">
           Pay Now
         </button>
+        </div>
       </StripeCheckout>
     );
   }
 }
+
+// Note: you can change the event to `onTouchTap`, `onClick`, `onTouchStart`
+// useful if you're using React-Tap-Event-Plugin
