@@ -97,7 +97,7 @@ class RegistrationForm extends React.Component{
 
     <div>
       <Card style={style}>
-        <CardHeader title="Sign Up as New User" textStyle={{fontVariant: "small-caps", textDecoration:"underlined"}}/>
+        <CardHeader title="Sign Up as New User" textStyle={{fontVariant: "small-caps", textDecoration:"underline"}}/>
         <form onSubmit={this.onSubmitSignup}>
         <CardText className="form-group" >
           <TextField name='firstName' label='firstName' floatingLabelText="First Name" hintText="First Name" onChange={this.nameHandler} /><br/>
