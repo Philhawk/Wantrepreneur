@@ -96,16 +96,27 @@ img {
 /*signup dialog*/
 .my-account h3 {
   text-align: center;
+  font-variant: small-caps;
+  margin-top: 0px;
+}
+
+.my-account div div div{
+  max-height: none;
+}
+.my-account div div div div{
+  max-height: none;
 }
 
 .my-account div .row {
-  display: flex;
-  padding-bottom: 1%;
-  padding-left: 10%;
-  margin: 1%;
   text-align: center;
+  justify-content: center;
 }
 
+#divider{
+  height: 20px;
+}
+
+/*cart*/
 .cart-image {
 	max-width: 12em;
 	max-height: 12em;

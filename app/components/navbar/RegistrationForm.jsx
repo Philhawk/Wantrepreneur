@@ -90,17 +90,18 @@ class RegistrationForm extends React.Component{
     let {close} = this.props;
 
     let style={
-      "height" : "33em",
-      "width" : "30em"
+        margin:"auto",
+        padding:"0px"
     };
+
 
     return(
 
     <div>
-      <Card style={style}>
-        <CardHeader title="Sign Up as New User"/>
+      <Card>
+        <CardHeader title="Sign Up as New User" textStyle={{fontVariant: "small-caps", textDecoration:"underline"}}/>
         <form onSubmit={this.onSubmitSignup}>
-        <CardText className="form-group" >
+        <CardText className="form-group" style={style}>
           <TextField name='firstName' label='firstName' floatingLabelText="First Name" hintText="First Name" onChange={this.nameHandler} /><br/>
           <TextField name='lastName' label='lastName' floatingLabelText="Last Name" hintText="Last Name" onChange={this.lastnameHandler}/><br/>
           <TextField name='email' type="email" hintText="Email" onChange={this.emailHandler} floatingLabelText="Email" errorText={(this.state.signAttempted===0 && !this.props.user) ? null:this.state.error} required/><br/>
