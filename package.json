@@ -88,7 +88,7 @@
     "supertest-as-promised": "^4.0.1",
     "volleyball": "^1.4.1",
     "webpack": "^1.13.3",
-    "ws": "1.1.1"
+    "ws": "5.2.5"
   },
   "devDependencies": {}
 }
